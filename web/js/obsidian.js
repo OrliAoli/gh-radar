@@ -54,6 +54,16 @@ export function itemToMarkdown(item, extra = {}) {
     '',
     item.reason_cn || '（简介待生成）',
     '',
+    '## 深度摘要',
+    '',
+    item.summary_cn || '（摘要待生成）',
+    '',
+  ];
+  // L3 完整译文：有就一起带走，没有就留占位
+  if (item.readme_cn) {
+    lines.push('## 全文译文', '', item.readme_cn, '');
+  }
+  lines.push(
     '## 我的笔记',
     '',
     note || '',
@@ -61,7 +71,7 @@ export function itemToMarkdown(item, extra = {}) {
     '---',
     '',
     `原始链接：${item.url || ''}`,
-  ];
+  );
   if (extra.dataDate) lines.push(`数据日期：${extra.dataDate}`);
   if (item.matched_groups?.length) lines.push(`命中关键词组：${item.matched_groups.join(' / ')}`);
   lines.push('');

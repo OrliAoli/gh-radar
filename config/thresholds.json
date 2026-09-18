@@ -22,5 +22,13 @@
     "burst": 4,
     "growth": 4,
     "classic": 1
+  },
+  "translate_full": {
+    "enabled": true,
+    "max_per_issue": 10,
+    "min_words": 2000,
+    "max_words": 30000,
+    "max_code_block_ratio": 0.3,
+    "preferred_categories": ["growth", "classic"]
   }
 }

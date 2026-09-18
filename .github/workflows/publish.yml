@@ -32,6 +32,7 @@ jobs:
         run: |
           python scripts/fetch.py --no-alert
           python scripts/build.py --days 3
+          python scripts/readme.py
 
       - name: 生成中文简介（没配 Key 会自动跳过，字段保持为空）
         env:

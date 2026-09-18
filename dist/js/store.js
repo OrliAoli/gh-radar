@@ -91,6 +91,10 @@ export class Store {
       url: item.url,
       title_cn: item.title_cn ?? null,
       reason_cn: item.reason_cn ?? null,
+      summary_cn: item.summary_cn ?? null,
+      readme_cn: item.readme_cn ?? null,      // L3 完整译文（仅文章型有）
+      is_article: item.is_article ?? null,
+      readme_words: item.readme_words ?? null,
       description: item.description ?? '',
       total_stars: item.total_stars ?? null,
       stars_today: item.stars_today ?? null,

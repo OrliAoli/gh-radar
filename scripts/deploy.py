@@ -169,7 +169,7 @@ def git_publish():
 
 JS_BUNDLE_ORDER = [
     "config.js", "api.js", "store.js", "filters.js",
-    "cards.js", "obsidian.js", "shelf.js", "app.js",
+    "markdown.js", "cards.js", "obsidian.js", "shelf.js", "app.js",
 ]
 
 
@@ -277,7 +277,9 @@ def build_standalone():
                        (r'<link[^>]+rel="alternate"', "RSS 外链"),
                        (r'type="module"', "ES Module"),
                        (r'@import\s+url\(', "CSS @import"),
-                       (r'https?://[^"\']+\.(?:js|css|woff2?)', "外部 js/css/字体资源")):
+                       # 只查「真的被引用」的资源，不查正文里提到的网址
+                       (r'(?:src|href)="https?://[^"]+\.(?:js|css|woff2?)"',
+                        "外部 js/css/字体资源")):
         if re.search(pat, html):
             leftovers.append(label)
     if not re.search(r'window\.fetch\s*=', html):

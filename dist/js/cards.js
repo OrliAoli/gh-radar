@@ -1,5 +1,6 @@
 // 卡片渲染
 import { CATEGORY_LABEL, BURST_BAR_MAX, mirrorUrl } from './config.js';
+import { renderMarkdown } from './markdown.js';
 
 export function esc(s) {
   return String(s ?? '').replace(/[&<>"']/g, (c) => (
@@ -98,6 +99,74 @@ export function createCard(item, st, cb) {
   card.appendChild(item.reason_cn
     ? el('div', 'reason', esc(item.reason_cn))
     : el('div', 'reason pending', '推荐理由待生成'));
+
+  /* ── L2：300~500 字深度摘要 ── */
+  if (item.summary_cn) {
+    const sumBox = el('div', 'summary');
+    const sumBody = el('div', 'summary-body',
+      item.summary_cn.split(/\n{2,}/).map((p) => `<p>${esc(p)}</p>`).join(''));
+    sumBody.classList.add('clamped');
+    sumBox.appendChild(el('div', 'summary-head', '深度摘要'));
+    sumBox.appendChild(sumBody);
+    const more = el('button', 'act ghostlink', '展开摘要 ▾');
+    more.addEventListener('click', () => {
+      sumBody.classList.toggle('clamped');
+      more.textContent = sumBody.classList.contains('clamped') ? '展开摘要 ▾' : '收起摘要 ▴';
+    });
+    sumBox.appendChild(more);
+    card.appendChild(sumBox);
+  }
+
+  /* ── L3：完整译文（仅文章型条目）── */
+  if (item.is_article) {
+    const full = el('div', 'fulltext');
+    const btn = el('button', 'act fullbtn', '📖 展开全文');
+    const area = el('div', 'fullarea');
+    area.hidden = true;
+
+    const bar = el('div', 'fullbar');
+    const origBtn = el('button', 'act', '对照原文');
+    let showingOriginal = false;
+    const render = () => {
+      const cn = item.readme_cn;
+      const en = item.readme_en;
+      if (showingOriginal) {
+        area.innerHTML = en
+          ? renderMarkdown(en)
+          : '<p class="muted">英文原文未随本期数据打包。</p>';
+      } else {
+        area.innerHTML = cn
+          ? renderMarkdown(cn)
+          : '<p class="muted">全文译文待生成——需要在仓库里配置大模型 Key（LLM_API_KEY），'
+            + '配置后下一期自动生成。</p>';
+      }
+    };
+    origBtn.addEventListener('click', () => {
+      showingOriginal = !showingOriginal;
+      origBtn.classList.toggle('on', showingOriginal);
+      origBtn.textContent = showingOriginal ? '看中文译文' : '对照原文';
+      render();
+    });
+    bar.appendChild(el('span', 'muted small',
+      `原文 ${item.readme_words || '—'} 词　代码块 ${item.code_block_ratio != null ? Math.round(item.code_block_ratio * 100) + '%' : '—'}`));
+    bar.appendChild(origBtn);
+
+    btn.addEventListener('click', () => {
+      area.hidden = !area.hidden;
+      btn.textContent = area.hidden ? '📖 展开全文' : '📖 收起全文';
+      if (!area.hidden && !area.dataset.rendered) {
+        render();
+        area.dataset.rendered = '1';
+      }
+    });
+
+    full.appendChild(btn);
+    full.appendChild(bar);
+    bar.hidden = true;
+    btn.addEventListener('click', () => { bar.hidden = area.hidden; });
+    full.appendChild(area);
+    card.appendChild(full);
+  }
 
   /* ── 操作区 ── */
   const actions = el('div', 'cactions');
