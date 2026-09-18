@@ -93,8 +93,8 @@
       "category": "ai_skill",
       "first_seen": "2026-09-17",
       "periods_on_board": 1,
-      "title_cn": null,
-      "reason_cn": null
+      "title_cn": "给 AI 编程助手装一套指挥系统，让多个 AI 分工协作、共享记忆，一起干完复杂任务",
+      "reason_cn": "单个 AI 是一个员工，这个是给一群 AI 配的调度台：你交代一件事，它自己拆活派人。目前最活跃的 Agent 编排框架之一"
     },
     {
       "id": "nexu-io/open-design",
@@ -157,8 +157,8 @@
       "category": "ai_skill",
       "first_seen": "2026-09-17",
       "periods_on_board": 1,
-      "title_cn": null,
-      "reason_cn": null
+      "title_cn": "让 AI 编程助手顺手当设计师，直接产出原型、落地页、看板、幻灯片，还能导出成 PPT 和视频",
+      "reason_cn": "以前做界面得找设计师或用专门工具，这个插件让写代码的 AI 顺手把设计一起做了。不想学设计软件的人能省一整道工序"
     },
     {
       "id": "Graphify-Labs/graphify",
@@ -220,8 +220,8 @@
       "category": "ai_skill",
       "first_seen": "2026-09-17",
       "periods_on_board": 1,
-      "title_cn": null,
-      "reason_cn": null
+      "title_cn": "把项目的代码、文档、数据库结构和 PDF 整理成一张可查询的知识网，让 AI 一次看懂全局",
+      "reason_cn": "AI 助手最怕看不懂大项目。这个技能先给项目建一张「地图」再让 AI 查，答得更准，而且不需要额外买向量数据库"
     },
     {
       "id": "tt-a1i/archify",
@@ -284,8 +284,8 @@
       "category": "ai_skill",
       "first_seen": "2026-09-17",
       "periods_on_board": 1,
-      "title_cn": null,
-      "reason_cn": null
+      "title_cn": "让 AI 编程助手自动画架构图、流程图、时序图，输出成能直接打开的网页，还带动效",
+      "reason_cn": "看图比读代码快得多。让 AI 把项目结构画成图，你不用懂代码也能明白这东西是怎么运转的"
     },
     {
       "id": "tradecatlabs/vibe-coding-cn",
@@ -347,8 +347,8 @@
       "category": "ai_skill",
       "first_seen": "2026-09-17",
       "periods_on_board": 1,
-      "title_cn": null,
-      "reason_cn": null
+      "title_cn": "中文写的「用嘴编程」教程，从入门到进阶，讲怎么用 AI 结对写代码、管好提示词和上下文",
+      "reason_cn": "你没有开发基础，这是最该先看的一类：教你怎么把 AI 使唤明白。中文原创，讲的是 Claude Code 这类主流工具的实战"
     },
     {
       "id": "Nanako0129/sepia",
@@ -403,8 +403,8 @@
       "category": "ai_skill",
       "first_seen": "2026-09-17",
       "periods_on_board": 1,
-      "title_cn": null,
-      "reason_cn": null
+      "title_cn": "给 AI 装一个「去 AI 味」的写作技能，写出来的文字不再满嘴机械腔，还能修小说结构",
+      "reason_cn": "AI 写的东西一眼就能认出来。如果你用 AI 写公众号、周报或小说，这个技能专门治这个毛病，让成品更像人写的"
     },
     {
       "id": "langgenius/dify",
@@ -466,8 +466,8 @@
       "category": "ai_skill",
       "first_seen": "2026-09-17",
       "periods_on_board": 1,
-      "title_cn": null,
-      "reason_cn": null
+      "title_cn": "不写代码就能搭出 AI 应用：拖拽排流程、接自己的资料库、连各种大模型，还能装在自己服务器上",
+      "reason_cn": "想把 AI 用到具体业务里，自己从零做太慢、用现成云服务又不放心数据。Dify 是这个赛道的头部开源方案"
     },
     {
       "id": "shanraisshan/claude-code-best-practice",
@@ -530,8 +530,8 @@
       "category": "ai_skill",
       "first_seen": "2026-09-17",
       "periods_on_board": 1,
-      "title_cn": null,
-      "reason_cn": null
+      "title_cn": "一份 Claude Code 使用心法合集，讲怎么把 AI 编程助手用出高手水平",
+      "reason_cn": "同一个 AI 工具，会用和不会用差别巨大。这份是社区总结出来的最佳实践，比官方文档接地气，属于「看完少走半年弯路」那类"
     },
     {
       "id": "cloudflare/security-audit-skill",
@@ -569,8 +569,8 @@
       "category": "burst",
       "first_seen": "2026-09-17",
       "periods_on_board": 1,
-      "title_cn": null,
-      "reason_cn": null
+      "title_cn": "让 AI 编程助手给代码做安全体检，分几个阶段查出漏洞，结果是一份可直接核对的清单",
+      "reason_cn": "Cloudflare 官方出的技能包，专治「AI 写的代码安不安全」。它把安全审计变成标准流程，你不懂安全也能看出项目有没有明显坑"
     },
     {
       "id": "Tencent/BrowserSkill",
@@ -608,8 +608,8 @@
       "category": "burst",
       "first_seen": "2026-09-17",
       "periods_on_board": 1,
-      "title_cn": null,
-      "reason_cn": null
+      "title_cn": "让 AI 直接用你已登录的浏览器干活，不用你腾出手，也不用重新登录一遍",
+      "reason_cn": "AI 想操作网页，最大的坎是登录和各种验证。腾讯出的这个技能绕过了这道坎——AI 用你现成的浏览器会话，你该干嘛干嘛"
     },
     {
       "id": "alibaba/open-code-review",
@@ -646,8 +646,8 @@
       "category": "burst",
       "first_seen": "2026-09-17",
       "periods_on_board": 1,
-      "title_cn": null,
-      "reason_cn": null
+      "title_cn": "阿里在用的 AI 代码审查工具，规则引擎和 AI 双管齐下，能精确指出哪一行有问题",
+      "reason_cn": "这是「让 AI 帮你查代码」方向少有的工业级作品，阿里内部大规模用过。纯 AI 会漏、纯规则会死板，它把两者拼起来"
     },
     {
       "id": "alphaXiv/OpenResearch",
@@ -684,8 +684,8 @@
       "category": "burst",
       "first_seen": "2026-09-17",
       "periods_on_board": 1,
-      "title_cn": null,
-      "reason_cn": null
+      "title_cn": "把只会写代码的 AI 助手，改造成能查资料、读论文、做调研的研究助手",
+      "reason_cn": "同一个 AI 换个「身份」就能干完全不同的活。这个项目让编程助手顺带具备做研究的能力，适合一边查一边写的场景"
     },
     {
       "id": "sunface/rust-course",
@@ -743,8 +743,8 @@
       "category": "growth",
       "first_seen": "2026-09-17",
       "periods_on_board": 1,
-      "title_cn": null,
-      "reason_cn": null
+      "title_cn": "中文写的 Rust 语言系统教程，从入门讲到深入，作者坚持更新了好几年",
+      "reason_cn": "Rust 是 AI 基础设施的热门语言，很多推理引擎都用它写。你不用会写，但知道它是什么、为什么重要，能看懂行业在往哪走"
     },
     {
       "id": "vllm-project/vllm",
@@ -805,8 +805,8 @@
       "category": "growth",
       "first_seen": "2026-09-17",
       "periods_on_board": 1,
-      "title_cn": null,
-      "reason_cn": null
+      "title_cn": "让大模型回答更快、能同时服务更多人的推理引擎，是业界事实上的标准",
+      "reason_cn": "大模型本身很贵，跑得慢就是烧钱。vLLM 是「怎么让模型跑得又快又省」这个问题的公认答案，自建 AI 服务几乎都会用到它"
     },
     {
       "id": "sgl-project/sglang",
@@ -865,8 +865,8 @@
       "category": "growth",
       "first_seen": "2026-09-17",
       "periods_on_board": 1,
-      "title_cn": null,
-      "reason_cn": null
+      "title_cn": "另一个高性能大模型服务框架，主打复杂任务的调度效率，和 vLLM 是并列选择",
+      "reason_cn": "和 vLLM 属于同一赛道的主要竞争者，很多团队两个都会试。认识这对「双子星」，就懂了 AI 基础设施到底在卷什么"
     },
     {
       "id": "kvcache-ai/ktransformers",
@@ -906,8 +906,8 @@
       "category": "growth",
       "first_seen": "2026-09-17",
       "periods_on_board": 1,
-      "title_cn": null,
-      "reason_cn": null
+      "title_cn": "让普通电脑也能跑动超大模型的优化框架，靠省内存的技巧把硬件门槛降下来",
+      "reason_cn": "模型回答时要暂存中间结果，叫 KV cache（相当于草稿纸），这是显存消耗的大头。省下它就能用小显卡跑大模型"
     },
     {
       "id": "obra/superpowers",
@@ -958,8 +958,8 @@
       "category": "classic",
       "first_seen": "2026-09-17",
       "periods_on_board": 1,
-      "title_cn": null,
-      "reason_cn": null
+      "title_cn": "一套让 AI 按照软件工程流程干活的技能框架，把「AI 随手写」变成「AI 按规矩做」",
+      "reason_cn": "28 万星。它不只是工具，更是一套方法论——教 AI 从想清需求到交付走完整流程。要说 AI 编程有「正经做法」，这个最接近"
     },
     {
       "id": "thedotmack/claude-mem",
@@ -1022,8 +1022,8 @@
       "category": "ai_skill",
       "first_seen": "2026-09-17",
       "periods_on_board": 1,
-      "title_cn": null,
-      "reason_cn": null
+      "title_cn": "给 AI 助手装上长期记忆，把上次做的事存下来，下次自动想起来，不用重复交代背景",
+      "reason_cn": "AI 最容易忘事——关掉窗口下次就得从头讲一遍。这个插件专门治它，属于「用过就回不去」的那类小工具"
     },
     {
       "id": "hesreallyhim/awesome-claude-code",
@@ -1085,8 +1085,8 @@
       "category": "ai_skill",
       "first_seen": "2026-09-17",
       "periods_on_board": 1,
-      "title_cn": null,
-      "reason_cn": null
+      "title_cn": "Claude Code 的优质资源人工精选清单，插件、技能、工具、技巧都收在里面",
+      "reason_cn": "想知道 Claude Code 到底能玩出什么花样，看这种精选清单最快。相当于有人替你筛过一遍的入口目录，省得自己到处翻"
     },
     {
       "id": "CherryHQ/cherry-studio",
@@ -1138,8 +1138,15 @@
       "category": "ai_skill",
       "first_seen": "2026-09-17",
       "periods_on_board": 1,
-      "title_cn": null,
-      "reason_cn": null
+      "title_cn": "一个桌面版 AI 工作台，把各家大模型、助手和智能体集中到一个界面里使用",
+      "reason_cn": "如果你同时用好几个 AI 服务，来回切很烦。这是国产开源客户端里做得最成熟的之一，一处管理所有模型和助手"
     }
-  ]
+  ],
+  "summarized_at": "2026-09-18T14:00:00Z",
+  "summary_source": "CodeBuddy 直接生成（未走 API）",
+  "summary_stats": {
+    "generated": 20,
+    "failed": 0,
+    "pending": 0
+  }
 }

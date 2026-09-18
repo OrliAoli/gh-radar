@@ -23,6 +23,7 @@
 import argparse
 import json
 import os
+import re
 import shutil
 import subprocess
 import sys
@@ -160,6 +161,136 @@ def git_publish():
     return 0
 
 
+# ── 自包含单文件打包（给手机本地直接打开用）────────────────────
+#
+# 为什么需要：ES Modules 和 fetch 在 file:// 协议下会被 CORS 拦死，
+# 所以本地版必须是「一个 HTML 里塞下所有东西」：
+#   CSS 内联、JS 合并成普通 script、数据内联成 JS 变量、零外部依赖。
+
+JS_BUNDLE_ORDER = [
+    "config.js", "api.js", "store.js", "filters.js",
+    "cards.js", "obsidian.js", "shelf.js", "app.js",
+]
+
+
+def _strip_module_syntax(code):
+    """
+    把 ES Module 语法去掉，好让它能当普通 <script> 跑。
+
+    ⚠️ import 可能是【跨行】的，例如：
+        import {
+          a, b,
+        } from './x.js';
+    所以必须用能跨行的正则，不能逐行判断（这里踩过坑）。
+    """
+    # 1) import ... from '...';
+    code = re.sub(r"^[ \t]*import\s+[\s\S]*?from\s+['\"][^'\"]+['\"]\s*;[ \t]*$",
+                  "", code, flags=re.M)
+    # 2) import '...';（无绑定）
+    code = re.sub(r"^[ \t]*import\s+['\"][^'\"]+['\"]\s*;[ \t]*$",
+                  "", code, flags=re.M)
+    # 3) export { a, b };
+    code = re.sub(r"^[ \t]*export\s*\{[^}]*\}\s*;?[ \t]*$", "", code, flags=re.M)
+    # 4) export function / export const / export class ...
+    code = re.sub(r"^([ \t]*)export\s+", r"\1", code, flags=re.M)
+    return code
+
+
+def _safe_for_script(text):
+    """防止内容里出现 </script> 把标签提前闭合。"""
+    return text.replace("</script", "<\\/script").replace("<!--", "<\\!--")
+
+
+def build_standalone():
+    """产出 dist/gh-radar-本地版.html —— 断网、零依赖、手机可直接打开"""
+    html_path = os.path.join(WEB_DIR, "index.html")
+    css_path = os.path.join(WEB_DIR, "style.css")
+    data_path = os.path.join(DATA_DIR, "latest.json")
+    for p in (html_path, css_path, data_path):
+        if not os.path.exists(p):
+            print("[x] 缺少 %s" % p)
+            return 1
+
+    html = open(html_path, encoding="utf-8").read()
+    css = open(css_path, encoding="utf-8").read()
+
+    parts = []
+    for name in JS_BUNDLE_ORDER:
+        p = os.path.join(WEB_DIR, "js", name)
+        if not os.path.exists(p):
+            print("[x] 缺少前端模块 %s" % p)
+            return 1
+        parts.append("/* ===================== %s ===================== */\n%s"
+                     % (name, _strip_module_syntax(open(p, encoding="utf-8").read())))
+    bundle = "(function(){\n\"use strict\";\n%s\n})();" % "\n\n".join(parts)
+
+    data = open(data_path, encoding="utf-8").read()
+
+    # 1) CSS 内联
+    if '<link rel="stylesheet" href="./style.css">' not in html:
+        print("[!] 没找到 style.css 的外链标签，按通用方式替换")
+        html = re.sub(r'<link[^>]+href="\./style\.css"[^>]*>', "<style>\n%s\n</style>" % css, html)
+    else:
+        html = html.replace('<link rel="stylesheet" href="./style.css">',
+                            "<style>\n%s\n</style>" % css)
+
+    # 2) 数据内联 + 3) JS 内联成普通 script（绝不带 type="module"）
+    inject = (
+        "<script>\n"
+        "// 离线单文件版：数据已内联，并把网络请求彻底禁掉，\n"
+        "// 保证在 file:// 协议下零外部依赖、不会被 CORS 拦。\n"
+        "window.__DATA__ = %s;\n"
+        "window.fetch = function () {\n"
+        "  return Promise.reject(new Error('这是离线单文件版，不联网'));\n"
+        "};\n"
+        "try { Object.freeze(window.__DATA__); } catch (e) {}\n"
+        "</script>\n<script>\n%s\n</script>"
+        % (_safe_for_script(data), _safe_for_script(bundle))
+    )
+    if '<script type="module" src="./js/app.js"></script>' not in html:
+        print("[!] 没找到 module 脚本标签，按通用方式替换")
+        html = re.sub(r'<script[^>]*src="\./js/app\.js"[^>]*></script>', inject, html)
+    else:
+        html = html.replace('<script type="module" src="./js/app.js"></script>', inject)
+
+    # 4) 去掉 RSS 外链（本地打开无意义，且避免任何外部请求）
+    html = re.sub(r'<link rel="alternate"[^>]*>', "", html)
+
+    os.makedirs(DIST_DIR, exist_ok=True)
+    targets = [
+        os.path.join(DIST_DIR, "gh-radar-本地版.html"),
+        os.path.join(DIST_DIR, "gh-radar-offline.html"),   # 同内容，英文名方便传输
+    ]
+    for t in targets:
+        with open(t, "w", encoding="utf-8") as f:
+            f.write(html)
+
+    size_kb = len(html.encode("utf-8")) / 1024.0
+    print("[+] 自包含单文件已生成（%.0f KB）：" % size_kb)
+    for t in targets:
+        print("    %s" % t)
+
+    # 自检：确认没有残留的外部引用
+    leftovers = []
+    for pat, label in ((r'<script[^>]+src=', "外链 script"),
+                       (r'<link[^>]+stylesheet', "外链 CSS"),
+                       (r'<link[^>]+rel="alternate"', "RSS 外链"),
+                       (r'type="module"', "ES Module"),
+                       (r'@import\s+url\(', "CSS @import"),
+                       (r'https?://[^"\']+\.(?:js|css|woff2?)', "外部 js/css/字体资源")):
+        if re.search(pat, html):
+            leftovers.append(label)
+    if not re.search(r'window\.fetch\s*=', html):
+        leftovers.append("未禁用 fetch")
+    if not re.search(r'window\.__DATA__\s*=', html):
+        leftovers.append("数据未内联")
+    if leftovers:
+        print("[!] 自检警告：%s" % "、".join(leftovers))
+    else:
+        print("[i] 自检通过：无外链脚本/CSS/字体 · 无 ES Module · 数据已内联 · fetch 已禁用")
+    return 0
+
+
 def deploy_tcb(env_id):
     """
     部署到腾讯云 CloudBase 静态托管。
@@ -184,6 +315,8 @@ def main():
     ap = argparse.ArgumentParser(description="打包（并可选部署）静态站点")
     ap.add_argument("--push", action="store_true",
                     help="打包后把 dist/ 提交并推送（EdgeOne Git 集成即自动发布）")
+    ap.add_argument("--standalone", action="store_true",
+                    help="额外产出 dist/gh-radar-本地版.html（自包含单文件，手机可离线打开）")
     ap.add_argument("--tcb", metavar="ENV_ID",
                     help="打包后部署到 CloudBase 静态托管，参数是环境 ID")
     ap.add_argument("--deploy", action="store_true",
@@ -195,6 +328,11 @@ def main():
     code = assemble()
     if code != 0:
         return code
+
+    if args.standalone:
+        code = build_standalone()
+        if code != 0:
+            return code
 
     if args.tcb:
         return deploy_tcb(args.tcb)

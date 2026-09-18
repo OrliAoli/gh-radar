@@ -23,6 +23,13 @@ export async function loadData(force = false) {
   if (cache && !force) return cache;
   const tried = [];
 
+  // 自包含单文件版：数据已经内联在 window.__DATA__ 里，不发任何网络请求
+  if (!force && typeof window !== 'undefined' && window.__DATA__
+      && Array.isArray(window.__DATA__.items)) {
+    cache = { data: window.__DATA__, degradedFrom: null, errors: [], offline: true };
+    return cache;
+  }
+
   try {
     const data = await fetchJson(DATA_URL + (force ? `?t=${Date.now()}` : ''));
     if (data && Array.isArray(data.items)) {
