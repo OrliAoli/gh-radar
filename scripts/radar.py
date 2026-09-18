@@ -38,6 +38,7 @@ def main():
                     help="抓取 + 聚合 + 生成页面 + 部署（每 3 天跑）")
     ap.add_argument("--no-alert", action="store_true", help="不开 GitHub 告警 issue")
     ap.add_argument("--days", type=int, default=3, help="聚合窗口天数，默认 3")
+    ap.add_argument("--site-name", help="EdgeOne Pages 站点名（给了才会真的部署）")
     args = ap.parse_args()
 
     if not args.fetch_only and not args.fetch_and_deploy:
@@ -60,8 +61,19 @@ def main():
     if code != 0:
         return code
 
-    print("\n=== 完成：已生成 data/latest.json 与 feed.xml ===")
-    print("[i] 部署步骤尚未接入，当前需手动部署到 EdgeOne Pages")
+    # 中文简介：没配 LLM_API_KEY 时脚本自己会跳过，字段保持为空
+    run([PY, "scripts/summarize.py"])
+
+    deploy_cmd = [PY, "scripts/deploy.py"]
+    if args.site_name:
+        deploy_cmd += ["--deploy", "--site-name", args.site_name]
+    code = run(deploy_cmd)
+    if code != 0:
+        return code
+
+    print("\n=== 完成：已生成 data/latest.json、feed.xml 与 dist/ 打包目录 ===")
+    if not args.site_name:
+        print("[i] 未指定站点名，只打包未部署。部署需要先确认 EdgeOne Pages 站点名。")
     return 0
 
 

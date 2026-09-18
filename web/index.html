@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark light">
+<title>每日 GitHub 雷达</title>
+<link rel="stylesheet" href="./style.css">
+<link rel="alternate" type="application/rss+xml" title="每日 GitHub 雷达 RSS" href="./feed.xml">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand"><span class="dot"></span>每日 GitHub 雷达</div>
+  <nav class="viewtabs" role="tablist">
+    <button class="viewtab is-active" data-view="radar" role="tab">雷达</button>
+    <button class="viewtab" data-view="shelf" role="tab">书架<span class="badge" id="shelfBadge" hidden>0</span></button>
+  </nav>
+  <div class="topactions">
+    <button class="iconbtn" id="settingsBtn" title="设置" aria-label="设置">⚙</button>
+    <button class="iconbtn" id="themeBtn" title="切换明暗" aria-label="切换明暗">◐</button>
+  </div>
+</header>
+
+<!-- ═══════════════════ 雷达 ═══════════════════ -->
+<main id="view-radar" class="view">
+
+  <section class="meta">
+    <div class="metaline">
+      <span id="dataDate" class="pill pill-date">加载中…</span>
+      <span id="dataWindow" class="muted"></span>
+    </div>
+    <button class="health" id="healthBtn" aria-expanded="false">
+      <span id="healthDot" class="healthdot"></span>
+      <span id="healthText">数据源检查中…</span>
+      <span class="chev">▾</span>
+    </button>
+    <div class="healthpanel" id="healthPanel" hidden></div>
+  </section>
+
+  <section class="mustsee" id="mustseeBox" hidden>
+    <h2 class="sechead">本期必看 <span class="muted small">评分最高的 5 条</span></h2>
+    <div class="mustlist" id="mustlist"></div>
+  </section>
+
+  <section class="filters">
+    <div class="catrow" id="catRow">
+      <button class="cat is-active" data-cat="all">全部</button>
+      <button class="cat" data-cat="ai_skill">AI Skill</button>
+      <button class="cat" data-cat="burst">爆发</button>
+      <button class="cat" data-cat="growth">学习成长</button>
+      <button class="cat" data-cat="classic">经典</button>
+    </div>
+
+    <div class="filterrow">
+      <label class="field">
+        <span>语言</span>
+        <select id="fLang"><option value="">全部</option></select>
+      </label>
+      <label class="field">
+        <span>时间</span>
+        <select id="fTime">
+          <option value="all">全部</option>
+          <option value="today">今日</option>
+          <option value="week">本周</option>
+          <option value="month">本月</option>
+        </select>
+      </label>
+      <label class="field">
+        <span>排序</span>
+        <select id="fSort">
+          <option value="score">综合评分</option>
+          <option value="burst">爆发指数</option>
+          <option value="today">今日新增</option>
+          <option value="stars">总星数</option>
+        </select>
+      </label>
+      <label class="field field-search">
+        <span>搜索</span>
+        <input id="fSearch" type="search" placeholder="仓库名 / 描述 / 标签" autocomplete="off">
+      </label>
+      <div class="toggles">
+        <label class="switch"><input type="checkbox" id="fUnread"><span>只看未读</span></label>
+        <label class="switch"><input type="checkbox" id="fStarred"><span>只看收藏</span></label>
+      </div>
+      <button class="ghost" id="resetFilters">重置</button>
+    </div>
+    <div class="resultbar"><span id="resultCount" class="muted small"></span></div>
+  </section>
+
+  <section class="list" id="list"></section>
+  <div class="empty" id="emptyRadar" hidden>没有符合条件的条目，试试放宽筛选。</div>
+</main>
+
+<!-- ═══════════════════ 书架 ═══════════════════ -->
+<main id="view-shelf" class="view" hidden>
+  <section class="shelfhead">
+    <h2 class="sechead">我的书架 <span class="muted small" id="shelfCount"></span></h2>
+    <div class="shelfactions">
+      <button class="ghost" id="exportMd">导出 Markdown</button>
+      <button class="ghost" id="exportJson">导出 JSON</button>
+      <button class="ghost" id="importJson">导入 JSON</button>
+      <input type="file" id="importFile" accept="application/json,.json" hidden>
+    </div>
+  </section>
+  <div class="shelffilter">
+    <button class="cat is-active" data-read="all">全部</button>
+    <button class="cat" data-read="unread">未读</button>
+    <button class="cat" data-read="reading">在读</button>
+    <button class="cat" data-read="done">已读</button>
+    <label class="field field-search"><input id="shelfSearch" type="search" placeholder="在书架里搜索" autocomplete="off"></label>
+  </div>
+  <section class="list" id="shelfList"></section>
+  <div class="empty" id="emptyShelf" hidden>书架还是空的。在雷达页点卡片上的 ☆ 收藏，条目会带着完整快照存进这里。</div>
+</main>
+
+<!-- ═══════════════════ 底部按钮 ═══════════════════ -->
+<button class="fab" id="tuneBtn"><span>🎛</span> 调教雷达</button>
+
+<!-- ═══════════════════ 调教雷达 ═══════════════════ -->
+<dialog id="tuneDlg" class="dlg">
+  <form method="dialog" class="dlgform">
+    <h3>调教雷达</h3>
+    <p class="muted small">
+      用大白话写下你想多看 / 少看什么。内容会存成「偏好」，并生成一段可直接粘进
+      <code>config/rules.txt</code> 的规则片段（静态网页无法直接改仓库文件，需要你手动粘一次）。
+    </p>
+    <textarea id="tuneText" rows="5" placeholder="例：多推本地部署大模型的项目；少推纯教程；不要区块链相关"></textarea>
+    <div class="dlgrow">
+      <button value="save" class="primary" id="tuneSave">保存偏好</button>
+      <button value="copy" class="ghost" id="tuneCopy">生成并复制规则片段</button>
+      <button value="cancel" class="ghost">关闭</button>
+    </div>
+    <pre class="snippet" id="tuneSnippet" hidden></pre>
+  </form>
+</dialog>
+
+<!-- ═══════════════════ 设置 ═══════════════════ -->
+<dialog id="settingsDlg" class="dlg">
+  <form method="dialog" class="dlgform">
+    <h3>设置</h3>
+    <label class="field">
+      <span>Obsidian 库名（vault）</span>
+      <input id="setVault" placeholder="例如：我的知识库" autocomplete="off">
+    </label>
+    <label class="field">
+      <span>Obsidian 笔记存放目录</span>
+      <input id="setFolder" placeholder="例如：GitHub雷达" autocomplete="off">
+    </label>
+    <p class="muted small">
+      库名必须是 Obsidian 里已存在的库的名称（区分大小写）。留空则用默认值。
+    </p>
+    <div class="dlgrow">
+      <button value="save" class="primary" id="settingsSave">保存</button>
+      <button value="wipe" class="danger" id="settingsWipe">清空全部本地数据</button>
+      <button value="cancel" class="ghost">关闭</button>
+    </div>
+  </form>
+</dialog>
+
+<div class="toast" id="toast" hidden></div>
+
+<script type="module" src="./js/app.js"></script>
+</body>
+</html>

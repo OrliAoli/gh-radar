@@ -26,18 +26,28 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: 抓取 + 聚合 + 生成页面数据
+      - name: 抓取 + 聚合
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           python scripts/fetch.py --no-alert
           python scripts/build.py --days 3
 
-      - name: 提交结果
+      - name: 生成中文简介（没配 Key 会自动跳过，字段保持为空）
+        env:
+          LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
+          LLM_BASE_URL: ${{ secrets.LLM_BASE_URL }}
+          LLM_MODEL: ${{ secrets.LLM_MODEL }}
+        run: python scripts/summarize.py
+
+      - name: 打包静态站点
+        run: python scripts/deploy.py
+
+      - name: 提交结果（data/ dist/ feed.xml）
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add -A data/ feed.xml
+          git add -A data/ dist/ feed.xml
           if git diff --staged --quiet; then
             echo "没有变化，跳过提交"
           else
