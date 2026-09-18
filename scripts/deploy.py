@@ -101,8 +101,8 @@ def assemble():
 
 def deploy_edgeone(site_name, token=None):
     """
-    发布到 EdgeOne Pages。
-    需要本机已安装 edgeone CLI：npm i -g edgeone
+    用 edgeone CLI 直接发布。需要本机已安装：npm i -g edgeone
+    （当前项目走的是「Git 仓库自动连接」方式，一般用不到这个函数）
     """
     cli = shutil.which("edgeone")
     if not cli:
@@ -125,21 +125,65 @@ def deploy_edgeone(site_name, token=None):
     return r.returncode
 
 
+def git_publish():
+    """
+    把 dist/ 和 data/ 提交并推送。
+    项目走的是 EdgeOne Pages 的「Git 仓库自动连接」，推送即发布。
+    """
+    def run_git(args):
+        env = dict(os.environ)
+        env.setdefault("GIT_AUTHOR_NAME", "gh-radar")
+        env.setdefault("GIT_AUTHOR_EMAIL", "gh-radar@users.noreply.github.com")
+        env.setdefault("GIT_COMMITTER_NAME", env["GIT_AUTHOR_NAME"])
+        env.setdefault("GIT_COMMITTER_EMAIL", env["GIT_AUTHOR_EMAIL"])
+        return subprocess.run(["git"] + args, cwd=ROOT, env=env).returncode
+
+    if subprocess.run(["git", "rev-parse", "--git-dir"], cwd=ROOT,
+                      stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL).returncode != 0:
+        print("[!] 当前目录不是 git 仓库，跳过推送")
+        return 1
+
+    run_git(["add", "-A", "data/", "dist/", "feed.xml"])
+    staged = subprocess.run(["git", "diff", "--staged", "--quiet"], cwd=ROOT).returncode
+    if staged == 0:
+        print("[=] 没有变化，跳过提交")
+        return 0
+
+    stamp = __import__("time").strftime("%Y-%m-%d %H:%M UTC", __import__("time").gmtime())
+    if run_git(["commit", "-m", "chore(auto): 发布榜单 %s" % stamp]) != 0:
+        print("[x] git commit 失败")
+        return 1
+    if run_git(["push", "origin", "HEAD"]) != 0:
+        print("[x] git push 失败（国内网络可能要挂代理：HTTPS_PROXY=http://127.0.0.1:10809）")
+        return 1
+    print("[+] 已推送，EdgeOne Pages 会自动发布")
+    return 0
+
+
 def main():
     ap = argparse.ArgumentParser(description="打包（并可选部署）静态站点")
-    ap.add_argument("--deploy", action="store_true", help="打包后部署到 EdgeOne Pages")
-    ap.add_argument("--site-name", help="EdgeOne Pages 站点名（创建后不可改）")
+    ap.add_argument("--push", action="store_true",
+                    help="打包后把 dist/ 提交并推送（EdgeOne Git 集成即自动发布）")
+    ap.add_argument("--deploy", action="store_true",
+                    help="打包后用 edgeone CLI 直接部署（需先装 CLI）")
+    ap.add_argument("--site-name", help="EdgeOne Pages 站点名（用 --deploy 时必填）")
     ap.add_argument("--token", help="EdgeOne API Token（也可用环境变量 EDGEONE_API_TOKEN）")
     args = ap.parse_args()
 
     code = assemble()
-    if code != 0 or not args.deploy:
+    if code != 0:
         return code
 
-    if not args.site_name:
-        print("[x] 部署必须指定 --site-name（站点名一旦创建不可修改）")
-        return 2
-    return deploy_edgeone(args.site_name, args.token)
+    if args.deploy:
+        if not args.site_name:
+            print("[x] --deploy 必须指定 --site-name（站点名一旦创建不可修改）")
+            return 2
+        return deploy_edgeone(args.site_name, args.token)
+
+    if args.push:
+        return git_publish()
+
+    return 0
 
 
 if __name__ == "__main__":

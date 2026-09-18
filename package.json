@@ -1,0 +1,10 @@
+{
+  "name": "gh-radar",
+  "version": "1.0.0",
+  "private": true,
+  "description": "每日 GitHub 雷达 —— 纯静态站点，无构建步骤",
+  "scripts": {
+    "build": "echo \"纯静态站点：dist/ 已经由 scripts/deploy.py 打好包，这里不需要构建\"",
+    "preview": "python3 -m http.server 8899 --directory dist"
+  }
+}
