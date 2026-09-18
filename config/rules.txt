@@ -8,6 +8,10 @@
 /赌博|博彩|porn|adult|nsfw/
 /raspberry|树莓派|arduino|esp32|embedded|firmware|固件|单片机/
 /iot|智能家居|home-?assistant/
+# 面试题库 / 八股文：不是 AI 工具，不该出现在 AI 雷达上
+# （Snailclimb/JavaGuide 就是靠 topics 里真实的 ai/agent/mcp 命中的，
+#   在「AI 学习资源」组加必须词治不住它，必须在全局层拦）
+/面试|interview|八股|面试题/
 
 # ==================== 降权区 ====================
 [WEAK]
@@ -52,6 +56,7 @@ roadmap
 /course|课程|curriculum/
 /beginner|新手|小白|从零学/
 /\bai\b|llm|大模型|人工智能/
++/\bai\b|llm|大模型|人工智能|智能体|agent|claude|gpt/
 @4
 
 # ==================== 4. LLM 推理与模型 ====================

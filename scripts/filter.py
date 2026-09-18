@@ -76,27 +76,57 @@ FRESHNESS_SCALE = 5.0
 
 # ------------------------------------------------------------ 解析
 
+def _try_regex(s):
+    """'/xxx/' → 编译好的正则；不是正则就返回 None。"""
+    if len(s) > 2 and s.startswith("/") and s.endswith("/"):
+        try:
+            return re.compile(s[1:-1], re.I)
+        except re.error:
+            return None
+    return None
+
+
 def _compile_rule(line):
-    """把一行规则文本编译成 (kind, matcher, raw)。返回 None 表示不是规则行。"""
+    """
+    把一行规则文本编译成 (kind, matcher, raw)。返回 None 表示不是规则行。
+
+    支持：
+        关键词            普通词
+        /正则/            正则
+        +关键词           必须词（AND）
+        +/正则/           必须正则  ← 注意：+ 后面可以跟正则
+        !关键词           排除词（仅本组）
+        !/正则/           排除正则
+    """
     s = line.strip()
     if not s or s.startswith("#"):
         return None
-    if s.startswith("/") and s.endswith("/") and len(s) > 2:
-        inner = s[1:-1]
-        try:
-            return ("regex", re.compile(inner, re.I), s)
-        except re.error:
-            return None
+
+    r = _try_regex(s)
+    if r is not None:
+        return ("regex", r, s)
+
     if s.startswith("+"):
-        return ("required", s[1:].lower(), s)
+        body = s[1:].strip()
+        r = _try_regex(body)
+        if r is not None:
+            return ("required", r, s)
+        return ("required", body.lower(), s) if body else None
+
     if s.startswith("!"):
-        return ("exclude", s[1:].lower(), s)
+        body = s[1:].strip()
+        r = _try_regex(body)
+        if r is not None:
+            return ("exclude", r, s)
+        return ("exclude", body.lower(), s) if body else None
+
     return ("plain", s.lower(), s)
 
 
 def _match_rule(rule, text):
+    """matcher 可能是编译好的正则，也可能是普通字符串。"""
     kind, matcher, _ = rule
-    if kind == "regex":
+    if hasattr(matcher, "search"):
         return bool(matcher.search(text))
     return matcher in text
 
@@ -237,11 +267,14 @@ def evaluate(repo, rules, th):
         if required and not all(_match_rule(r, text) for r in required):
             continue
         hits = [r for r in positives if _match_rule(r, text)]
+        req_hits = [r for r in required if _match_rule(r, text)]
         if not hits and not required:
             continue
+        # 只命中必须词、没命中任何普通词时，用必须词数量计入强度
+        effective = len(hits) if hits else len(req_hits)
         hit_groups.append({"name": g["name"], "category": g["category"],
-                           "hits": len(hits), "limit": g["limit"]})
-        strength += len(hits) * g["weight"]
+                           "hits": effective, "limit": g["limit"]})
+        strength += effective * g["weight"]
 
     # 3) 必须命中至少一个兴趣组
     if th.get("require_group_match_all_categories", True) and not hit_groups:

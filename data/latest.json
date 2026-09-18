@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-18T09:31:42.359252+00:00",
+  "updated_at": "2026-09-18T12:28:39.658582+00:00",
   "date": "2026-09-18",
   "window": {
     "from": "2026-09-17",
@@ -10,15 +10,15 @@
   "warnings": [],
   "stats": {
     "candidates": 477,
-    "after_filter": 238,
-    "lane_a": 49,
-    "lane_b": 189,
+    "after_filter": 218,
+    "lane_a": 48,
+    "lane_b": 170,
     "dropped": {
       "total": 477,
-      "dropped_global": 33,
-      "dropped_no_group": 52,
-      "dropped_min_stars": 135,
-      "dropped_quality_gate": 19
+      "dropped_global": 39,
+      "dropped_no_group": 79,
+      "dropped_min_stars": 124,
+      "dropped_quality_gate": 17
     },
     "allocation": {
       "保底_ai_skill": 8,
@@ -152,7 +152,7 @@
         "ai_skill",
         "growth"
       ],
-      "rank_score": 0.994709,
+      "rank_score": 0.994118,
       "primary": "ai_skill",
       "category": "ai_skill",
       "first_seen": "2026-09-17",
@@ -215,7 +215,71 @@
         "ai_skill",
         "growth"
       ],
-      "rank_score": 0.989418,
+      "rank_score": 0.988235,
+      "primary": "ai_skill",
+      "category": "ai_skill",
+      "first_seen": "2026-09-17",
+      "periods_on_board": 1,
+      "title_cn": null,
+      "reason_cn": null
+    },
+    {
+      "id": "tt-a1i/archify",
+      "owner": "tt-a1i",
+      "name": "archify",
+      "full_name": "tt-a1i/archify",
+      "url": "https://github.com/tt-a1i/archify",
+      "description": "Agent skill for beautiful, verifiable architecture, workflow, sequence, data-flow, and lifecycle diagrams—self-contained HTML with motion and crisp export.",
+      "language": "JavaScript",
+      "total_stars": 65709,
+      "forks": 4380,
+      "stars_today": null,
+      "topics": [
+        "agent-skills",
+        "architecture-as-code",
+        "architecture-diagram",
+        "claude-skill",
+        "code-visualization",
+        "codex",
+        "coding-agents",
+        "data-flow-diagram",
+        "deepseek-harness",
+        "developer-tools",
+        "diagram-as-code",
+        "diagrams",
+        "diagrams-as-code",
+        "dsh-plugin",
+        "mermaid-alternative",
+        "opencode",
+        "sequence-diagram",
+        "software-architecture",
+        "system-design",
+        "text-to-diagram"
+      ],
+      "created_at": "2026-04-15T05:27:37Z",
+      "pushed_at": "2026-09-17T09:24:33Z",
+      "src": "search",
+      "search_group": "ai_skill",
+      "search_kind": "stock",
+      "peak_stars_today": null,
+      "days_seen": 1,
+      "burst_score": null,
+      "lane": "B",
+      "score": 69.177,
+      "relevance_score": 69.177,
+      "matched_groups": [
+        "AI 编程 Skill",
+        "AI Agent 应用",
+        "AI 学习资源"
+      ],
+      "hit_strength": 10.0,
+      "weak": false,
+      "quality_gate": true,
+      "categories": [
+        "ai_skill",
+        "growth"
+      ],
+      "rank_score": 0.982353,
       "primary": "ai_skill",
       "category": "ai_skill",
       "first_seen": "2026-09-17",
@@ -278,7 +342,7 @@
         "ai_skill",
         "growth"
       ],
-      "rank_score": 0.984127,
+      "rank_score": 0.976471,
       "primary": "ai_skill",
       "category": "ai_skill",
       "first_seen": "2026-09-17",
@@ -334,69 +398,7 @@
         "ai_skill",
         "growth"
       ],
-      "rank_score": 0.978836,
-      "primary": "ai_skill",
-      "category": "ai_skill",
-      "first_seen": "2026-09-17",
-      "periods_on_board": 1,
-      "title_cn": null,
-      "reason_cn": null
-    },
-    {
-      "id": "tt-a1i/archify",
-      "owner": "tt-a1i",
-      "name": "archify",
-      "full_name": "tt-a1i/archify",
-      "url": "https://github.com/tt-a1i/archify",
-      "description": "Agent skill for beautiful, verifiable architecture, workflow, sequence, data-flow, and lifecycle diagrams—self-contained HTML with motion and crisp export.",
-      "language": "JavaScript",
-      "total_stars": 65709,
-      "forks": 4380,
-      "stars_today": null,
-      "topics": [
-        "agent-skills",
-        "architecture-as-code",
-        "architecture-diagram",
-        "claude-skill",
-        "code-visualization",
-        "codex",
-        "coding-agents",
-        "data-flow-diagram",
-        "deepseek-harness",
-        "developer-tools",
-        "diagram-as-code",
-        "diagrams",
-        "diagrams-as-code",
-        "dsh-plugin",
-        "mermaid-alternative",
-        "opencode",
-        "sequence-diagram",
-        "software-architecture",
-        "system-design",
-        "text-to-diagram"
-      ],
-      "created_at": "2026-04-15T05:27:37Z",
-      "pushed_at": "2026-09-17T09:24:33Z",
-      "src": "search",
-      "search_group": "ai_skill",
-      "search_kind": "stock",
-      "peak_stars_today": null,
-      "days_seen": 1,
-      "burst_score": null,
-      "lane": "B",
-      "score": 62.259,
-      "relevance_score": 62.259,
-      "matched_groups": [
-        "AI 编程 Skill",
-        "AI Agent 应用"
-      ],
-      "hit_strength": 9.0,
-      "weak": false,
-      "quality_gate": true,
-      "categories": [
-        "ai_skill"
-      ],
-      "rank_score": 0.973545,
+      "rank_score": 0.970588,
       "primary": "ai_skill",
       "category": "ai_skill",
       "first_seen": "2026-09-17",
@@ -459,7 +461,7 @@
         "ai_skill",
         "growth"
       ],
-      "rank_score": 0.968254,
+      "rank_score": 0.964706,
       "primary": "ai_skill",
       "category": "ai_skill",
       "first_seen": "2026-09-17",
@@ -523,7 +525,7 @@
         "ai_skill",
         "growth"
       ],
-      "rank_score": 0.962963,
+      "rank_score": 0.958824,
       "primary": "ai_skill",
       "category": "ai_skill",
       "first_seen": "2026-09-17",
@@ -549,16 +551,18 @@
       "burst_score": 356.3,
       "lane": "A",
       "score": 356.3,
-      "relevance_score": 24.388,
+      "relevance_score": 30.195,
       "matched_groups": [
         "AI 编程 Skill",
-        "AI Agent 应用"
+        "AI Agent 应用",
+        "AI 学习资源"
       ],
-      "hit_strength": 4.2,
+      "hit_strength": 5.2,
       "weak": false,
       "quality_gate": false,
       "categories": [
-        "ai_skill"
+        "ai_skill",
+        "growth"
       ],
       "rank_score": 1.0,
       "primary": "ai_skill",
@@ -599,7 +603,7 @@
         "ai_skill",
         "growth"
       ],
-      "rank_score": 0.979592,
+      "rank_score": 0.979167,
       "primary": "ai_skill",
       "category": "burst",
       "first_seen": "2026-09-17",
@@ -637,7 +641,7 @@
         "ai_skill",
         "growth"
       ],
-      "rank_score": 0.959184,
+      "rank_score": 0.958333,
       "primary": "ai_skill",
       "category": "burst",
       "first_seen": "2026-09-17",
@@ -663,17 +667,19 @@
       "burst_score": 131.5,
       "lane": "A",
       "score": 131.5,
-      "relevance_score": 7.151,
+      "relevance_score": 12.652,
       "matched_groups": [
-        "AI Agent 应用"
+        "AI Agent 应用",
+        "AI 学习资源"
       ],
-      "hit_strength": 1.3,
+      "hit_strength": 2.3,
       "weak": false,
       "quality_gate": false,
       "categories": [
-        "ai_skill"
+        "ai_skill",
+        "growth"
       ],
-      "rank_score": 0.938776,
+      "rank_score": 0.9375,
       "primary": "ai_skill",
       "category": "burst",
       "first_seen": "2026-09-17",
@@ -732,7 +738,7 @@
       "categories": [
         "growth"
       ],
-      "rank_score": 0.719577,
+      "rank_score": 0.694118,
       "primary": "growth",
       "category": "growth",
       "first_seen": "2026-09-17",
@@ -794,7 +800,7 @@
       "categories": [
         "growth"
       ],
-      "rank_score": 0.693122,
+      "rank_score": 0.670588,
       "primary": "growth",
       "category": "growth",
       "first_seen": "2026-09-17",
@@ -854,7 +860,7 @@
       "categories": [
         "growth"
       ],
-      "rank_score": 0.661376,
+      "rank_score": 0.623529,
       "primary": "growth",
       "category": "growth",
       "first_seen": "2026-09-17",
@@ -895,7 +901,7 @@
       "categories": [
         "growth"
       ],
-      "rank_score": 0.650794,
+      "rank_score": 0.605882,
       "primary": "growth",
       "category": "growth",
       "first_seen": "2026-09-17",
@@ -904,33 +910,28 @@
       "reason_cn": null
     },
     {
-      "id": "Snailclimb/JavaGuide",
-      "owner": "Snailclimb",
-      "name": "JavaGuide",
-      "full_name": "Snailclimb/JavaGuide",
-      "url": "https://github.com/Snailclimb/JavaGuide",
-      "description": "Java 面试 & 后端通用面试指南，覆盖计算机基础、数据库、分布式、高并发、系统设计与 AI 应用开发",
-      "language": "JavaScript",
-      "total_stars": 158639,
-      "forks": 46136,
+      "id": "obra/superpowers",
+      "owner": "obra",
+      "name": "superpowers",
+      "full_name": "obra/superpowers",
+      "url": "https://github.com/obra/superpowers",
+      "description": "An agentic skills framework & software development methodology that works.",
+      "language": "Shell",
+      "total_stars": 288026,
+      "forks": 25760,
       "stars_today": null,
       "topics": [
-        "agent",
         "ai",
-        "context-engineering",
-        "deepseek",
-        "interview",
-        "java",
-        "mcp",
-        "mysql",
-        "redis",
-        "redisson",
+        "brainstorming",
+        "coding",
+        "obra",
+        "sdlc",
         "skills",
-        "springai",
-        "system-design"
+        "subagent-driven-development",
+        "superpowers"
       ],
-      "created_at": "2018-05-07T13:27:00Z",
-      "pushed_at": "2026-09-05T12:30:20Z",
+      "created_at": "2025-10-09T19:45:18Z",
+      "pushed_at": "2026-09-14T18:42:08Z",
       "src": "search",
       "search_group": "ai_skill",
       "search_kind": "stock",
@@ -938,21 +939,21 @@
       "days_seen": 1,
       "burst_score": null,
       "lane": "B",
-      "score": 60.164,
-      "relevance_score": 60.164,
+      "score": 53.672,
+      "relevance_score": 53.672,
       "matched_groups": [
         "AI 编程 Skill",
         "AI Agent 应用",
         "AI 学习资源"
       ],
-      "hit_strength": 9.4,
+      "hit_strength": 7.1,
       "weak": false,
-      "quality_gate": true,
+      "quality_gate": false,
       "categories": [
         "ai_skill",
         "growth"
       ],
-      "rank_score": 0.957672,
+      "rank_score": 0.9,
       "primary": "ai_skill",
       "category": "classic",
       "first_seen": "2026-09-17",
@@ -1016,7 +1017,7 @@
         "ai_skill",
         "growth"
       ],
-      "rank_score": 0.952381,
+      "rank_score": 0.952941,
       "primary": "ai_skill",
       "category": "ai_skill",
       "first_seen": "2026-09-17",
@@ -1079,7 +1080,7 @@
         "ai_skill",
         "growth"
       ],
-      "rank_score": 0.94709,
+      "rank_score": 0.947059,
       "primary": "ai_skill",
       "category": "ai_skill",
       "first_seen": "2026-09-17",
@@ -1132,7 +1133,7 @@
         "ai_skill",
         "growth"
       ],
-      "rank_score": 0.941799,
+      "rank_score": 0.941176,
       "primary": "ai_skill",
       "category": "ai_skill",
       "first_seen": "2026-09-17",
