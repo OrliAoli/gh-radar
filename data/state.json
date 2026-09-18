@@ -1,0 +1,107 @@
+{
+  "repos": {
+    "cloudflare/security-audit-skill": {
+      "first_seen": "2026-09-17",
+      "periods_on_board": 1,
+      "last_published": "2026-09-17"
+    },
+    "Tencent/BrowserSkill": {
+      "first_seen": "2026-09-17",
+      "periods_on_board": 1,
+      "last_published": "2026-09-17"
+    },
+    "alibaba/open-code-review": {
+      "first_seen": "2026-09-17",
+      "periods_on_board": 1,
+      "last_published": "2026-09-17"
+    },
+    "alphaXiv/OpenResearch": {
+      "first_seen": "2026-09-17",
+      "periods_on_board": 1,
+      "last_published": "2026-09-17"
+    },
+    "xiaomoBoy/pi-bluebook": {
+      "first_seen": "2026-09-17",
+      "periods_on_board": 1,
+      "last_published": "2026-09-17"
+    },
+    "Nanako0129/sepia": {
+      "first_seen": "2026-09-17",
+      "periods_on_board": 1,
+      "last_published": "2026-09-17"
+    },
+    "nexu-io/open-design": {
+      "first_seen": "2026-09-17",
+      "periods_on_board": 1,
+      "last_published": "2026-09-17"
+    },
+    "Graphify-Labs/graphify": {
+      "first_seen": "2026-09-17",
+      "periods_on_board": 1,
+      "last_published": "2026-09-17"
+    },
+    "tt-a1i/archify": {
+      "first_seen": "2026-09-17",
+      "periods_on_board": 1,
+      "last_published": "2026-09-17"
+    },
+    "tradecatlabs/vibe-coding-cn": {
+      "first_seen": "2026-09-17",
+      "periods_on_board": 1,
+      "last_published": "2026-09-17"
+    },
+    "yanliudesign/mono-color-skill": {
+      "first_seen": "2026-09-17",
+      "periods_on_board": 1,
+      "last_published": "2026-09-17"
+    },
+    "LB623/no-negative-echo": {
+      "first_seen": "2026-09-17",
+      "periods_on_board": 1,
+      "last_published": "2026-09-17"
+    },
+    "arnegiacomo/fugleramme": {
+      "first_seen": "2026-09-17",
+      "periods_on_board": 1,
+      "last_published": "2026-09-17"
+    },
+    "Tencent/WeKnora": {
+      "first_seen": "2026-09-17",
+      "periods_on_board": 1,
+      "last_published": "2026-09-17"
+    },
+    "TencentCloud/Octop": {
+      "first_seen": "2026-09-17",
+      "periods_on_board": 1,
+      "last_published": "2026-09-17"
+    },
+    "JustVugg/colibri": {
+      "first_seen": "2026-09-17",
+      "periods_on_board": 1,
+      "last_published": "2026-09-17"
+    },
+    "fleetbase/fleetbase": {
+      "first_seen": "2026-09-17",
+      "periods_on_board": 1,
+      "last_published": "2026-09-17"
+    },
+    "hao-ai-lab/FastVideo": {
+      "first_seen": "2026-09-17",
+      "periods_on_board": 1,
+      "last_published": "2026-09-17"
+    },
+    "ARahim3/kaggle-tpu-lab": {
+      "first_seen": "2026-09-17",
+      "periods_on_board": 1,
+      "last_published": "2026-09-17"
+    },
+    "DietrichGebert/ponytail": {
+      "first_seen": "2026-09-17",
+      "periods_on_board": 1,
+      "last_published": "2026-09-17"
+    }
+  },
+  "periods": [
+    "2026-09-17"
+  ]
+}

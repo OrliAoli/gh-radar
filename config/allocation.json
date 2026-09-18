@@ -1,0 +1,10 @@
+{
+  "_说明": "20 条名额怎么分。plan 按顺序执行，laneA = 有今日增量的爆发项，laneB = 搜索池沉淀项。改完要 commit+push 才生效。",
+  "_当前分配": "ai_skill 12 = 爆发 4 + 沉淀 8；burst 5 = 全爆发；growth 2；classic 1。合计 20。",
+  "plan": [
+    { "category": "ai_skill", "laneA": 4, "laneB": 8 },
+    { "category": "burst",    "laneA": 5, "laneB": 0 },
+    { "category": "growth",   "laneA": 1, "laneB": 1 },
+    { "category": "classic",  "laneA": 1, "laneB": 0 }
+  ]
+}

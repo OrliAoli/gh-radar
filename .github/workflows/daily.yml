@@ -1,0 +1,46 @@
+name: 每日抓取快照
+
+on:
+  schedule:
+    # 每天 UTC 00:30（北京 08:30）。用 :30 避开 GitHub 调度器整点排队高峰
+    - cron: '30 0 * * *'
+  workflow_dispatch:      # 随时可在 Actions 页面手动点一次
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 检出仓库
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: 准备 Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: 抓取并写入当日快照
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        # 无需 pip install —— 脚本只用 Python 标准库
+        run: python scripts/fetch.py
+
+      - name: 提交快照
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A data/
+          if git diff --staged --quiet; then
+            echo "没有变化，跳过提交"
+          else
+            git commit -m "chore(auto): 每日快照 $(date -u +'%Y-%m-%d %H:%M UTC')"
+            git push origin main || (git pull --rebase -X ours origin main && git push origin main)
+          fi

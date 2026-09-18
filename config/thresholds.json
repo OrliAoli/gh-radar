@@ -1,0 +1,16 @@
+{
+  "weak_multiplier": 0.5,
+  "quality_gate_min_stars": 50000,
+  "quality_gate_top_n": 3,
+  "classic_min_stars": 100000,
+  "classic_require_group_match": true,
+  "require_group_match_all_categories": true,
+  "burst_top_n": 8,
+  "total_limit": 20,
+  "category_quota": {
+    "ai_skill": 12,
+    "burst": 5,
+    "growth": 9,
+    "classic": 3
+  }
+}

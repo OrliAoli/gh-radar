@@ -1,0 +1,80 @@
+# ==================== 全局排除 ====================
+# 这里写的词对整个榜单生效，不需要加 !
+[GLOBAL_FILTER]
+
+# --- 你明确说的 ---
+爬虫
+/crack|破解|激活码|注册机|keygen|patch/
+/crypto|bitcoin|btc|币圈|空投|airdrop/
+
+# --- 以下两段是我从你的标注反推的，你没明说，不认同就删 ---
+/3d|three\.js|webgl|blender|anatomy/
+/音乐|music|spotify|播放器/
+/赌博|博彩|porn|adult|nsfw/
+
+
+# ==================== 降权区 ====================
+# 命中不排除，得分 ×0.5 —— 只有本身够优秀才挤得进前 20
+[WEAK]
+/ui-?kit|component-?library|组件库|设计系统/
+/build-your-own|from-scratch|从零实现|手写实现/
+
+
+# ==================== 质量门槛区 ====================
+# 命中这些硬核词，必须至少满足一个条件才放行，否则丢弃：
+#   A) 总星 > quality_gate_min_stars（默认 50000）
+#   B) 本期 burst_score 进前 quality_gate_top_n（默认 3）
+[QUALITY_GATE]
+/system-design|系统设计|架构设计/
+/kernel|内核|编译原理|编译器/
+/分布式|distributed-?system|consensus|raft|paxos/
+/算法竞赛|acm|icpc|oi/
+/数据库内核|存储引擎|查询优化器/
+
+
+# ==================== 1. AI 编程 Skill ====================
+[AI 编程 Skill]
+skill
+skills
+/subagent|slash-?command/
+/prompt-?engineering|context-?engineering/
+/agent-?skill/
+/claude|codex|cursor|copilot|opencode/
+@6
+
+# ==================== 2. AI Agent 架构与应用 ====================
+[AI Agent 应用]
+/agent|智能体/
+/orchestrat|multi-?agent|多智能体/
+mcp
+/model-?context-?protocol/
+/coding-?agent|ai-?assistant|copilot/
+/autonomous|自主/
+/llm-?app|rag/
+@6
+
+# ==================== 3. AI 学习资源 ====================
+[AI 学习资源]
+/教程|tutorial|入门|getting-?started|handbook|guide/
+/book|电子书|教材|书稿/
+roadmap
+/course|课程|curriculum/
+/beginner|新手|小白|从零学/
+/llm|大模型|人工智能|ai/
+@4
+
+# ==================== 4. LLM 推理与模型 ====================
+[LLM 推理优化]
+/inference|推理/
+/vllm|sglang|tensorrt|onnx|llama\.cpp|ollama/
+/quantiz|量化/
+/kv-?cache|flash-?attention|显存|vram/
+/moe|transformer/
+@3
+
+# ==================== 5. 中文技术内容 ====================
+[中文技术]
+/中文|chinese|zh-?cn/
+/翻译|translated/
+/写作|文案/
+@2
