@@ -60,10 +60,18 @@ DEFAULT_THRESHOLDS = {
     "classic_min_stars": 100000,
     "classic_require_group_match": True,
     "require_group_match_all_categories": True,
+    "min_stars_new_pool": 1000,
+    "min_stars_existing_pool": 200,
+    "lane_b_star_weight": 1.0,
+    "lane_b_freshness_weight": 0.6,
     "burst_top_n": 8,
     "total_limit": 20,
-    "category_quota": {"ai_skill": 12, "burst": 5, "growth": 9, "classic": 3},
+    "category_quota": {"ai_skill": 12, "burst": 6, "growth": 6, "classic": 3},
+    "category_min": {"ai_skill": 8, "burst": 4, "growth": 4, "classic": 1},
 }
+
+# 新鲜度换算尺度：把 0.4~1.0 的新鲜度折算到与 log10(星数)（0~6）同一量级
+FRESHNESS_SCALE = 5.0
 
 
 # ------------------------------------------------------------ 解析
@@ -241,14 +249,29 @@ def evaluate(repo, rules, th):
                 "categories": [], "hit_groups": [], "strength": 0.0,
                 "weak": False, "quality_gate": False, "score": 0.0}
 
-    # 4) 弱匹配降权
+    # 4) 小项目星数门槛（只对搜索池生效，trending 本身就是榜单不需要门槛）
+    if repo.get("src") == "search":
+        if repo.get("search_kind") == "new":
+            floor = th.get("min_stars_new_pool", 1000)
+        else:
+            floor = th.get("min_stars_existing_pool", 200)
+        if stars < floor:
+            return {"drop": True, "drop_reason": "星数低于门槛 %d" % floor,
+                    "categories": [], "hit_groups": [], "strength": 0.0,
+                    "weak": False, "quality_gate": False, "score": 0.0}
+
+    # 5) 弱匹配降权
     weak = any(_match_rule(r, text) for r in rules["weak"])
 
-    # 5) 质量门槛标记（是否放行在 build.py 里按本期排名决定）
+    # 6) 质量门槛标记（是否放行在 build.py 里按本期排名决定）
     qg = any(_match_rule(r, text) for r in rules["quality_gate"])
 
-    # 6) 相关度打分（车道 B 用）：命中强度 × log(总星) × 新鲜度
-    relevance = strength * math.log10(stars + 10) * _freshness(repo)
+    # 7) 相关度打分（车道 B 用）：
+    #    命中强度 ×（星数权重 × log10(星数) + 新鲜度权重 × 新鲜度 × 尺度）
+    star_term = th.get("lane_b_star_weight", 1.0) * math.log10(stars + 10)
+    fresh_term = (th.get("lane_b_freshness_weight", 0.6)
+                  * FRESHNESS_SCALE * _freshness(repo))
+    relevance = strength * (star_term + fresh_term)
     if weak:
         relevance *= th.get("weak_multiplier", 0.5)
 

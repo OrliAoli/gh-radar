@@ -31,28 +31,35 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA_DIR = os.path.join(ROOT, "data")
 DAILY_DIR = os.path.join(DATA_DIR, "daily")
 STATE_PATH = os.path.join(DATA_DIR, "state.json")
-ALLOCATION_PATH = os.path.join(ROOT, "config", "allocation.json")
 
 WINDOW_DAYS = 3          # 聚合窗口：最近 3 天
 
-DEFAULT_ALLOCATION = {
-    "plan": [
-        {"category": "ai_skill", "laneA": 4, "laneB": 8},
-        {"category": "burst", "laneA": 5, "laneB": 0},
-        {"category": "growth", "laneA": 1, "laneB": 1},
-        {"category": "classic", "laneA": 1, "laneB": 0},
-    ]
-}
+# 类别优先级（一条数据同时命中多个兴趣组时，归到优先级最高的类别）
+CATEGORY_PRIORITY = ["ai_skill", "growth"]
 
 
 # ------------------------------------------------------------ 载入
 
-def load_allocation():
-    a = dict(DEFAULT_ALLOCATION)
-    if os.path.exists(ALLOCATION_PATH):
-        with open(ALLOCATION_PATH, "r", encoding="utf-8") as f:
-            a.update(json.load(f))
-    return a
+def assign_rank_score(items):
+    """
+    给每条算一个"车道内相对排名分"（0~1）。
+    作用：burst_score（0~400）和车道 B 的相关度分（0~30）量级差太远、无法直接比较，
+    换成"在各自车道里的排名"就能公平比较了。
+    """
+    for lane in ("A", "B"):
+        sub = [i for i in items if i["lane"] == lane]
+        sub.sort(key=lambda x: (x["score"] or 0), reverse=True)
+        n = len(sub)
+        for idx, it in enumerate(sub):
+            it["rank_score"] = round((n - idx) / float(n), 6) if n else 0.0
+
+
+def primary_category(item):
+    """一条数据同时命中多个兴趣组时，归到优先级最高的类别。"""
+    for c in CATEGORY_PRIORITY:
+        if c in item.get("categories", []):
+            return c
+    return (item.get("categories") or ["ai_skill"])[0]
 
 
 def list_snapshot_dates():
@@ -144,13 +151,17 @@ def score_pool(pool, rules, th):
     """对全池做过滤 + 打分 + 分类。返回 (items, dropped_stats)"""
     items = []
     stats = {"total": len(pool), "dropped_global": 0,
-             "dropped_no_group": 0, "dropped_quality_gate": 0}
+             "dropped_no_group": 0, "dropped_min_stars": 0,
+             "dropped_quality_gate": 0}
 
     for rid, r in pool.items():
         ev = evaluate(r, rules, th)
         if ev["drop"]:
-            if "全局排除" in (ev["drop_reason"] or ""):
+            reason = ev["drop_reason"] or ""
+            if "全局排除" in reason:
                 stats["dropped_global"] += 1
+            elif "星数低于门槛" in reason:
+                stats["dropped_min_stars"] += 1
             else:
                 stats["dropped_no_group"] += 1
             continue
@@ -202,73 +213,93 @@ def pick_by_group(items, group_names, limit_per_group):
     return chosen, left
 
 
-def cat_lane_candidates(lane, category, rules, sort_key):
+def allocate(items, rules, th):
     """
-    取某个类别在某个车道里的候选，按组内限额优先、超额部分排序补位。
-    sort_key：车道 A 用 burst_score，车道 B 用 relevance_score
+    分配算法（严格按 config/thresholds.json 的定义）：
+
+      1. 先按 category_min 分保底名额（默认 8+4+4+1 = 17 条）
+      2. 剩余名额按分数（车道内相对排名）给未达 category_quota 上限的类别
+      3. 任何类别不超过 category_quota
+
+    类别候选池的来源：
+      burst   → 只从车道 A（有今日增量）取，且增速排前 burst_top_n
+      其他    → 车道 B 优先（保证搜索池不被饿死），不足时用车道 A 补
     """
-    names = [g["name"] for g in rules["groups"] if g["category"] == category]
-    group_limit = {g["name"]: g["limit"] for g in rules["groups"]}
-    sel = [i for i in lane if any(n in i["matched_groups"] for n in names)]
-    chosen, left = pick_by_group(sel, names, group_limit)
-    chosen.sort(key=sort_key, reverse=True)
-    left.sort(key=sort_key, reverse=True)
-    return chosen + left
-
-
-def allocate(items, rules, th, alloc):
-    """按 config/allocation.json 的 plan 挑选，硬卡 total_limit。"""
     total_limit = th.get("total_limit", 20)
+    quota = th.get("category_quota", {})
+    cmin = th.get("category_min", {})
     classic_min = th.get("classic_min_stars", 100000)
     burst_top_n = th.get("burst_top_n", 8)
 
-    lane_a = [i for i in items if i["lane"] == "A"]
-    lane_a.sort(key=lambda x: (x["burst_score"] or 0), reverse=True)
-    lane_b = [i for i in items if i["lane"] == "B"]
+    assign_rank_score(items)
+
+    lane_a = sorted([i for i in items if i["lane"] == "A"],
+                    key=lambda x: (x["burst_score"] or 0), reverse=True)
+    burst_rank = {i["id"]: idx for idx, i in enumerate(lane_a)}
+    lane_b = sorted([i for i in items if i["lane"] == "B"],
+                    key=lambda x: (x["score"] or 0), reverse=True)
     classic_pool = sorted(
         [i for i in items if (i.get("total_stars") or 0) > classic_min],
-        key=lambda x: ((x["burst_score"] or 0) * 1000 + (x["score"] or 0)), reverse=True)
+        key=lambda x: (x["rank_score"], x["burst_score"] or 0, x["score"] or 0),
+        reverse=True)
 
-    picked, used = [], set()
+    for i in items:
+        i["primary"] = primary_category(i)
+
+    def pool_for(cat):
+        if cat == "burst":
+            return list(lane_a)
+        if cat == "classic":
+            return list(classic_pool)
+        b = [i for i in lane_b if i["primary"] == cat]
+        a = [i for i in lane_a if i["primary"] == cat]
+        return b + a            # 车道 B 优先
+
+    picked, used, count = [], set(), {}
     report = {}
 
-    def take(cands, n, tag, cat=None):
-        if n <= 0:
-            return
-        got = []
-        for i in cands:
+    def add(item, cat, tag):
+        item["category"] = cat
+        picked.append(item)
+        used.add(item["id"])
+        count[cat] = count.get(cat, 0) + 1
+        report[tag] = report.get(tag, 0) + 1
+
+    # ---- 第 1 步：保底名额
+    for cat in sorted(cmin, key=lambda c: -cmin[c]):
+        want = min(cmin[cat], quota.get(cat, cmin[cat]))
+        got = 0
+        for i in pool_for(cat):
+            if got >= want or len(picked) >= total_limit:
+                break
             if i["id"] in used:
                 continue
-            if cat:
-                i["category"] = cat
-            got.append(i)
-            used.add(i["id"])
-            if len(got) >= n:
+            if count.get(cat, 0) >= quota.get(cat, want):
                 break
-        report[tag] = report.get(tag, 0) + len(got)
-        picked.extend(got)
+            add(i, cat, "保底_%s" % cat)
+            got += 1
 
-    for step in alloc.get("plan", []):
-        cat = step["category"]
-        na, nb = step.get("laneA", 0), step.get("laneB", 0)
-        if cat == "burst":
-            # 从"增速排前 burst_top_n"的未占用条目里取
-            pool = [i for i in lane_a if i["id"] not in used][:burst_top_n]
-            take(pool, na + nb, "burst", "burst")
-        elif cat == "classic":
-            take(classic_pool, na + nb, "classic", "classic")
-        else:
-            take(cat_lane_candidates(lane_a, cat, rules,
-                                     lambda x: x["burst_score"] or 0), na, "%s/A" % cat, cat)
-            take(cat_lane_candidates(lane_b, cat, rules,
-                                     lambda x: x["score"] or 0), nb, "%s/B" % cat, cat)
-
-    # 没填满就用剩余高分条目补足（仍要求已命中兴趣组）
-    if len(picked) < total_limit:
-        rest = [i for i in items if i["id"] not in used]
-        rest.sort(key=lambda x: ((x["burst_score"] or 0) * 1000 + (x["score"] or 0)),
-                  reverse=True)
-        take(rest, total_limit - len(picked), "topup")
+    # ---- 第 2 步：剩余名额按分数（车道内相对排名）分配
+    rest = [i for i in items if i["id"] not in used]
+    rest.sort(key=lambda x: (x["rank_score"], x["burst_score"] or 0, x["score"] or 0),
+              reverse=True)
+    for i in rest:
+        if len(picked) >= total_limit:
+            break
+        # a) 车道 A 的高增速项优先补 burst
+        if (i["lane"] == "A" and burst_rank.get(i["id"], 999) < burst_top_n
+                and count.get("burst", 0) < quota.get("burst", 0)):
+            add(i, "burst", "补位_burst")
+            continue
+        # b) 归入自己的主类别
+        cat = i["primary"]
+        if count.get(cat, 0) < quota.get(cat, 0):
+            add(i, cat, "补位_%s" % cat)
+            continue
+        # c) 总星够高的补 classic
+        if ((i.get("total_stars") or 0) > classic_min
+                and count.get("classic", 0) < quota.get("classic", 0)):
+            add(i, "classic", "补位_classic")
 
     return picked[:total_limit], report
 
@@ -334,17 +365,16 @@ def main():
 
     rules = load_rules()
     th = load_thresholds()
-    alloc = load_allocation()
 
     items, drop_stats = score_pool(pool, rules, th)
-    print("[i] 过滤后 %d 条（全局排除 -%d / 未命中兴趣组 -%d / 质量门槛 -%d）"
-          % (len(items), drop_stats["dropped_global"],
+    print("[i] 过滤后 %d 条（全局排除 -%d / 星数门槛 -%d / 未命中兴趣组 -%d / 质量门槛 -%d）"
+          % (len(items), drop_stats["dropped_global"], drop_stats["dropped_min_stars"],
              drop_stats["dropped_no_group"], drop_stats["dropped_quality_gate"]))
     print("[i] 车道 A（有今日增量）%d 条 / 车道 B（搜索池）%d 条"
           % (sum(1 for i in items if i["lane"] == "A"),
              sum(1 for i in items if i["lane"] == "B")))
 
-    final, alloc_report = allocate(items, rules, th, alloc)
+    final, alloc_report = allocate(items, rules, th)
     print("[i] 配额分配：%s" % json.dumps(alloc_report, ensure_ascii=False))
 
     # 回填 first_seen / periods_on_board

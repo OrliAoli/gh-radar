@@ -358,6 +358,9 @@ def dedupe(repos):
         for k in ("total_stars", "forks"):
             if cur.get(k) is None and r.get(k) is not None:
                 cur[k] = r[k]
+        # 同一条同时出现在"存量查询"和"新增查询"里时，按新增处理（门槛更严）
+        if r.get("search_kind") == "new":
+            cur["search_kind"] = "new"
     return list(out.values())
 
 
