@@ -160,10 +160,32 @@ def git_publish():
     return 0
 
 
+def deploy_tcb(env_id):
+    """
+    部署到腾讯云 CloudBase 静态托管。
+    需要本机已装 CloudBase CLI 并登录过：npm i -g @cloudbase/cli && tcb login
+    """
+    cli = shutil.which("tcb") or shutil.which("cloudbase")
+    if not cli:
+        print("[!] 没找到 tcb 命令。先安装：npm install -g @cloudbase/cli")
+        return 2
+
+    cmd = [cli, "hosting", "deploy", DIST_DIR, "-e", env_id]
+    print("[i] 执行：%s" % " ".join(cmd))
+    r = subprocess.run(cmd, cwd=ROOT)
+    if r.returncode == 0:
+        print("[+] CloudBase 部署完成")
+    else:
+        print("[x] CloudBase 部署失败，退出码 %d" % r.returncode)
+    return r.returncode
+
+
 def main():
     ap = argparse.ArgumentParser(description="打包（并可选部署）静态站点")
     ap.add_argument("--push", action="store_true",
                     help="打包后把 dist/ 提交并推送（EdgeOne Git 集成即自动发布）")
+    ap.add_argument("--tcb", metavar="ENV_ID",
+                    help="打包后部署到 CloudBase 静态托管，参数是环境 ID")
     ap.add_argument("--deploy", action="store_true",
                     help="打包后用 edgeone CLI 直接部署（需先装 CLI）")
     ap.add_argument("--site-name", help="EdgeOne Pages 站点名（用 --deploy 时必填）")
@@ -173,6 +195,9 @@ def main():
     code = assemble()
     if code != 0:
         return code
+
+    if args.tcb:
+        return deploy_tcb(args.tcb)
 
     if args.deploy:
         if not args.site_name:
