@@ -56,6 +56,8 @@ async function reload() {
   const res = await loadData();
   state.data = res.data;
   state.degraded = res.degradedFrom;
+  state.offline = Boolean(res.offline);
+  state.canPersist = state.store.backend.name !== 'memory';
   state.loadErrors = res.errors || [];
   state.items = res.data?.items || [];
 
@@ -136,6 +138,14 @@ function renderHealth() {
   }
   if (state.degraded) {
     rows.push(`<div style="margin-top:6px" class="k">注意：最新一期读取失败，当前显示的是 ${esc(state.degraded)} 的快照。</div>`);
+  }
+  if (state.offline) {
+    rows.push('<div style="margin-top:6px" class="k">离线单文件版：数据和页面都在这一个文件里，不联网也能看。</div>');
+  }
+  if (!state.canPersist) {
+    rows.push('<div style="margin-top:6px" class="k">⚠️ 当前浏览器不允许本地存储：'
+      + '页面能正常看，但收藏 / 已读 / 笔记关掉后会丢。'
+      + '（iOS 的「文件」App 预览有这个问题，改用 Chrome 打开就正常）</div>');
   }
   panel.innerHTML = rows.join('');
 }
