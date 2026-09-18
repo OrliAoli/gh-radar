@@ -1,0 +1,15 @@
+{
+  "site": "china",
+  "token": "c8ce5d901894b93d9f9d695f7cd48f65",
+  "tokenExpired": "1789754166",
+  "projectName": "gh-radar-txqt6yga",
+  "targetPath": "c8ce5d901894b93d9f9d695f7cd48f65/gh-radar-txqt6yga/1789750567312",
+  "bucket": "eop-trans-sh-prod-1256816668",
+  "region": "ap-shanghai",
+  "cosExpiredTime": 1789752367,
+  "cosExpiration": "2026-09-18T17:26:07Z",
+  "createdAt": "2026-09-18T16:56:07.301Z",
+  "projectId": "makers-5rg5rs1uwq8e",
+  "deploymentId": "dpqa7q8a8xml",
+  "siteUrl": "https://gh-radar-txqt6yga-3bsoirq5.edgeone.cool?eo_token=a0c39f302253873f6a346d4856aee5ea&eo_time=1789750585"
+}

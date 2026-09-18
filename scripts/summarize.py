@@ -33,6 +33,11 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 LATEST = os.path.join(ROOT, "data", "latest.json")
 README_DIR = os.path.join(ROOT, "data", "readme")
 
+# 手工兜底内容目录（没配 LLM_API_KEY 时靠它撑着）
+MANUAL_DIR = os.path.join(ROOT, "data", "manual")
+MANUAL_L1L2 = os.path.join(MANUAL_DIR, "l1l2.json")
+MANUAL_README = os.path.join(MANUAL_DIR, "readme")
+
 DEFAULT_BASE_URL = "https://api.deepseek.com"
 DEFAULT_MODEL = "deepseek-chat"
 
@@ -199,6 +204,47 @@ def build_user_prompt(item, extra=""):
     return s + extra
 
 
+def apply_manual(data):
+    """
+    注入手工兜底内容 —— 没有配 LLM_API_KEY 时，就靠它把中文内容填上。
+
+        data/manual/l1l2.json                 { "<repo id>": {title_cn, reason_cn, summary_cn} }
+        data/manual/readme/{owner}__{name}.md  L3 全文译文（Markdown）
+
+    为什么必须有这一步：build.py 每期都会从头重建 latest.json，
+    title_cn / summary_cn / readme_cn 都不会从上一期继承。
+    没有这段，手写的内容下一期自动运行就会被冲掉。
+
+    手工内容先落，之后大模型（若配了 Key）只补空缺、不覆盖已有值。
+    """
+    n_l1l2 = n_l3 = 0
+    overrides = {}
+    if os.path.exists(MANUAL_L1L2):
+        try:
+            with open(MANUAL_L1L2, encoding="utf-8") as f:
+                overrides = json.load(f) or {}
+        except Exception as e:  # noqa: BLE001
+            print("[!] data/manual/l1l2.json 解析失败：%s" % e)
+
+    for item in data.get("items") or []:
+        ov = overrides.get(item.get("id")) or {}
+        for key in ("title_cn", "reason_cn", "summary_cn"):
+            if ov.get(key):
+                item[key] = ov[key]
+                n_l1l2 += 1
+        if item.get("is_article"):
+            owner, name = item.get("owner"), item.get("name")
+            if owner and name:
+                p = os.path.join(MANUAL_README, "%s__%s.md" % (owner, name))
+                if os.path.exists(p):
+                    with open(p, encoding="utf-8") as f:
+                        item["readme_cn"] = f.read().strip()
+                    n_l3 += 1
+
+    print("[i] 手工内容注入：L1/L2 字段 %d 个 · 全文译文 %d 篇" % (n_l1l2, n_l3))
+    return n_l1l2, n_l3
+
+
 # ---------------------------------------------------------------- 主流程
 
 def main():
@@ -214,22 +260,28 @@ def main():
     base_url = os.getenv("LLM_BASE_URL", "").strip() or DEFAULT_BASE_URL
     model = os.getenv("LLM_MODEL", "").strip() or DEFAULT_MODEL
 
-    if not api_key:
-        print("[=] 没有配置 LLM_API_KEY，跳过中文内容生成。")
-        print("    title_cn / reason_cn / summary_cn / readme_cn 保持为空，")
-        print("    前端会显示「简介待生成」。这是预期行为 —— 宁可为空，也不用模板硬凑。")
-        print("    想启用：仓库 Settings → Secrets and variables → Actions → New repository secret")
-        print("      LLM_API_KEY    你的大模型 API Key")
-        print("      LLM_BASE_URL   可选，默认 %s" % DEFAULT_BASE_URL)
-        print("      LLM_MODEL      可选，默认 %s" % DEFAULT_MODEL)
-        return 0
-
     if not os.path.exists(LATEST):
         print("[x] 找不到 data/latest.json，先跑 scripts/build.py")
         return 1
 
     with open(LATEST, "r", encoding="utf-8") as f:
         data = json.load(f)
+
+    # 手工兜底内容先注入 —— 没配 Key 时它是唯一的中文来源
+    apply_manual(data)
+
+    if not api_key:
+        with open(LATEST, "w", encoding="utf-8") as f:
+            json.dump(data, f, indent=2, ensure_ascii=False)
+        print("[=] 没有配置 LLM_API_KEY，跳过自动生成（手工内容已写回 data/latest.json）。")
+        print("    title_cn / reason_cn / summary_cn / readme_cn 仍为空的条目，")
+        print("    前端会显示「简介待生成」。这是预期行为 —— 宁可为空，也不用模板硬凑。")
+        print("    想全自动：仓库 Settings → Secrets and variables → Actions → New repository secret")
+        print("      LLM_API_KEY    你的大模型 API Key")
+        print("      LLM_BASE_URL   可选，默认 %s" % DEFAULT_BASE_URL)
+        print("      LLM_MODEL      可选，默认 %s" % DEFAULT_MODEL)
+        return 0
+
     items = data.get("items") or []
     if args.limit:
         items = items[:args.limit]
