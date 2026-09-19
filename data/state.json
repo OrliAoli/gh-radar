@@ -2,13 +2,13 @@
   "repos": {
     "ruvnet/ruflo": {
       "first_seen": "2026-09-17",
-      "periods_on_board": 1,
-      "last_published": "2026-09-18"
+      "periods_on_board": 2,
+      "last_published": "2026-09-19"
     },
     "nexu-io/open-design": {
       "first_seen": "2026-09-17",
-      "periods_on_board": 1,
-      "last_published": "2026-09-18"
+      "periods_on_board": 2,
+      "last_published": "2026-09-19"
     },
     "Graphify-Labs/graphify": {
       "first_seen": "2026-09-17",
@@ -17,91 +17,102 @@
     },
     "tt-a1i/archify": {
       "first_seen": "2026-09-17",
-      "periods_on_board": 1,
-      "last_published": "2026-09-18"
+      "periods_on_board": 2,
+      "last_published": "2026-09-19"
     },
     "tradecatlabs/vibe-coding-cn": {
       "first_seen": "2026-09-17",
-      "periods_on_board": 1,
-      "last_published": "2026-09-18"
+      "periods_on_board": 2,
+      "last_published": "2026-09-19"
     },
     "Nanako0129/sepia": {
       "first_seen": "2026-09-17",
-      "periods_on_board": 1,
-      "last_published": "2026-09-18"
+      "periods_on_board": 2,
+      "last_published": "2026-09-19"
     },
     "langgenius/dify": {
       "first_seen": "2026-09-17",
-      "periods_on_board": 1,
-      "last_published": "2026-09-18"
+      "periods_on_board": 2,
+      "last_published": "2026-09-19"
     },
     "shanraisshan/claude-code-best-practice": {
       "first_seen": "2026-09-17",
-      "periods_on_board": 1,
-      "last_published": "2026-09-18"
+      "periods_on_board": 2,
+      "last_published": "2026-09-19"
     },
     "cloudflare/security-audit-skill": {
       "first_seen": "2026-09-17",
-      "periods_on_board": 1,
-      "last_published": "2026-09-18"
+      "periods_on_board": 2,
+      "last_published": "2026-09-19"
     },
     "Tencent/BrowserSkill": {
       "first_seen": "2026-09-17",
-      "periods_on_board": 1,
-      "last_published": "2026-09-18"
+      "periods_on_board": 2,
+      "last_published": "2026-09-19"
     },
     "alibaba/open-code-review": {
       "first_seen": "2026-09-17",
-      "periods_on_board": 1,
-      "last_published": "2026-09-18"
+      "periods_on_board": 2,
+      "last_published": "2026-09-19"
     },
     "alphaXiv/OpenResearch": {
       "first_seen": "2026-09-17",
-      "periods_on_board": 1,
-      "last_published": "2026-09-18"
+      "periods_on_board": 2,
+      "last_published": "2026-09-19"
     },
     "sunface/rust-course": {
       "first_seen": "2026-09-17",
-      "periods_on_board": 1,
-      "last_published": "2026-09-18"
+      "periods_on_board": 2,
+      "last_published": "2026-09-19"
     },
     "vllm-project/vllm": {
       "first_seen": "2026-09-17",
-      "periods_on_board": 1,
-      "last_published": "2026-09-18"
+      "periods_on_board": 2,
+      "last_published": "2026-09-19"
     },
     "sgl-project/sglang": {
       "first_seen": "2026-09-17",
-      "periods_on_board": 1,
-      "last_published": "2026-09-18"
+      "periods_on_board": 2,
+      "last_published": "2026-09-19"
     },
     "kvcache-ai/ktransformers": {
       "first_seen": "2026-09-17",
-      "periods_on_board": 1,
-      "last_published": "2026-09-18"
+      "periods_on_board": 2,
+      "last_published": "2026-09-19"
     },
     "obra/superpowers": {
       "first_seen": "2026-09-17",
-      "periods_on_board": 1,
-      "last_published": "2026-09-18"
+      "periods_on_board": 2,
+      "last_published": "2026-09-19"
     },
     "thedotmack/claude-mem": {
       "first_seen": "2026-09-17",
-      "periods_on_board": 1,
-      "last_published": "2026-09-18"
+      "periods_on_board": 2,
+      "last_published": "2026-09-19"
     },
     "hesreallyhim/awesome-claude-code": {
       "first_seen": "2026-09-17",
-      "periods_on_board": 1,
-      "last_published": "2026-09-18"
+      "periods_on_board": 2,
+      "last_published": "2026-09-19"
     },
     "CherryHQ/cherry-studio": {
       "first_seen": "2026-09-17",
       "periods_on_board": 1,
       "last_published": "2026-09-18"
+    },
+    "ComposioHQ/awesome-claude-skills": {
+      "first_seen": "2026-09-19",
+      "periods_on_board": 1,
+      "last_published": "2026-09-19"
+    },
+    "TencentCloud/Octop": {
+      "first_seen": "2026-09-17",
+      "periods_on_board": 1,
+      "last_published": "2026-09-19"
     }
   },
   "periods": [
-    "2026-09-18"
+    "2026-09-18",
+    "2026-09-19"
   ]
 }
