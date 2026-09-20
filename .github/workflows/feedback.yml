@@ -1,0 +1,71 @@
+name: 收集反馈与调教
+
+# 页面是纯静态的，写不了仓库文件。所以让用户点一下 👍/👎 之后，
+# 从页面生成一条「预填好的 GitHub Issue」，用户点提交；
+# 这个 workflow 收到后把内容追加进仓库，并打上 done 标签关掉 Issue。
+
+on:
+  issues:
+    types: [opened, labeled]
+  workflow_dispatch:
+    inputs:
+      issue_number:
+        description: '要处理的 issue 编号（手动补跑时填）'
+        required: false
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  ingest:
+    runs-on: ubuntu-latest
+    if: |
+      github.event_name == 'workflow_dispatch' ||
+      contains(github.event.issue.labels.*.name, 'radar-feedback') ||
+      contains(github.event.issue.labels.*.name, 'radar-tuning') ||
+      contains(github.event.issue.labels.*.name, 'radar-push')
+
+    steps:
+      - name: 检出仓库
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: 准备 Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: 解析 Issue 并写回仓库
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ISSUE_BODY: ${{ github.event.issue.body }}
+          ISSUE_LABELS: ${{ join(github.event.issue.labels.*.name, ',') }}
+        run: python3 scripts/ingest_issue.py
+
+      - name: 重新计算反馈权重
+        run: python3 scripts/feedback.py --report
+
+      - name: 提交
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A data/ config/
+          if git diff --staged --quiet; then
+            echo "没有变化，跳过提交"
+          else
+            git commit -m "chore(auto): 记录反馈 $(date -u +'%Y-%m-%d %H:%M UTC')"
+            git push origin main || (git pull --rebase -X ours origin main && git push origin main)
+          fi
+
+      - name: 关掉 Issue 并留言
+        if: github.event_name == 'issues'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NUM: ${{ github.event.issue.number }}
+        run: |
+          gh issue comment "$NUM" --body "✅ 已记录。下次发布时就会按它调整排序。"
+          gh issue close "$NUM"

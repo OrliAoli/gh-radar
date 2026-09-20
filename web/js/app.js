@@ -1,10 +1,12 @@
 // 主控制器：串起取数、筛选、渲染与交互
-import { CATEGORY_LABEL } from './config.js';
+import { CATEGORY_LABEL, CONFIG } from './config.js';
 import { loadData } from './api.js';
 import { Store } from './store.js';
 import { applyFilters, collectLanguages, pickMustSee, defaultFilters } from './filters.js';
 import { createCard, esc } from './cards.js';
 import { renderShelf } from './shelf.js';
+import { registerSW, setupPushButton } from './pwa.js';
+import { collectPending, buildIssueUrl, markSynced, pendingCount } from './feedback.js';
 import {
   itemToMarkdown, shelfToMarkdown, quickSave, downloadMarkdown,
   downloadBlob, fileStamp,
@@ -42,6 +44,10 @@ async function boot() {
   wireEvents();
   await refreshUserState();
   await reload();
+
+  registerSW();
+  setupPushButton($('pushBtn'), $('pushState'));
+  updateFbState();
 }
 
 async function refreshUserState() {
@@ -73,51 +79,44 @@ async function reload() {
 
 function renderMeta() {
   const d = state.data;
-  if (!d) {
-    $('dataDate').textContent = '暂无数据';
-    $('dataWindow').textContent = '';
-    return;
-  }
-  $('dataDate').textContent = `数据日期 ${d.date || '—'}`;
-  const w = d.window;
-  const bits = [];
-  if (w?.from && w?.to && w.from !== w.to) bits.push(`聚合窗口 ${w.from} ~ ${w.to}`);
-  bits.push(`本期 ${state.items.length} 条`);
-  $('dataWindow').textContent = bits.join(' · ');
+  $('tbDate').textContent = d ? (d.date || '—') : '无数据';
+  $('tbDate').title = d?.window?.from
+    ? `聚合窗口 ${d.window.from} ~ ${d.window.to}　本期 ${state.items.length} 条`
+    : '';
+}
+
+function healthLevel() {
+  const d = state.data;
+  if (!d) return { level: 'bad', label: '数据读取失败' };
+  const warns = d.warnings || [];
+  const source = d.source || 'unknown';
+  if (state.degraded) return { level: 'warn', label: `正在用 ${state.degraded} 的旧数据` };
+  if (source === 'fallback') return { level: 'bad', label: '今日 trending 抓取全部失败' };
+  if (source === 'partial' || warns.length) return { level: 'warn', label: '部分数据源异常' };
+  return { level: 'ok', label: '数据源正常' };
 }
 
 function renderHealth() {
-  const dot = $('healthDot'), text = $('healthText'), panel = $('healthPanel');
+  const dot = $('healthBtn');
+  const panel = $('healthPanel');
   const d = state.data;
+  const { level, label } = healthLevel();
+  dot.classList.toggle('is-warn', level === 'warn');
+  dot.title = `数据源健康度：${label}`;
 
   if (!d) {
-    dot.className = 'healthdot bad';
-    text.textContent = '数据读取失败';
-    panel.innerHTML = `<div>无法读取 <code>data/latest.json</code>，也没有找到可用的历史快照。</div>
+    panel.innerHTML = `<div><span class="healthdot bad"></span>无法读取 <code>data/latest.json</code>，也没有找到可用的历史快照。</div>
       <ul>${state.loadErrors.map((e) => `<li>${esc(e)}</li>`).join('')}</ul>`;
     return;
   }
 
   const st = d.stats || {};
   const warns = d.warnings || [];
-  const source = d.source || 'unknown';
-
-  let level = 'ok', label = '数据源正常';
-  if (state.degraded) { level = 'warn'; label = `正在用 ${state.degraded} 的旧数据`; }
-  else if (source === 'fallback') { level = 'bad'; label = '今日 trending 抓取全部失败'; }
-  else if (source === 'partial' || warns.length) { level = 'warn'; label = '部分数据源异常'; }
-
-  dot.className = 'healthdot ' + level;
-  text.textContent = `${label}　·　趋势源 ${source}`;
-
   const rows = [];
-  rows.push(`<div><span class="k">候选池</span> ${st.candidates ?? '—'} 条 →
-    <span class="k">过滤后</span> ${st.after_filter ?? '—'} 条 →
-    <span class="k">发布</span> ${st.published ?? '—'} 条</div>`);
-  if (st.lane_a != null) {
-    rows.push(`<div><span class="k">车道 A</span> ${st.lane_a} 条（有今日新增）　
-      <span class="k">车道 B</span> ${st.lane_b} 条（搜索池，无今日新增）</div>`);
-  }
+  rows.push(`<div><span class="healthdot ${level}"></span><span class="k">${esc(label)}</span>　·　趋势源 ${esc(d.source || 'unknown')}</div>`);
+  rows.push(`<div style="margin-top:5px">候选池 <span class="k">${st.candidates ?? '—'}</span> 条 →
+    过滤后 <span class="k">${st.after_filter ?? '—'}</span> 条 →
+    发布 <span class="k">${st.published ?? '—'}</span> 条</div>`);
   if (st.from_trending != null) {
     rows.push(`<div>本期来源：trending <span class="k">${st.from_trending}</span> 条 ·
       search <span class="k">${st.from_search}</span> 条</div>`);
@@ -127,30 +126,23 @@ function renderHealth() {
     rows.push(`<div>被丢弃：全局排除 ${dd.dropped_global ?? 0} · 星数门槛 ${dd.dropped_min_stars ?? 0} ·
       未命中兴趣组 ${dd.dropped_no_group ?? 0} · 质量门槛 ${dd.dropped_quality_gate ?? 0}</div>`);
   }
-  if (st.allocation) {
-    rows.push(`<div>名额分配：${Object.entries(st.allocation).map(([k, v]) => `${k} ${v}`).join(' · ')}</div>`);
-  }
   if (warns.length) {
-    rows.push(`<div style="margin-top:6px"><span class="k">告警</span></div>
-      <ul>${warns.map((w) => `<li>${esc(w)}</li>`).join('')}</ul>`);
+    rows.push('<div style="margin-top:6px"><span class="k">告警</span></div>'
+      + `<ul>${warns.map((w) => `<li>${esc(w)}</li>`).join('')}</ul>`);
   } else {
     rows.push('<div style="margin-top:6px">没有告警，所有数据源都正常。</div>');
-  }
-  if (state.degraded) {
-    rows.push(`<div style="margin-top:6px" class="k">注意：最新一期读取失败，当前显示的是 ${esc(state.degraded)} 的快照。</div>`);
   }
   if (state.offline) {
     rows.push('<div style="margin-top:6px" class="k">离线单文件版：数据和页面都在这一个文件里，不联网也能看。</div>');
   }
   if (!state.canPersist) {
-    rows.push('<div style="margin-top:6px" class="k">⚠️ 当前浏览器不允许本地存储：'
-      + '页面能正常看，但收藏 / 已读 / 笔记关掉后会丢。'
-      + '（iOS 的「文件」App 预览有这个问题，改用 Chrome 打开就正常）</div>');
+    rows.push('<div style="margin-top:6px" class="k">⚠️ 当前浏览器不允许本地存储：页面能正常看，'
+      + '但收藏 / 已读 / 笔记关掉后会丢。（iOS 的「文件」App 预览有这个问题，改用 Chrome 打开就正常）</div>');
   }
   panel.innerHTML = rows.join('');
 }
 
-/* ══════════════ 本期必看 ══════════════ */
+/* ══════════════ 本期必看（横向滚动）══════════════ */
 
 function renderMustSee() {
   const box = $('mustseeBox'), list = $('mustlist');
@@ -165,15 +157,13 @@ function renderMustSee() {
     a.target = '_blank';
     a.rel = 'noopener noreferrer';
     const hot = it.stars_today != null
-      ? `<span class="mhot">+${Number(it.stars_today).toLocaleString('en-US')}</span> 今日`
-      : `★ ${Number(it.total_stars || 0).toLocaleString('en-US')}`;
-    a.innerHTML = `
-      <span class="rank">${i + 1}</span>
-      <div class="mname">${esc(it.full_name || it.id)}</div>
-      <div class="mmeta">${esc(CATEGORY_LABEL[it.category] || '')} · ${esc(it.language || '—')}</div>
-      <div class="mmeta">${hot}</div>`;
+      ? `<span class="mhot">+${Number(it.stars_today).toLocaleString('en-US')} 今日</span>`
+      : `<span class="mhot">★ ${Number(it.total_stars || 0).toLocaleString('en-US')}</span>`;
+    a.innerHTML = `<span class="rank">${i + 1}</span>
+      <div class="mname">${esc(it.full_name || it.id)}</div>${hot}`;
     list.appendChild(a);
   });
+  $('mustHint').hidden = top.length <= 2;
 }
 
 /* ══════════════ 雷达列表 ══════════════ */
@@ -207,15 +197,32 @@ function itemState(item) {
   };
 }
 
+/** 同步一张卡片上所有 ⭐/收藏 按钮的外观 */
+function syncStarUI(item, on) {
+  document.querySelectorAll(`.card[data-id="${CSS.escape(item.id)}"]`).forEach((c) => {
+    const sb = c.querySelector('.starbtn');
+    if (sb) {
+      sb.classList.toggle('on', on);
+      sb.textContent = on ? '★' : '☆';
+    }
+    const ab = c.querySelector('.cactions .act.star');
+    if (ab) {
+      ab.classList.toggle('on', on);
+      ab.textContent = (on ? '★' : '☆') + ' 收藏';
+    }
+  });
+}
+
 const cardCallbacks = {
-  async onStar(item, btn) {
+  async onStar(item, _btn) {
     const on = await state.store.toggleStar(item, state.data?.date);
     if (on) state.starred[item.id] = true; else delete state.starred[item.id];
-    btn.classList.toggle('on', on);
-    btn.innerHTML = (on ? '★' : '☆') + ' 收藏';
+    syncStarUI(item, on);
     updateShelfBadge();
     renderShelfView();
-    toast(on ? '已收藏（连同完整信息一起存进书架）' : '已取消收藏');
+    await state.store.logEvent?.(item, on ? 'star' : 'unstar');
+    updateFbState();
+    toast(on ? '已收藏（连完整信息一起存进书架）' : '已取消收藏');
   },
   async onRead(item, btn) {
     const nowRead = await state.store.toggleRead(item.id);
@@ -223,6 +230,8 @@ const cardCallbacks = {
     btn.classList.toggle('on', nowRead);
     btn.textContent = nowRead ? '✓ 已读' : '标记已读';
     btn.closest('.card')?.classList.toggle('is-read', nowRead);
+    await state.store.logEvent?.(item, nowRead ? 'read' : 'unread');
+    updateFbState();
     if (state.filters.unreadOnly) renderList();
   },
   async onFeedback(item, value, btns) {
@@ -231,14 +240,15 @@ const cardCallbacks = {
     const [up, down] = btns;
     up.classList.toggle('on', next === 1);
     down.classList.toggle('on', next === -1);
-    toast(next === 1 ? '👍 已记录，会影响后续排序' : next === -1 ? '👎 已记录' : '已取消反馈');
+    if (next) await state.store.logEvent?.(item, next === 1 ? 'up' : 'down');
+    updateFbState();
+    toast(next === 1 ? '👍 已记录，同步后会调高同类权重' : next === -1 ? '👎 已记录，同步后会过滤同类' : '已取消反馈');
   },
   async onNote(item, text) {
     await state.store.setNote(item.id, text);
     if (text && text.trim()) state.notes[item.id] = text; else delete state.notes[item.id];
     if (state.starred[item.id]) await state.store.updateStarred(item.id, { note: text });
   },
-  onOpen() { /* 展开由卡片内部处理 */ },
 };
 
 /* ══════════════ 筛选栏 ══════════════ */
@@ -349,6 +359,31 @@ function doQuickSave(item, note) {
   }
 }
 
+/* ══════════════ 反馈同步 ══════════════ */
+
+function updateFbState() {
+  const el = $('fbState');
+  if (!el) return;
+  const n = pendingCount();
+  el.textContent = n ? `${n} 条待同步` : '没有待同步的';
+  const btn = $('syncFbBtn');
+  if (btn) btn.disabled = n === 0;
+}
+
+function initFeedbackSync() {
+  const btn = $('syncFbBtn');
+  if (!btn) return;
+  btn.addEventListener('click', () => {
+    const payload = collectPending();
+    if (!payload) return toast('还没有新的 👍 / 👎 / 收藏 / 已读 记录');
+    const url = buildIssueUrl(CONFIG.repo, payload);
+    window.open(url, '_blank', 'noopener');
+    markSynced(payload.__ids);
+    updateFbState();
+    toast('已打开 GitHub，点绿色按钮提交即可生效');
+  });
+}
+
 /* ══════════════ 事件绑定 ══════════════ */
 
 function wireEvents() {
@@ -371,7 +406,7 @@ function wireEvents() {
     await state.store.saveTheme(next);
   });
 
-  // 健康度展开
+  // 健康度（ⓘ 图标展开）
   $('healthBtn').addEventListener('click', () => {
     const btn = $('healthBtn'), panel = $('healthPanel');
     const open = btn.getAttribute('aria-expanded') === 'true';
@@ -379,12 +414,35 @@ function wireEvents() {
     panel.hidden = open;
   });
 
-  // 类别 Tab
+  // 本期必看折叠（手机想把顶部再压扁时点一下，选择会被记住）
+  $('mustToggle').addEventListener('click', () => {
+    const box = $('mustseeBox'), btn = $('mustToggle');
+    const collapsed = box.classList.toggle('collapsed');
+    btn.setAttribute('aria-expanded', String(!collapsed));
+    try { localStorage.setItem('ghradar.mustsee.v1', collapsed ? '0' : '1'); } catch { /* 忽略 */ }
+  });
+  try {
+    if (localStorage.getItem('ghradar.mustsee.v1') === '0') {
+      $('mustseeBox').classList.add('collapsed');
+      $('mustToggle').setAttribute('aria-expanded', 'false');
+    }
+  } catch { /* 忽略 */ }
+
+  // 类别 chips
   $('catRow').addEventListener('click', (e) => {
     const b = e.target.closest('.cat');
     if (!b) return;
     updateFilters({ cat: b.dataset.cat });
     syncFilterUI();
+  });
+
+  // 高级筛选折叠
+  $('advBtn').addEventListener('click', () => {
+    const btn = $('advBtn'), panel = $('advPanel');
+    const open = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', String(!open));
+    panel.hidden = open;
+    btn.textContent = open ? '筛选 ▾' : '筛选 ▴';
   });
 
   $('fLang').addEventListener('change', (e) => updateFilters({ lang: e.target.value }));
@@ -456,13 +514,15 @@ function wireEvents() {
     $('tuneSnippet').hidden = true;
     $('tuneDlg').showModal();
   });
-  $('tuneSave').addEventListener('click', async (e) => {
+  $('tuneSubmit').addEventListener('click', async (e) => {
     e.preventDefault();
     const text = $('tuneText').value.trim();
     if (!text) return toast('先写点什么');
     await state.store.addPreference(text);
-    toast('偏好已保存');
+    const url = buildTuneIssueUrl(CONFIG.repo, text);
+    window.open(url, '_blank', 'noopener');
     $('tuneDlg').close();
+    toast('已打开 GitHub，提交后下一期生效');
   });
   $('tuneCopy').addEventListener('click', async (e) => {
     e.preventDefault();
@@ -474,7 +534,7 @@ function wireEvents() {
     $('tuneSnippet').textContent = snippet;
     try {
       await navigator.clipboard.writeText(snippet);
-      toast('规则片段已复制，粘进 config/rules.txt 后 push 即可生效');
+      toast('规则片段已复制，可粘进 config/rules.txt');
     } catch {
       toast('请手动复制下面这段');
     }
@@ -485,6 +545,7 @@ function wireEvents() {
     $('setVault').value = state.settings.obsidianVault || '';
     $('setFolder').value = state.settings.obsidianFolder || '';
     $('settingsDlg').showModal();
+    updateFbState();
   });
   $('settingsSave').addEventListener('click', async (e) => {
     e.preventDefault();
@@ -510,7 +571,8 @@ function wireEvents() {
     toast('已清空');
   });
 
-  // 键盘：Esc 关弹窗由 dialog 原生处理
+  initFeedbackSync();
+
   document.addEventListener('keydown', (e) => {
     if (e.key === '/' && document.activeElement.tagName !== 'INPUT'
       && document.activeElement.tagName !== 'TEXTAREA') {
@@ -520,10 +582,8 @@ function wireEvents() {
   });
 }
 
-/**
- * 把自然语言偏好转成可粘贴的规则片段。
- * 静态网页改不了仓库文件，所以这里只生成文本，由用户粘一次。
- */
+/* ══════════════ 规则片段 ══════════════ */
+
 function buildRuleSnippet(text) {
   const lines = text.split(/\n+/).map((s) => s.trim()).filter(Boolean);
   const globalFilter = [];
@@ -543,22 +603,28 @@ function buildRuleSnippet(text) {
   });
 
   const out = ['# 由「调教雷达」生成，粘进 config/rules.txt 后 commit + push 才生效', ''];
-  if (globalFilter.length) {
-    out.push('[GLOBAL_FILTER]', ...globalFilter.map((w) => `/${w}/`), '');
-  }
-  if (want.length) {
-    out.push('[AI 学习资源]', ...want.map((w) => `/${w}/`), '');
-  }
+  if (globalFilter.length) out.push('[GLOBAL_FILTER]', ...globalFilter.map((w) => `/${w}/`), '');
+  if (want.length) out.push('[AI 学习资源]', ...want.map((w) => `/${w}/`), '');
   out.push('# 提示：上面只是起手式，正式规则建议手改 config/rules.txt');
   return out.join('\n');
+}
+
+function buildTuneIssueUrl(repo, text) {
+  const title = '[调教] 雷达偏好';
+  const body = [
+    '<!-- radar-tuning -->', '', '```text', text, '```', '',
+    '提交后 GitHub Actions 会自动记录到 config/tuning.txt，下一期生成时生效。',
+  ].join('\n');
+  const q = new URLSearchParams({ title, body, labels: 'radar-tuning' });
+  return `https://github.com/${repo}/issues/new?${q.toString()}`;
 }
 
 /* ══════════════ 工具 ══════════════ */
 
 function applyTheme(t) {
   document.documentElement.dataset.theme = t === 'light' ? 'light' : 'dark';
-  const meta = document.querySelector('meta[name="color-scheme"]');
-  if (meta) meta.content = t === 'light' ? 'light dark' : 'dark light';
+  const meta = document.querySelector('meta[name="theme-color"]');
+  if (meta) meta.content = t === 'light' ? '#f6f8fa' : '#0d1117';
 }
 
 let toastTimer = null;
@@ -572,6 +638,5 @@ function toast(msg) {
 
 boot().catch((e) => {
   console.error(e);
-  $('healthText').textContent = '初始化失败：' + e.message;
-  $('healthDot').className = 'healthdot bad';
+  $('tbDate').textContent = '初始化失败：' + e.message;
 });

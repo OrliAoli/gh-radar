@@ -6,59 +6,81 @@
 <meta name="color-scheme" content="dark light">
 <title>每日 GitHub 雷达</title>
 <link rel="stylesheet" href="./style.css">
+<link rel="manifest" href="./manifest.json">
 <link rel="alternate" type="application/rss+xml" title="每日 GitHub 雷达 RSS" href="./feed.xml">
+<meta name="theme-color" content="#0d1117">
+<link rel="apple-touch-icon" href="./icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="GitHub 雷达">
 </head>
 <body>
 
+<!-- ═══ 顶栏：标题 + 日期 + 视图 + ⓘ + ⚙ + ◐ 全部压进一行 ═══ -->
 <header class="topbar">
-  <div class="brand"><span class="dot"></span>每日 GitHub 雷达</div>
+  <div class="brand"><span class="dot"></span>GitHub 雷达</div>
+  <span class="tbdate" id="tbDate">—</span>
   <nav class="viewtabs" role="tablist">
     <button class="viewtab is-active" data-view="radar" role="tab">雷达</button>
     <button class="viewtab" data-view="shelf" role="tab">书架<span class="badge" id="shelfBadge" hidden>0</span></button>
   </nav>
   <div class="topactions">
+    <button class="iconbtn" id="healthBtn" title="数据源健康度" aria-label="数据源健康度" aria-expanded="false">ⓘ</button>
     <button class="iconbtn" id="settingsBtn" title="设置" aria-label="设置">⚙</button>
     <button class="iconbtn" id="themeBtn" title="切换明暗" aria-label="切换明暗">◐</button>
   </div>
 </header>
 
+<!-- 健康度面板（默认收起，点 ⓘ 才展开） -->
+<div class="healthpanel" id="healthPanel" hidden></div>
+
 <!-- ═══════════════════ 雷达 ═══════════════════ -->
 <main id="view-radar" class="view">
 
-  <section class="meta">
-    <div class="metaline">
-      <span id="dataDate" class="pill pill-date">加载中…</span>
-      <span id="dataWindow" class="muted"></span>
-    </div>
-    <button class="health" id="healthBtn" aria-expanded="false">
-      <span id="healthDot" class="healthdot"></span>
-      <span id="healthText">数据源检查中…</span>
+  <section class="mustsee" id="mustseeBox" hidden>
+    <button class="musthead" id="mustToggle" aria-expanded="true">
+      <span class="sechead-inline">本期必看</span>
+      <span class="muted small" id="mustHint">左右滑动 →</span>
       <span class="chev">▾</span>
     </button>
-    <div class="healthpanel" id="healthPanel" hidden></div>
-  </section>
-
-  <section class="mustsee" id="mustseeBox" hidden>
-    <h2 class="sechead">本期必看 <span class="muted small">评分最高的 5 条</span></h2>
-    <div class="mustlist" id="mustlist"></div>
+    <div class="mustscroll" id="mustlist"></div>
   </section>
 
   <section class="filters">
-    <div class="catrow" id="catRow">
-      <button class="cat is-active" data-cat="all">全部</button>
-      <button class="cat" data-cat="ai_skill">AI Skill</button>
-      <button class="cat" data-cat="burst">爆发</button>
-      <button class="cat" data-cat="growth">学习成长</button>
-      <button class="cat" data-cat="classic">经典</button>
+    <!-- 第 1 行：类别 chips（横向滚动）+ 计数 -->
+    <div class="catline">
+      <div class="catrow" id="catRow">
+        <button class="cat is-active" data-cat="all">全部</button>
+        <button class="cat" data-cat="ai_skill">AI Skill</button>
+        <button class="cat" data-cat="burst">爆发</button>
+        <button class="cat" data-cat="growth">学习成长</button>
+        <button class="cat" data-cat="classic">经典</button>
+      </div>
+      <span id="resultCount" class="count"></span>
     </div>
 
-    <div class="filterrow">
+    <!-- 第 2 行：搜索 + 排序 + 筛选开关 -->
+    <div class="filterbar">
+      <input id="fSearch" class="fsearch" type="search" placeholder="搜索仓库…" autocomplete="off">
+      <label class="selshell">
+        <select id="fSort" aria-label="排序">
+          <option value="score">综合评分</option>
+          <option value="burst">爆发指数</option>
+          <option value="today">今日新增</option>
+          <option value="stars">总星数</option>
+        </select>
+      </label>
+      <button class="ghostbtn" id="advBtn" aria-expanded="false">筛选 ▾</button>
+    </div>
+
+    <!-- 高级筛选：默认收起 -->
+    <div class="advpanel" id="advPanel" hidden>
       <label class="field">
         <span>语言</span>
         <select id="fLang"><option value="">全部</option></select>
       </label>
       <label class="field">
-        <span>时间</span>
+        <span>时间范围</span>
         <select id="fTime">
           <option value="all">全部</option>
           <option value="today">今日</option>
@@ -66,26 +88,12 @@
           <option value="month">本月</option>
         </select>
       </label>
-      <label class="field">
-        <span>排序</span>
-        <select id="fSort">
-          <option value="score">综合评分</option>
-          <option value="burst">爆发指数</option>
-          <option value="today">今日新增</option>
-          <option value="stars">总星数</option>
-        </select>
-      </label>
-      <label class="field field-search">
-        <span>搜索</span>
-        <input id="fSearch" type="search" placeholder="仓库名 / 描述 / 标签" autocomplete="off">
-      </label>
-      <div class="toggles">
+      <div class="advtoggles">
         <label class="switch"><input type="checkbox" id="fUnread"><span>只看未读</span></label>
         <label class="switch"><input type="checkbox" id="fStarred"><span>只看收藏</span></label>
       </div>
-      <button class="ghost" id="resetFilters">重置</button>
+      <button class="ghostbtn wide" id="resetFilters">重置全部筛选</button>
     </div>
-    <div class="resultbar"><span id="resultCount" class="muted small"></span></div>
   </section>
 
   <section class="list" id="list"></section>
@@ -97,9 +105,9 @@
   <section class="shelfhead">
     <h2 class="sechead">我的书架 <span class="muted small" id="shelfCount"></span></h2>
     <div class="shelfactions">
-      <button class="ghost" id="exportMd">导出 Markdown</button>
-      <button class="ghost" id="exportJson">导出 JSON</button>
-      <button class="ghost" id="importJson">导入 JSON</button>
+      <button class="ghostbtn" id="exportMd">导出 Markdown</button>
+      <button class="ghostbtn" id="exportJson">导出 JSON</button>
+      <button class="ghostbtn" id="importJson">导入 JSON</button>
       <input type="file" id="importFile" accept="application/json,.json" hidden>
     </div>
   </section>
@@ -108,28 +116,28 @@
     <button class="cat" data-read="unread">未读</button>
     <button class="cat" data-read="reading">在读</button>
     <button class="cat" data-read="done">已读</button>
-    <label class="field field-search"><input id="shelfSearch" type="search" placeholder="在书架里搜索" autocomplete="off"></label>
+    <input id="shelfSearch" class="fsearch" type="search" placeholder="在书架里搜索" autocomplete="off">
   </div>
   <section class="list" id="shelfList"></section>
   <div class="empty" id="emptyShelf" hidden>书架还是空的。在雷达页点卡片上的 ☆ 收藏，条目会带着完整快照存进这里。</div>
 </main>
 
 <!-- ═══════════════════ 底部按钮 ═══════════════════ -->
-<button class="fab" id="tuneBtn"><span>🎛</span> 调教雷达</button>
+<button class="fab" id="tuneBtn">🎛 调教雷达</button>
 
 <!-- ═══════════════════ 调教雷达 ═══════════════════ -->
 <dialog id="tuneDlg" class="dlg">
   <form method="dialog" class="dlgform">
     <h3>调教雷达</h3>
     <p class="muted small">
-      用大白话写下你想多看 / 少看什么。内容会存成「偏好」，并生成一段可直接粘进
-      <code>config/rules.txt</code> 的规则片段（静态网页无法直接改仓库文件，需要你手动粘一次）。
+      用大白话写下你想多看 / 少看什么，比如「多给我看 Rust 和 AI Agent」「别再推爬虫类」。
+      提交后会自动记录到仓库，<strong>下一期生效</strong>。
     </p>
     <textarea id="tuneText" rows="5" placeholder="例：多推本地部署大模型的项目；少推纯教程；不要区块链相关"></textarea>
     <div class="dlgrow">
-      <button value="save" class="primary" id="tuneSave">保存偏好</button>
-      <button value="copy" class="ghost" id="tuneCopy">生成并复制规则片段</button>
-      <button value="cancel" class="ghost">关闭</button>
+      <button value="submit" class="primary" id="tuneSubmit">提交并生效</button>
+      <button value="copy" class="ghostbtn" id="tuneCopy">生成规则片段</button>
+      <button value="cancel" class="ghostbtn">关闭</button>
     </div>
     <pre class="snippet" id="tuneSnippet" hidden></pre>
   </form>
@@ -150,10 +158,27 @@
     <p class="muted small">
       库名必须是 Obsidian 里已存在的库的名称（区分大小写）。留空则用默认值。
     </p>
+    <hr class="dlghr">
+    <div class="pushrow">
+      <button type="button" class="ghostbtn" id="pushBtn">🔔 开启新一期推送</button>
+      <span class="muted small" id="pushState">未开启</span>
+    </div>
+    <p class="muted small">
+      iPhone 需要先「添加到主屏幕」，再从主屏幕打开本页才能开启推送（iOS 16.4+）。
+    </p>
+    <hr class="dlghr">
+    <div class="pushrow">
+      <button type="button" class="ghostbtn" id="syncFbBtn">📤 同步我的反馈到雷达</button>
+      <span class="muted small" id="fbState">—</span>
+    </div>
+    <p class="muted small">
+      你在手机上的 👍 / 👎 / 收藏 / 已读 会先存在本机。点「同步」后跳到 GitHub 提交一条记录，
+      <strong>下一期生成时就会按你的偏好调权</strong>。
+    </p>
     <div class="dlgrow">
       <button value="save" class="primary" id="settingsSave">保存</button>
       <button value="wipe" class="danger" id="settingsWipe">清空全部本地数据</button>
-      <button value="cancel" class="ghost">关闭</button>
+      <button value="cancel" class="ghostbtn">关闭</button>
     </div>
   </form>
 </dialog>

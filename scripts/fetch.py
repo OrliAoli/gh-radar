@@ -364,11 +364,57 @@ def dedupe(repos):
     return list(out.values())
 
 
+def enrich_topics(repos, token, limit=150, verbose=True):
+    """
+    给缺 topics 的仓库补上标签。
+
+    trending 页是 HTML，压根没有 topics 字段；原来一律留空，
+    结果前端「详情」里的 Topics 永远是「—」。
+    这里用 REST 的 /repos/{owner}/{repo}（响应里带 topics）补齐。
+
+    只补「没有 topics 的」，且限量 —— 有 token 时额度足够，没 token 时也不会把速率打满。
+    """
+    need = [r for r in repos if not r.get("topics")]
+    if not need:
+        if verbose:
+            print("[i] topics 已齐全，无需补抓")
+        return 0
+
+    headers = {"Accept": "application/vnd.github+json"}
+    if token:
+        headers["Authorization"] = "Bearer %s" % token
+
+    target = need[:limit]
+    got = 0
+    failed = 0
+    for r in target:
+        owner, name = r.get("owner"), r.get("name")
+        if not owner or not name:
+            continue
+        try:
+            body, status, _ = http_get(
+                "https://api.github.com/repos/%s/%s" % (owner, name), headers)
+            if body and status == 200:
+                names = json.loads(body).get("topics") or []
+                if names:
+                    r["topics"] = names
+                    got += 1
+        except Exception:  # noqa: BLE001
+            failed += 1
+        time.sleep(0.15 if token else 0.9)
+
+    if verbose:
+        print("[i] topics 补抓：待补 %d 条，成功 %d 条%s"
+              % (len(target), got, ("，失败 %d 条" % failed) if failed else ""))
+    return got
+
+
 def main():
     ap = argparse.ArgumentParser(description="每日抓取：trending HTML + Search API")
     ap.add_argument("--date", help="快照日期 YYYY-MM-DD，默认 UTC 今天")
     ap.add_argument("--no-search", action="store_true", help="跳过 Search API")
     ap.add_argument("--no-alert", action="store_true", help="不开告警 issue")
+    ap.add_argument("--no-topics", action="store_true", help="跳过 topics 补抓")
     args = ap.parse_args()
 
     now = datetime.datetime.now(datetime.timezone.utc)
@@ -421,6 +467,16 @@ def main():
     trending_dedup = dedupe(all_trending)
     search_dedup = dedupe([r for rs in search_pool.values() for r in rs])
     merged = dedupe(trending_dedup + search_dedup)
+
+    # trending 是 HTML 抓的，没有 topics；用 REST 补上，免得前端一直显示「—」
+    if not args.no_topics:
+        enrich_topics(trending_dedup, token)
+        enrich_topics(search_dedup, token, verbose=False)
+        # 合流后还没 topics 的（比如只出现在 trending 里的），再补一轮
+        enrich_topics(merged, token, verbose=False)
+
+    t_none = sum(1 for r in trending_dedup if r.get("stars_today") is None)
+    s_none = sum(1 for r in search_dedup if r.get("stars_today") is None)
 
     t_none = sum(1 for r in trending_dedup if r.get("stars_today") is None)
     s_none = sum(1 for r in search_dedup if r.get("stars_today") is None)

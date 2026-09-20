@@ -1,6 +1,15 @@
 // 全局常量与默认设置
 export const DATA_URL = './data/latest.json';
 
+// 数据仓库（反馈 / 调教都通过 GitHub Issue 回传到这里）
+export const CONFIG = {
+  repo: 'OrliAoli/gh-radar',
+};
+
+// Web Push 的 VAPID 公钥。留空 = 不启用推送按钮。
+// 部署时由 scripts/push.py 生成密钥并填入这里（或改用 push-config.json 覆盖）。
+export const VAPID_PUBLIC_KEY = '';
+
 export const CATEGORY_LABEL = {
   ai_skill: 'AI Skill',
   burst: '爆发',
@@ -53,4 +62,5 @@ export const STORAGE_KEYS = {
   settings: 'ghradar.settings.v1',
   preferences: 'ghradar.preferences.v1',
   theme: 'ghradar.theme.v1',
+  events: 'ghradar.events.v1',       // 待回传的行为流水（👍/👎/收藏/已读）
 };

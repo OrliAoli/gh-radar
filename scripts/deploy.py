@@ -169,7 +169,8 @@ def git_publish():
 
 JS_BUNDLE_ORDER = [
     "config.js", "api.js", "store.js", "filters.js",
-    "markdown.js", "cards.js", "obsidian.js", "shelf.js", "app.js",
+    "markdown.js", "cards.js", "obsidian.js", "shelf.js",
+    "feedback.js", "pwa.js", "app.js",
 ]
 
 

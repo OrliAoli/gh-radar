@@ -39,7 +39,9 @@ MANUAL_L1L2 = os.path.join(MANUAL_DIR, "l1l2.json")
 MANUAL_README = os.path.join(MANUAL_DIR, "readme")
 
 DEFAULT_BASE_URL = "https://api.deepseek.com"
-DEFAULT_MODEL = "deepseek-chat"
+# ⚠️ 别改回 deepseek-chat：DeepSeek 官方已于 2026-07-24 退役该模型名，
+#    再用它会直接请求失败。当前可用名是 deepseek-flash。
+DEFAULT_MODEL = "deepseek-flash"
 
 # 费用估算用的单价（元 / 百万 token）。可在 thresholds.json 里覆盖。
 DEFAULT_PRICE_IN = 2.0

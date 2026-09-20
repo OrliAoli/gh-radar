@@ -31,6 +31,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           python scripts/fetch.py --no-alert
+          # 先按真实反馈算出加权表，build 会读它来调权 / 过滤
+          python scripts/feedback.py
           python scripts/build.py --days 3
           python scripts/readme.py
 
@@ -42,7 +44,16 @@ jobs:
         run: python scripts/summarize.py
 
       - name: 打包静态站点
-        run: python scripts/deploy.py
+        run: python scripts/deploy.py --standalone
+
+      - name: 推送本期通知（没配 VAPID 密钥会自动跳过）
+        env:
+          VAPID_PRIVATE_KEY: ${{ secrets.VAPID_PRIVATE_KEY }}
+          VAPID_SUBJECT: ${{ secrets.VAPID_SUBJECT }}
+        # Web Push 需要 P-256/AES-GCM，标准库没有，只有这一步装依赖
+        run: |
+          pip install --quiet pywebpush
+          python scripts/push.py --notify || true
 
       - name: 提交结果（data/ dist/ feed.xml）
         run: |

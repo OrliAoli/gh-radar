@@ -194,6 +194,29 @@ export class Store {
   async theme() { return (await this._read(STORAGE_KEYS.theme, 'dark')) || 'dark'; }
   async saveTheme(t) { return this._write(STORAGE_KEYS.theme, t); }
 
+  /* ─── 行为流水：待回传给仓库的反馈事件 ───
+     静态网页改不了仓库文件，所以先在本地排队，
+     用户点「同步我的反馈」时整批打包成一条 GitHub Issue 提交。 */
+  async events() { return (await this._read(STORAGE_KEYS.events, [])) || []; }
+
+  async logEvent(item, action) {
+    if (!item || !action) return;
+    const list = await this.events();
+    list.push({
+      action,                                  // up | down | star | unstar | read | unread
+      id: item.id,
+      lang: item.language || null,
+      topics: (item.topics || []).slice(0, 8),
+      groups: (item.matched_groups || []).slice(0, 5),
+      category: item.category || null,
+      ts: new Date().toISOString(),
+    });
+    await this._write(STORAGE_KEYS.events, list.slice(-500));   // 只留最近 500 条
+    return list.length;
+  }
+
+  async clearEvents() { return this._write(STORAGE_KEYS.events, []); }
+
   /* ─── 备份 ─── */
   async exportAll() {
     return {

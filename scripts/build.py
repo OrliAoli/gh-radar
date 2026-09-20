@@ -26,6 +26,7 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from filter import load_rules, load_thresholds, evaluate, burst_score  # noqa: E402
+from feedback import score_item as fb_score_item  # noqa: E402  （反馈权重）
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA_DIR = os.path.join(ROOT, "data")
@@ -147,12 +148,26 @@ def compute_first_seen(pool):
 
 # ------------------------------------------------------------ 打分与分类
 
-def score_pool(pool, rules, th):
+def load_learned():
+    """读 config/learned.json —— 由 scripts/feedback.py 从真实反馈算出来的权重表。"""
+    p = os.path.join(ROOT, "config", "learned.json")
+    if not os.path.exists(p):
+        return {}
+    try:
+        with open(p, "r", encoding="utf-8") as f:
+            return json.load(f) or {}
+    except Exception as e:  # noqa: BLE001
+        print("[!] config/learned.json 解析失败，本期忽略反馈权重：%s" % e)
+        return {}
+
+
+def score_pool(pool, rules, th, learned=None):
     """对全池做过滤 + 打分 + 分类。返回 (items, dropped_stats)"""
     items = []
     stats = {"total": len(pool), "dropped_global": 0,
              "dropped_no_group": 0, "dropped_min_stars": 0,
-             "dropped_quality_gate": 0}
+             "dropped_quality_gate": 0,
+             "dropped_feedback": 0, "boosted_by_feedback": 0}
 
     for rid, r in pool.items():
         ev = evaluate(r, rules, th)
@@ -179,6 +194,19 @@ def score_pool(pool, rules, th):
         item["weak"] = ev["weak"]
         item["quality_gate"] = ev["quality_gate"]
         item["categories"] = ev["categories"]
+
+        # ── 反馈学习：👎 过滤同类（硬性）／ 👍 加权（软性）──
+        if learned:
+            add, blocked, hits = fb_score_item(item, learned)
+            if blocked:
+                stats["dropped_feedback"] += 1
+                continue
+            if add:
+                item["feedback_boost"] = add
+                item["feedback_hits"] = hits
+                item["score"] = round((item["score"] or 0) + add, 2)
+                stats["boosted_by_feedback"] += 1
+
         items.append(item)
 
     # 质量门槛：命中硬核词的，必须 总星 > 阈值 或 本期 burst_score 进前 N
@@ -233,8 +261,11 @@ def allocate(items, rules, th):
 
     assign_rank_score(items)
 
+    # 反馈加权只是「轻推」：burst 是 0~400 的量级，反馈最多加十几分，
+    # 不会让一条平庸的仓库压过真正的爆发项，但能在接近的候选之间改变顺序。
     lane_a = sorted([i for i in items if i["lane"] == "A"],
-                    key=lambda x: (x["burst_score"] or 0), reverse=True)
+                    key=lambda x: ((x["burst_score"] or 0) + (x.get("feedback_boost") or 0)),
+                    reverse=True)
     burst_rank = {i["id"]: idx for idx, i in enumerate(lane_a)}
     lane_b = sorted([i for i in items if i["lane"] == "B"],
                     key=lambda x: (x["score"] or 0), reverse=True)
@@ -366,10 +397,21 @@ def main():
     rules = load_rules()
     th = load_thresholds()
 
-    items, drop_stats = score_pool(pool, rules, th)
+    learned = load_learned()
+    if learned:
+        print("[i] 已载入反馈权重：加权特征 %d 个 · 过滤特征 %d 个 · 记录 %s 条"
+              % (len(learned.get("boost") or {}), len(learned.get("mute") or {}),
+                 learned.get("events_total", 0)))
+    else:
+        print("[i] 还没有反馈权重（config/learned.json 不存在）—— 正常")
+
+    items, drop_stats = score_pool(pool, rules, th, learned)
     print("[i] 过滤后 %d 条（全局排除 -%d / 星数门槛 -%d / 未命中兴趣组 -%d / 质量门槛 -%d）"
           % (len(items), drop_stats["dropped_global"], drop_stats["dropped_min_stars"],
              drop_stats["dropped_no_group"], drop_stats["dropped_quality_gate"]))
+    if drop_stats.get("dropped_feedback") or drop_stats.get("boosted_by_feedback"):
+        print("[i] 反馈生效：👎 过滤掉 %d 条 · 👍 加权 %d 条"
+              % (drop_stats["dropped_feedback"], drop_stats["boosted_by_feedback"]))
     print("[i] 车道 A（有今日增量）%d 条 / 车道 B（搜索池）%d 条"
           % (sum(1 for i in items if i["lane"] == "A"),
              sum(1 for i in items if i["lane"] == "B")))
@@ -412,6 +454,11 @@ def main():
             "published": len(final),
             "from_trending": sum(1 for i in final if i.get("src") == "trending"),
             "from_search": sum(1 for i in final if i.get("src") == "search"),
+            "feedback": {
+                "events_total": learned.get("events_total", 0) if learned else 0,
+                "dropped": drop_stats.get("dropped_feedback", 0),
+                "boosted": drop_stats.get("boosted_by_feedback", 0),
+            },
         },
         "items": final,
     }
