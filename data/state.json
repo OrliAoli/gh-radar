@@ -2,58 +2,58 @@
   "repos": {
     "ruvnet/ruflo": {
       "first_seen": "2026-09-17",
-      "periods_on_board": 2,
-      "last_published": "2026-09-19"
+      "periods_on_board": 3,
+      "last_published": "2026-09-22"
     },
     "nexu-io/open-design": {
       "first_seen": "2026-09-17",
-      "periods_on_board": 2,
-      "last_published": "2026-09-19"
+      "periods_on_board": 3,
+      "last_published": "2026-09-22"
     },
     "Graphify-Labs/graphify": {
       "first_seen": "2026-09-17",
-      "periods_on_board": 1,
-      "last_published": "2026-09-18"
+      "periods_on_board": 2,
+      "last_published": "2026-09-22"
     },
     "tt-a1i/archify": {
       "first_seen": "2026-09-17",
-      "periods_on_board": 2,
-      "last_published": "2026-09-19"
+      "periods_on_board": 3,
+      "last_published": "2026-09-22"
     },
     "tradecatlabs/vibe-coding-cn": {
       "first_seen": "2026-09-17",
-      "periods_on_board": 2,
-      "last_published": "2026-09-19"
+      "periods_on_board": 3,
+      "last_published": "2026-09-22"
     },
     "Nanako0129/sepia": {
       "first_seen": "2026-09-17",
-      "periods_on_board": 2,
-      "last_published": "2026-09-19"
+      "periods_on_board": 3,
+      "last_published": "2026-09-22"
     },
     "langgenius/dify": {
       "first_seen": "2026-09-17",
-      "periods_on_board": 2,
-      "last_published": "2026-09-19"
+      "periods_on_board": 3,
+      "last_published": "2026-09-22"
     },
     "shanraisshan/claude-code-best-practice": {
       "first_seen": "2026-09-17",
-      "periods_on_board": 2,
-      "last_published": "2026-09-19"
+      "periods_on_board": 3,
+      "last_published": "2026-09-22"
     },
     "cloudflare/security-audit-skill": {
       "first_seen": "2026-09-17",
-      "periods_on_board": 2,
-      "last_published": "2026-09-19"
+      "periods_on_board": 3,
+      "last_published": "2026-09-22"
     },
     "Tencent/BrowserSkill": {
       "first_seen": "2026-09-17",
-      "periods_on_board": 2,
-      "last_published": "2026-09-19"
+      "periods_on_board": 3,
+      "last_published": "2026-09-22"
     },
     "alibaba/open-code-review": {
       "first_seen": "2026-09-17",
-      "periods_on_board": 2,
-      "last_published": "2026-09-19"
+      "periods_on_board": 3,
+      "last_published": "2026-09-22"
     },
     "alphaXiv/OpenResearch": {
       "first_seen": "2026-09-17",
@@ -62,18 +62,18 @@
     },
     "sunface/rust-course": {
       "first_seen": "2026-09-17",
-      "periods_on_board": 2,
-      "last_published": "2026-09-19"
+      "periods_on_board": 3,
+      "last_published": "2026-09-22"
     },
     "vllm-project/vllm": {
       "first_seen": "2026-09-17",
-      "periods_on_board": 2,
-      "last_published": "2026-09-19"
+      "periods_on_board": 3,
+      "last_published": "2026-09-22"
     },
     "sgl-project/sglang": {
       "first_seen": "2026-09-17",
-      "periods_on_board": 2,
-      "last_published": "2026-09-19"
+      "periods_on_board": 3,
+      "last_published": "2026-09-22"
     },
     "kvcache-ai/ktransformers": {
       "first_seen": "2026-09-17",
@@ -102,17 +102,43 @@
     },
     "ComposioHQ/awesome-claude-skills": {
       "first_seen": "2026-09-19",
-      "periods_on_board": 1,
-      "last_published": "2026-09-19"
+      "periods_on_board": 2,
+      "last_published": "2026-09-22"
     },
     "TencentCloud/Octop": {
       "first_seen": "2026-09-17",
       "periods_on_board": 1,
       "last_published": "2026-09-19"
+    },
+    "DietrichGebert/ponytail": {
+      "first_seen": "2026-09-17",
+      "periods_on_board": 1,
+      "last_published": "2026-09-22"
+    },
+    "agent-substrate/substrate": {
+      "first_seen": "2026-09-20",
+      "periods_on_board": 1,
+      "last_published": "2026-09-22"
+    },
+    "BuilderIO/agent-native": {
+      "first_seen": "2026-09-21",
+      "periods_on_board": 1,
+      "last_published": "2026-09-22"
+    },
+    "datawhalechina/zero-to-sglang": {
+      "first_seen": "2026-09-17",
+      "periods_on_board": 1,
+      "last_published": "2026-09-22"
+    },
+    "higgsfield-ai/higgsfield": {
+      "first_seen": "2026-09-20",
+      "periods_on_board": 1,
+      "last_published": "2026-09-22"
     }
   },
   "periods": [
     "2026-09-18",
-    "2026-09-19"
+    "2026-09-19",
+    "2026-09-22"
   ]
 }
