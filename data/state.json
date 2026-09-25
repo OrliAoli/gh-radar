@@ -2,38 +2,38 @@
   "repos": {
     "ruvnet/ruflo": {
       "first_seen": "2026-09-17",
-      "periods_on_board": 3,
-      "last_published": "2026-09-22"
+      "periods_on_board": 4,
+      "last_published": "2026-09-25"
     },
     "nexu-io/open-design": {
       "first_seen": "2026-09-17",
-      "periods_on_board": 3,
-      "last_published": "2026-09-22"
+      "periods_on_board": 4,
+      "last_published": "2026-09-25"
     },
     "Graphify-Labs/graphify": {
       "first_seen": "2026-09-17",
-      "periods_on_board": 2,
-      "last_published": "2026-09-22"
+      "periods_on_board": 3,
+      "last_published": "2026-09-25"
     },
     "tt-a1i/archify": {
       "first_seen": "2026-09-17",
-      "periods_on_board": 3,
-      "last_published": "2026-09-22"
+      "periods_on_board": 4,
+      "last_published": "2026-09-25"
     },
     "tradecatlabs/vibe-coding-cn": {
       "first_seen": "2026-09-17",
-      "periods_on_board": 3,
-      "last_published": "2026-09-22"
+      "periods_on_board": 4,
+      "last_published": "2026-09-25"
     },
     "Nanako0129/sepia": {
       "first_seen": "2026-09-17",
-      "periods_on_board": 3,
-      "last_published": "2026-09-22"
+      "periods_on_board": 4,
+      "last_published": "2026-09-25"
     },
     "langgenius/dify": {
       "first_seen": "2026-09-17",
-      "periods_on_board": 3,
-      "last_published": "2026-09-22"
+      "periods_on_board": 4,
+      "last_published": "2026-09-25"
     },
     "shanraisshan/claude-code-best-practice": {
       "first_seen": "2026-09-17",
@@ -67,18 +67,18 @@
     },
     "vllm-project/vllm": {
       "first_seen": "2026-09-17",
-      "periods_on_board": 3,
-      "last_published": "2026-09-22"
+      "periods_on_board": 4,
+      "last_published": "2026-09-25"
     },
     "sgl-project/sglang": {
       "first_seen": "2026-09-17",
-      "periods_on_board": 3,
-      "last_published": "2026-09-22"
+      "periods_on_board": 4,
+      "last_published": "2026-09-25"
     },
     "kvcache-ai/ktransformers": {
       "first_seen": "2026-09-17",
-      "periods_on_board": 2,
-      "last_published": "2026-09-19"
+      "periods_on_board": 3,
+      "last_published": "2026-09-25"
     },
     "obra/superpowers": {
       "first_seen": "2026-09-17",
@@ -102,8 +102,8 @@
     },
     "ComposioHQ/awesome-claude-skills": {
       "first_seen": "2026-09-19",
-      "periods_on_board": 2,
-      "last_published": "2026-09-22"
+      "periods_on_board": 3,
+      "last_published": "2026-09-25"
     },
     "TencentCloud/Octop": {
       "first_seen": "2026-09-17",
@@ -112,13 +112,13 @@
     },
     "DietrichGebert/ponytail": {
       "first_seen": "2026-09-17",
-      "periods_on_board": 1,
-      "last_published": "2026-09-22"
+      "periods_on_board": 2,
+      "last_published": "2026-09-25"
     },
     "agent-substrate/substrate": {
       "first_seen": "2026-09-20",
-      "periods_on_board": 1,
-      "last_published": "2026-09-22"
+      "periods_on_board": 2,
+      "last_published": "2026-09-25"
     },
     "BuilderIO/agent-native": {
       "first_seen": "2026-09-21",
@@ -127,18 +127,49 @@
     },
     "datawhalechina/zero-to-sglang": {
       "first_seen": "2026-09-17",
-      "periods_on_board": 1,
-      "last_published": "2026-09-22"
+      "periods_on_board": 2,
+      "last_published": "2026-09-25"
     },
     "higgsfield-ai/higgsfield": {
       "first_seen": "2026-09-20",
       "periods_on_board": 1,
       "last_published": "2026-09-22"
+    },
+    "LearnPrompt/awesome-seedance": {
+      "first_seen": "2026-09-23",
+      "periods_on_board": 1,
+      "last_published": "2026-09-25"
+    },
+    "google/ax": {
+      "first_seen": "2026-09-23",
+      "periods_on_board": 1,
+      "last_published": "2026-09-25"
+    },
+    "hydra-db/hydradb": {
+      "first_seen": "2026-09-23",
+      "periods_on_board": 1,
+      "last_published": "2026-09-25"
+    },
+    "Nasiko-Labs/nasiko": {
+      "first_seen": "2026-09-23",
+      "periods_on_board": 1,
+      "last_published": "2026-09-25"
+    },
+    "vectorize-io/hindsight": {
+      "first_seen": "2026-09-25",
+      "periods_on_board": 1,
+      "last_published": "2026-09-25"
+    },
+    "dream-num/univer": {
+      "first_seen": "2026-09-23",
+      "periods_on_board": 1,
+      "last_published": "2026-09-25"
     }
   },
   "periods": [
     "2026-09-18",
     "2026-09-19",
-    "2026-09-22"
+    "2026-09-22",
+    "2026-09-25"
   ]
 }
