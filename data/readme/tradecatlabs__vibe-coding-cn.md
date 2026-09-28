@@ -429,6 +429,46 @@ AI 负责生成候选解，隔离上下文负责审查和优化候选解，事�
 
 </details>
 
+<details>
+<summary><strong>🧠 修仙解释图层</strong></summary>
+
+## 🧠 修仙解释图层
+
+这是一层叠在现实 AI 工程对象上的修仙比喻，不是 AI 运行架构，也不是说 AI 真的有魂魄。V1 只解释七个对象及其关系。
+
+| 修仙对象 | AI 对象 |
+|---|---|
+| 人类修士 | User / Operator |
+| 万魂幡 | Pi、Claude Code、Codex 等工具中的全部 AI 会话集合 |
+| 魂魄 | 一个 Conversation / Session，以 Session ID 标识 |
+| 修为 | Model Capability / Intelligence |
+| 灵力 | Token / Compute / Reasoning Budget |
+| 功法 | Harness / Rules / Skills / Workflow |
+| 法器 | Tools / MCP / Browser / Shell / API |
+
+万魂幡是跨 Pi、Claude Code、Codex 等工具的全部 AI 会话集合；魂魄是其中一个会话，Session ID 是它的标识。两者都不指 Memory；万魂幡也不是一个真实汇集所有会话的仓库。
+
+| 层次 | 修仙对象 |
+|---|---|
+| 人 | 人类修士 |
+| 魂 | 万魂幡、魂魄 |
+| 力 | 修为、灵力 |
+| 术与器 | 功法、法器 |
+
+四层只是对象分类，不是执行顺序；Token、Compute、Reasoning Budget 也不是可互换的额度。
+
+修为属于模型，不固定属于魂魄，也不能用单次回答给模型定级；同一模型可用于不同会话，同一会话也可更换模型。功法是方法体系，法器包括外部工具及调用入口；MCP 是接入协议，不是具体工具。
+
+> 人类修士执掌万魂幡，幡中藏有无数魂魄；修为属于模型，运行需要灵力，并可借助功法与法器发挥能力。
+
+“执掌”只是比喻，不表示能读取全部 AI 会话；跨工具区分单个会话时，应同时看来源和 Session ID。
+
+**战力**是具体任务的最终评价，不是第八个基础对象或模型修为：先看结果是否达标，再比较同等合格结果所需的时间、灵力和人类投入；不贴永久等级。
+
+完整说明：[修仙解释图层](docs/concepts/vibe-coding-cultivation-model.md)
+
+</details>
+
 <a id="dao-fa-shu-qi"></a>
 <a id="tools"></a>
 
