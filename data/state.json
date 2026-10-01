@@ -2,18 +2,18 @@
   "repos": {
     "ruvnet/ruflo": {
       "first_seen": "2026-09-17",
-      "periods_on_board": 5,
-      "last_published": "2026-09-28"
+      "periods_on_board": 6,
+      "last_published": "2026-10-01"
     },
     "nexu-io/open-design": {
       "first_seen": "2026-09-17",
-      "periods_on_board": 5,
-      "last_published": "2026-09-28"
+      "periods_on_board": 6,
+      "last_published": "2026-10-01"
     },
     "Graphify-Labs/graphify": {
       "first_seen": "2026-09-17",
-      "periods_on_board": 4,
-      "last_published": "2026-09-28"
+      "periods_on_board": 5,
+      "last_published": "2026-10-01"
     },
     "tt-a1i/archify": {
       "first_seen": "2026-09-17",
@@ -22,8 +22,8 @@
     },
     "tradecatlabs/vibe-coding-cn": {
       "first_seen": "2026-09-17",
-      "periods_on_board": 5,
-      "last_published": "2026-09-28"
+      "periods_on_board": 6,
+      "last_published": "2026-10-01"
     },
     "Nanako0129/sepia": {
       "first_seen": "2026-09-17",
@@ -32,13 +32,13 @@
     },
     "langgenius/dify": {
       "first_seen": "2026-09-17",
-      "periods_on_board": 5,
-      "last_published": "2026-09-28"
+      "periods_on_board": 6,
+      "last_published": "2026-10-01"
     },
     "shanraisshan/claude-code-best-practice": {
       "first_seen": "2026-09-17",
-      "periods_on_board": 4,
-      "last_published": "2026-09-28"
+      "periods_on_board": 5,
+      "last_published": "2026-10-01"
     },
     "cloudflare/security-audit-skill": {
       "first_seen": "2026-09-17",
@@ -67,38 +67,38 @@
     },
     "vllm-project/vllm": {
       "first_seen": "2026-09-17",
-      "periods_on_board": 5,
-      "last_published": "2026-09-28"
+      "periods_on_board": 6,
+      "last_published": "2026-10-01"
     },
     "sgl-project/sglang": {
       "first_seen": "2026-09-17",
-      "periods_on_board": 5,
-      "last_published": "2026-09-28"
+      "periods_on_board": 6,
+      "last_published": "2026-10-01"
     },
     "kvcache-ai/ktransformers": {
       "first_seen": "2026-09-17",
-      "periods_on_board": 4,
-      "last_published": "2026-09-28"
+      "periods_on_board": 5,
+      "last_published": "2026-10-01"
     },
     "obra/superpowers": {
       "first_seen": "2026-09-17",
-      "periods_on_board": 2,
-      "last_published": "2026-09-19"
+      "periods_on_board": 3,
+      "last_published": "2026-10-01"
     },
     "thedotmack/claude-mem": {
       "first_seen": "2026-09-17",
-      "periods_on_board": 2,
-      "last_published": "2026-09-19"
+      "periods_on_board": 3,
+      "last_published": "2026-10-01"
     },
     "hesreallyhim/awesome-claude-code": {
       "first_seen": "2026-09-17",
-      "periods_on_board": 2,
-      "last_published": "2026-09-19"
+      "periods_on_board": 3,
+      "last_published": "2026-10-01"
     },
     "CherryHQ/cherry-studio": {
       "first_seen": "2026-09-17",
-      "periods_on_board": 1,
-      "last_published": "2026-09-18"
+      "periods_on_board": 2,
+      "last_published": "2026-10-01"
     },
     "ComposioHQ/awesome-claude-skills": {
       "first_seen": "2026-09-19",
@@ -147,8 +147,8 @@
     },
     "hydra-db/hydradb": {
       "first_seen": "2026-09-23",
-      "periods_on_board": 2,
-      "last_published": "2026-09-28"
+      "periods_on_board": 3,
+      "last_published": "2026-10-01"
     },
     "Nasiko-Labs/nasiko": {
       "first_seen": "2026-09-23",
@@ -157,8 +157,8 @@
     },
     "vectorize-io/hindsight": {
       "first_seen": "2026-09-25",
-      "periods_on_board": 2,
-      "last_published": "2026-09-28"
+      "periods_on_board": 3,
+      "last_published": "2026-10-01"
     },
     "dream-num/univer": {
       "first_seen": "2026-09-23",
@@ -172,13 +172,13 @@
     },
     "paperclipai/paperclip": {
       "first_seen": "2026-09-26",
-      "periods_on_board": 1,
-      "last_published": "2026-09-28"
+      "periods_on_board": 2,
+      "last_published": "2026-10-01"
     },
     "lyogavin/airllm": {
       "first_seen": "2026-09-17",
-      "periods_on_board": 1,
-      "last_published": "2026-09-28"
+      "periods_on_board": 2,
+      "last_published": "2026-10-01"
     },
     "androoAGI/starnet": {
       "first_seen": "2026-09-25",
@@ -187,8 +187,18 @@
     },
     "addyosmani/agent-skills": {
       "first_seen": "2026-09-17",
+      "periods_on_board": 2,
+      "last_published": "2026-10-01"
+    },
+    "mvschwarz/openrig": {
+      "first_seen": "2026-09-26",
       "periods_on_board": 1,
-      "last_published": "2026-09-28"
+      "last_published": "2026-10-01"
+    },
+    "NVIDIA/OpenShell": {
+      "first_seen": "2026-09-17",
+      "periods_on_board": 1,
+      "last_published": "2026-10-01"
     }
   },
   "periods": [
@@ -196,6 +206,7 @@
     "2026-09-19",
     "2026-09-22",
     "2026-09-25",
-    "2026-09-28"
+    "2026-09-28",
+    "2026-10-01"
   ]
 }
