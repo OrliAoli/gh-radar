@@ -5,146 +5,146 @@
     <link>https://github.com/trending</link>
     <description>AI / Agent 领域的每日 GitHub 雷达</description>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 07 Oct 2026 06:26:47 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 10 Oct 2026 06:22:42 GMT</lastBuildDate>
     <item>
-      <title>[TypeScript] nexu-io/open-design</title>
-      <link>https://github.com/nexu-io/open-design</link>
-      <description>🎨 Best DeepSeek Harness Design Plugin. The open-source Claude Design alternative. 🖥️ Local-first desktop app. 🖼️ Your coding agent becomes the design engine: prototypes, landing pages, dashboards, slides, images &amp; video — real files, HTML/PDF/PPTX/MP4 export. 🤖 Claude Code / Codex / Cursor / DeepSeek Harness / OpenCode &amp; 20+ CLIs via BYOK. | 总星 99760 | 无今日增量数据</description>
-      <guid isPermaLink="false">nexu-io/open-design#2026-10-07</guid>
-      <pubDate>Wed, 07 Oct 2026 06:26:47 GMT</pubDate>
-    </item>
-    <item>
-      <title>[JavaScript] tt-a1i/archify</title>
-      <link>https://github.com/tt-a1i/archify</link>
-      <description>Turn any idea, plan, or codebase into a beautiful interactive diagram. An agent skill for Claude Code, Codex, and more. | 总星 78796 | 无今日增量数据</description>
-      <guid isPermaLink="false">tt-a1i/archify#2026-10-07</guid>
-      <pubDate>Wed, 07 Oct 2026 06:26:47 GMT</pubDate>
-    </item>
-    <item>
-      <title>[Python] ComposioHQ/awesome-claude-skills</title>
-      <link>https://github.com/ComposioHQ/awesome-claude-skills</link>
-      <description>A curated list of awesome Claude Skills, resources, and tools for customizing Claude AI workflows | 总星 76621 | 无今日增量数据</description>
-      <guid isPermaLink="false">ComposioHQ/awesome-claude-skills#2026-10-07</guid>
-      <pubDate>Wed, 07 Oct 2026 06:26:47 GMT</pubDate>
-    </item>
-    <item>
-      <title>[Python] Graphify-Labs/graphify</title>
-      <link>https://github.com/Graphify-Labs/graphify</link>
-      <description>Turn any codebase, with its docs, SQL schemas, configs, and PDFs, into a queryable knowledge graph. A /graphify skill for Claude Code, Cursor, Codex, and Gemini CLI: local deterministic AST parsing, every edge explained, no vector store. | 总星 124455 | 无今日增量数据</description>
-      <guid isPermaLink="false">Graphify-Labs/graphify#2026-10-07</guid>
-      <pubDate>Wed, 07 Oct 2026 06:26:47 GMT</pubDate>
-    </item>
-    <item>
-      <title>[Python] tradecatlabs/vibe-coding-cn</title>
-      <link>https://github.com/tradecatlabs/vibe-coding-cn</link>
-      <description>Vibe Coding 从入门到精通教程｜AI 结对编程工作流｜Prompt、Skill、Workflow、上下文管理、codex实战指南 | 总星 17178 | 无今日增量数据</description>
-      <guid isPermaLink="false">tradecatlabs/vibe-coding-cn#2026-10-07</guid>
-      <pubDate>Wed, 07 Oct 2026 06:26:47 GMT</pubDate>
-    </item>
-    <item>
-      <title>[TypeScript] langgenius/dify</title>
-      <link>https://github.com/langgenius/dify</link>
-      <description>Build Agentic workflows, RAG pipelines, with rich AI model and tool support on one collaborative workspace. Deploy on cloud, VPC, or self-hosted, so teams move from prototype to production without rebuilding the stack. | 总星 157983 | 无今日增量数据</description>
-      <guid isPermaLink="false">langgenius/dify#2026-10-07</guid>
-      <pubDate>Wed, 07 Oct 2026 06:26:47 GMT</pubDate>
-    </item>
-    <item>
-      <title>[HTML] shanraisshan/claude-code-best-practice</title>
-      <link>https://github.com/shanraisshan/claude-code-best-practice</link>
-      <description>from vibe coding to agentic engineering - practice makes claude perfect | 总星 67206 | 无今日增量数据</description>
-      <guid isPermaLink="false">shanraisshan/claude-code-best-practice#2026-10-07</guid>
-      <pubDate>Wed, 07 Oct 2026 06:26:47 GMT</pubDate>
-    </item>
-    <item>
-      <title>[Python] hesreallyhim/awesome-claude-code</title>
-      <link>https://github.com/hesreallyhim/awesome-claude-code</link>
-      <description>A hand-picked collection of the finest of resources for the most awesome of agents, Claude Code, the undisputed champion of coding companions, from the unstoppable team at Anthropic PBC. A delectable showcase of top tier skills, ambidextrous agents, scintillating status lines, top notch developer tooling, and also we have plugins | 总星 55174 | 无今日增量数据</description>
-      <guid isPermaLink="false">hesreallyhim/awesome-claude-code#2026-10-07</guid>
-      <pubDate>Wed, 07 Oct 2026 06:26:47 GMT</pubDate>
-    </item>
-    <item>
-      <title>[TypeScript] morluto/rea</title>
-      <link>https://github.com/morluto/rea</link>
-      <description>Reverse engineer anything with agents, from app behavior down to native binaries. | 总星 10483 | +2956 stars today</description>
-      <guid isPermaLink="false">morluto/rea#2026-10-07</guid>
-      <pubDate>Wed, 07 Oct 2026 06:26:47 GMT</pubDate>
-    </item>
-    <item>
-      <title>[JavaScript] Joooook/12306-mcp</title>
-      <link>https://github.com/Joooook/12306-mcp</link>
-      <description>This is a 12306 ticket search server based on the Model Context Protocol (MCP). | 总星 2267 | +320 stars today</description>
-      <guid isPermaLink="false">Joooook/12306-mcp#2026-10-07</guid>
-      <pubDate>Wed, 07 Oct 2026 06:26:47 GMT</pubDate>
-    </item>
-    <item>
-      <title>[JavaScript] michael-denyer/pstack-claude</title>
-      <link>https://github.com/michael-denyer/pstack-claude</link>
-      <description>Claude Code, Codex, Pi, OpenCode, Gemini, and Prime Agent versions of Poteto&#x27;s pstack. Rigorous agent workflows with Cursor primitives translated for other harnesses. | 总星 1207 | +232 stars today</description>
-      <guid isPermaLink="false">michael-denyer/pstack-claude#2026-10-07</guid>
-      <pubDate>Wed, 07 Oct 2026 06:26:47 GMT</pubDate>
+      <title>[TypeScript] ruvnet/ruflo</title>
+      <link>https://github.com/ruvnet/ruflo</link>
+      <description>🌊 The original agent harness. Deploy intelligent multi-player swarms, coordinate autonomous workflows, and build conversational AI systems. Features adaptive memory, self-learning intelligence, federation, vector RAG integration, and native Claude Code / Codex / Hermes and many more Integrated | 总星 74219 | 无今日增量数据</description>
+      <guid isPermaLink="false">ruvnet/ruflo#2026-10-10</guid>
+      <pubDate>Sat, 10 Oct 2026 06:22:42 GMT</pubDate>
     </item>
     <item>
       <title>[JavaScript] DietrichGebert/ponytail</title>
       <link>https://github.com/DietrichGebert/ponytail</link>
-      <description>Makes your AI agent think like the laziest senior dev in the room. The best code is the code you never wrote. | 总星 156998 | +1894 stars today</description>
-      <guid isPermaLink="false">DietrichGebert/ponytail#2026-10-07</guid>
-      <pubDate>Wed, 07 Oct 2026 06:26:47 GMT</pubDate>
+      <description>Makes your AI agent think like the laziest senior dev in the room. The best code is the code you never wrote. | 总星 159825 | 无今日增量数据</description>
+      <guid isPermaLink="false">DietrichGebert/ponytail#2026-10-10</guid>
+      <pubDate>Sat, 10 Oct 2026 06:22:42 GMT</pubDate>
     </item>
     <item>
-      <title>[Python] vllm-project/vllm</title>
-      <link>https://github.com/vllm-project/vllm</link>
-      <description>A high-throughput and memory-efficient inference and serving engine for LLMs | 总星 93303 | 无今日增量数据</description>
-      <guid isPermaLink="false">vllm-project/vllm#2026-10-07</guid>
-      <pubDate>Wed, 07 Oct 2026 06:26:47 GMT</pubDate>
+      <title>[TypeScript] nexu-io/open-design</title>
+      <link>https://github.com/nexu-io/open-design</link>
+      <description>🎨 Best DeepSeek Harness Design Plugin. The open-source Claude Design alternative. 🖥️ Local-first desktop app. 🖼️ Your coding agent becomes the design engine: prototypes, landing pages, dashboards, slides, images &amp; video — real files, HTML/PDF/PPTX/MP4 export. 🤖 Claude Code / Codex / Cursor / DeepSeek Harness / OpenCode &amp; 20+ CLIs via BYOK. | 总星 100265 | 无今日增量数据</description>
+      <guid isPermaLink="false">nexu-io/open-design#2026-10-10</guid>
+      <pubDate>Sat, 10 Oct 2026 06:22:42 GMT</pubDate>
+    </item>
+    <item>
+      <title>[Python] ComposioHQ/awesome-claude-skills</title>
+      <link>https://github.com/ComposioHQ/awesome-claude-skills</link>
+      <description>A curated list of awesome Claude Skills, resources, and tools for customizing Claude AI workflows | 总星 76770 | 无今日增量数据</description>
+      <guid isPermaLink="false">ComposioHQ/awesome-claude-skills#2026-10-10</guid>
+      <pubDate>Sat, 10 Oct 2026 06:22:42 GMT</pubDate>
+    </item>
+    <item>
+      <title>[Python] Graphify-Labs/graphify</title>
+      <link>https://github.com/Graphify-Labs/graphify</link>
+      <description>Turn any codebase, with its docs, SQL schemas, configs, and PDFs, into a queryable knowledge graph. A /graphify skill for Claude Code, Cursor, Codex, and Gemini CLI: local deterministic AST parsing, every edge explained, no vector store. | 总星 125086 | 无今日增量数据</description>
+      <guid isPermaLink="false">Graphify-Labs/graphify#2026-10-10</guid>
+      <pubDate>Sat, 10 Oct 2026 06:22:42 GMT</pubDate>
+    </item>
+    <item>
+      <title>[Python] tradecatlabs/vibe-coding-cn</title>
+      <link>https://github.com/tradecatlabs/vibe-coding-cn</link>
+      <description>Vibe Coding 从入门到精通教程｜AI 结对编程工作流｜Prompt、Skill、Workflow、上下文管理、codex实战指南 | 总星 17379 | 无今日增量数据</description>
+      <guid isPermaLink="false">tradecatlabs/vibe-coding-cn#2026-10-10</guid>
+      <pubDate>Sat, 10 Oct 2026 06:22:42 GMT</pubDate>
+    </item>
+    <item>
+      <title>[JavaScript] affaan-m/ECC</title>
+      <link>https://github.com/affaan-m/ECC</link>
+      <description>The agent harness performance optimization system. Skills, instincts, memory, security, and research-first development for Claude Code, Codex, Opencode, Cursor and beyond. | 总星 276088 | 无今日增量数据</description>
+      <guid isPermaLink="false">affaan-m/ECC#2026-10-10</guid>
+      <pubDate>Sat, 10 Oct 2026 06:22:42 GMT</pubDate>
+    </item>
+    <item>
+      <title>[TypeScript] langgenius/dify</title>
+      <link>https://github.com/langgenius/dify</link>
+      <description>Build Agentic workflows, RAG pipelines, with rich AI model and tool support on one collaborative workspace. Deploy on cloud, VPC, or self-hosted, so teams move from prototype to production without rebuilding the stack. | 总星 158060 | 无今日增量数据</description>
+      <guid isPermaLink="false">langgenius/dify#2026-10-10</guid>
+      <pubDate>Sat, 10 Oct 2026 06:22:42 GMT</pubDate>
+    </item>
+    <item>
+      <title>[TypeScript] morluto/rea</title>
+      <link>https://github.com/morluto/rea</link>
+      <description>Reverse engineer anything with agents, from app behavior down to native binaries. | 总星 53254 | +14927 stars today</description>
+      <guid isPermaLink="false">morluto/rea#2026-10-10</guid>
+      <pubDate>Sat, 10 Oct 2026 06:22:42 GMT</pubDate>
+    </item>
+    <item>
+      <title>[Go] docker/docker-agent</title>
+      <link>https://github.com/docker/docker-agent</link>
+      <description>AI Agent Builder and Runtime by Docker Engineering | 总星 4328 | +766 stars today</description>
+      <guid isPermaLink="false">docker/docker-agent#2026-10-10</guid>
+      <pubDate>Sat, 10 Oct 2026 06:22:42 GMT</pubDate>
+    </item>
+    <item>
+      <title>[HTML] cathrynlavery/diagram-design</title>
+      <link>https://github.com/cathrynlavery/diagram-design</link>
+      <description>Editorial diagram design for Claude Code, Codex, GitHub Copilot, Factory Droid, and Pi. 42 diagram types. Self-contained HTML + SVG. No shadows. No Mermaid slop. | 总星 48180 | +1739 stars today</description>
+      <guid isPermaLink="false">cathrynlavery/diagram-design#2026-10-10</guid>
+      <pubDate>Sat, 10 Oct 2026 06:22:42 GMT</pubDate>
+    </item>
+    <item>
+      <title>[Go] Autumn-27/ARTEX</title>
+      <link>https://github.com/Autumn-27/ARTEX</link>
+      <description>AI 自主渗透测试系统 | 百度“agent+”攻防挑战赛冠军项目 | 总星 2075 | +236 stars today</description>
+      <guid isPermaLink="false">Autumn-27/ARTEX#2026-10-10</guid>
+      <pubDate>Sat, 10 Oct 2026 06:22:42 GMT</pubDate>
     </item>
     <item>
       <title>[Python] sgl-project/sglang</title>
       <link>https://github.com/sgl-project/sglang</link>
-      <description>SGLang is a high-performance serving framework for large language models and multimodal models. | 总星 36829 | 无今日增量数据</description>
-      <guid isPermaLink="false">sgl-project/sglang#2026-10-07</guid>
-      <pubDate>Wed, 07 Oct 2026 06:26:47 GMT</pubDate>
+      <description>SGLang is a high-performance serving framework for large language models and multimodal models. | 总星 36943 | 无今日增量数据</description>
+      <guid isPermaLink="false">sgl-project/sglang#2026-10-10</guid>
+      <pubDate>Sat, 10 Oct 2026 06:22:42 GMT</pubDate>
     </item>
     <item>
       <title>[Python] kvcache-ai/ktransformers</title>
       <link>https://github.com/kvcache-ai/ktransformers</link>
-      <description>A Flexible Framework for Experiencing Heterogeneous LLM Inference/Fine-tune Optimizations | 总星 19569 | 无今日增量数据</description>
-      <guid isPermaLink="false">kvcache-ai/ktransformers#2026-10-07</guid>
-      <pubDate>Wed, 07 Oct 2026 06:26:47 GMT</pubDate>
+      <description>A Flexible Framework for Experiencing Heterogeneous LLM Inference/Fine-tune Optimizations | 总星 19580 | 无今日增量数据</description>
+      <guid isPermaLink="false">kvcache-ai/ktransformers#2026-10-10</guid>
+      <pubDate>Sat, 10 Oct 2026 06:22:42 GMT</pubDate>
     </item>
     <item>
       <title>[Jupyter Notebook] lyogavin/airllm</title>
       <link>https://github.com/lyogavin/airllm</link>
-      <description>AirLLM 70B inference with single 4GB GPU | 总星 35463 | 无今日增量数据</description>
-      <guid isPermaLink="false">lyogavin/airllm#2026-10-07</guid>
-      <pubDate>Wed, 07 Oct 2026 06:26:47 GMT</pubDate>
+      <description>AirLLM 70B inference with single 4GB GPU | 总星 35553 | 无今日增量数据</description>
+      <guid isPermaLink="false">lyogavin/airllm#2026-10-10</guid>
+      <pubDate>Sat, 10 Oct 2026 06:22:42 GMT</pubDate>
     </item>
     <item>
-      <title>[Shell] obra/superpowers</title>
-      <link>https://github.com/obra/superpowers</link>
-      <description>An agentic skills framework &amp; software development methodology that works. | 总星 296093 | 无今日增量数据</description>
-      <guid isPermaLink="false">obra/superpowers#2026-10-07</guid>
-      <pubDate>Wed, 07 Oct 2026 06:26:47 GMT</pubDate>
+      <title>[Python] LMCache/LMCache</title>
+      <link>https://github.com/LMCache/LMCache</link>
+      <description>LMCache: Supercharge Your LLM with the Fastest KV Cache Layer | 总星 11989 | 无今日增量数据</description>
+      <guid isPermaLink="false">LMCache/LMCache#2026-10-10</guid>
+      <pubDate>Sat, 10 Oct 2026 06:22:42 GMT</pubDate>
     </item>
     <item>
-      <title>[TypeScript] CherryHQ/cherry-studio</title>
-      <link>https://github.com/CherryHQ/cherry-studio</link>
-      <description>AI productivity studio with smart chat, autonomous agents, and 300+ assistants. Unified access to frontier LLMs | 总星 52407 | 无今日增量数据</description>
-      <guid isPermaLink="false">CherryHQ/cherry-studio#2026-10-07</guid>
-      <pubDate>Wed, 07 Oct 2026 06:26:47 GMT</pubDate>
+      <title>[Shell] mattpocock/skills</title>
+      <link>https://github.com/mattpocock/skills</link>
+      <description>Skills for Real Engineers. Straight from my .agents directory. | 总星 283139 | +1774 stars today</description>
+      <guid isPermaLink="false">mattpocock/skills#2026-10-10</guid>
+      <pubDate>Sat, 10 Oct 2026 06:22:42 GMT</pubDate>
     </item>
     <item>
-      <title>[TypeScript] Egonex-AI/Understand-Anything</title>
-      <link>https://github.com/Egonex-AI/Understand-Anything</link>
-      <description>Graphs that teach &gt; graphs that impress. Turn any code into an interactive knowledge graph you can explore, search, and ask questions about. Works with Claude Code, Codex, Cursor, Copilot, Gemini CLI, and more. | 总星 85461 | 无今日增量数据</description>
-      <guid isPermaLink="false">Egonex-AI/Understand-Anything#2026-10-07</guid>
-      <pubDate>Wed, 07 Oct 2026 06:26:47 GMT</pubDate>
+      <title>[Python] angel291592/Intent-Router</title>
+      <link>https://github.com/angel291592/Intent-Router</link>
+      <description>Intent compiler for AI agents — converges vague requests into typed IntentSpec contracts (probe, ask, or halt before routing), the input layer for routers and typed-decision models like Jev &amp; Laya | 总星 1048 | 无今日增量数据</description>
+      <guid isPermaLink="false">angel291592/Intent-Router#2026-10-10</guid>
+      <pubDate>Sat, 10 Oct 2026 06:22:42 GMT</pubDate>
     </item>
     <item>
-      <title>[Python] earthtojake/text-to-cad</title>
-      <link>https://github.com/earthtojake/text-to-cad</link>
-      <description>Give your agent CAD superpowers. | 总星 18104 | +619 stars today</description>
-      <guid isPermaLink="false">earthtojake/text-to-cad#2026-10-07</guid>
-      <pubDate>Wed, 07 Oct 2026 06:26:47 GMT</pubDate>
+      <title>[JavaScript] tt-a1i/archify</title>
+      <link>https://github.com/tt-a1i/archify</link>
+      <description>Turn any idea, plan, or codebase into a beautiful interactive diagram. An agent skill for Claude Code, Codex, and more. | 总星 81352 | +1358 stars today</description>
+      <guid isPermaLink="false">tt-a1i/archify#2026-10-10</guid>
+      <pubDate>Sat, 10 Oct 2026 06:22:42 GMT</pubDate>
+    </item>
+    <item>
+      <title>[HTML] shanraisshan/claude-code-best-practice</title>
+      <link>https://github.com/shanraisshan/claude-code-best-practice</link>
+      <description>from vibe coding to agentic engineering - practice makes claude perfect | 总星 67322 | 无今日增量数据</description>
+      <guid isPermaLink="false">shanraisshan/claude-code-best-practice#2026-10-10</guid>
+      <pubDate>Sat, 10 Oct 2026 06:22:42 GMT</pubDate>
     </item>
   </channel>
 </rss>
