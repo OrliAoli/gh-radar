@@ -2,18 +2,18 @@
   "repos": {
     "ruvnet/ruflo": {
       "first_seen": "2026-09-17",
-      "periods_on_board": 7,
-      "last_published": "2026-10-10"
+      "periods_on_board": 8,
+      "last_published": "2026-10-13"
     },
     "nexu-io/open-design": {
       "first_seen": "2026-09-17",
-      "periods_on_board": 9,
-      "last_published": "2026-10-10"
+      "periods_on_board": 10,
+      "last_published": "2026-10-13"
     },
     "Graphify-Labs/graphify": {
       "first_seen": "2026-09-17",
-      "periods_on_board": 8,
-      "last_published": "2026-10-10"
+      "periods_on_board": 9,
+      "last_published": "2026-10-13"
     },
     "tt-a1i/archify": {
       "first_seen": "2026-09-17",
@@ -22,8 +22,8 @@
     },
     "tradecatlabs/vibe-coding-cn": {
       "first_seen": "2026-09-17",
-      "periods_on_board": 9,
-      "last_published": "2026-10-10"
+      "periods_on_board": 10,
+      "last_published": "2026-10-13"
     },
     "Nanako0129/sepia": {
       "first_seen": "2026-09-17",
@@ -37,8 +37,8 @@
     },
     "shanraisshan/claude-code-best-practice": {
       "first_seen": "2026-09-17",
-      "periods_on_board": 8,
-      "last_published": "2026-10-10"
+      "periods_on_board": 9,
+      "last_published": "2026-10-13"
     },
     "cloudflare/security-audit-skill": {
       "first_seen": "2026-09-17",
@@ -67,8 +67,8 @@
     },
     "vllm-project/vllm": {
       "first_seen": "2026-09-17",
-      "periods_on_board": 8,
-      "last_published": "2026-10-07"
+      "periods_on_board": 9,
+      "last_published": "2026-10-13"
     },
     "sgl-project/sglang": {
       "first_seen": "2026-09-17",
@@ -77,8 +77,8 @@
     },
     "kvcache-ai/ktransformers": {
       "first_seen": "2026-09-17",
-      "periods_on_board": 8,
-      "last_published": "2026-10-10"
+      "periods_on_board": 9,
+      "last_published": "2026-10-13"
     },
     "obra/superpowers": {
       "first_seen": "2026-09-17",
@@ -87,8 +87,8 @@
     },
     "thedotmack/claude-mem": {
       "first_seen": "2026-09-17",
-      "periods_on_board": 3,
-      "last_published": "2026-10-01"
+      "periods_on_board": 4,
+      "last_published": "2026-10-13"
     },
     "hesreallyhim/awesome-claude-code": {
       "first_seen": "2026-09-17",
@@ -97,8 +97,8 @@
     },
     "CherryHQ/cherry-studio": {
       "first_seen": "2026-09-17",
-      "periods_on_board": 4,
-      "last_published": "2026-10-07"
+      "periods_on_board": 5,
+      "last_published": "2026-10-13"
     },
     "ComposioHQ/awesome-claude-skills": {
       "first_seen": "2026-09-19",
@@ -112,8 +112,8 @@
     },
     "DietrichGebert/ponytail": {
       "first_seen": "2026-09-17",
-      "periods_on_board": 5,
-      "last_published": "2026-10-10"
+      "periods_on_board": 6,
+      "last_published": "2026-10-13"
     },
     "agent-substrate/substrate": {
       "first_seen": "2026-09-20",
@@ -177,8 +177,8 @@
     },
     "lyogavin/airllm": {
       "first_seen": "2026-09-17",
-      "periods_on_board": 5,
-      "last_published": "2026-10-10"
+      "periods_on_board": 6,
+      "last_published": "2026-10-13"
     },
     "androoAGI/starnet": {
       "first_seen": "2026-09-25",
@@ -202,8 +202,8 @@
     },
     "Egonex-AI/Understand-Anything": {
       "first_seen": "2026-09-17",
-      "periods_on_board": 2,
-      "last_published": "2026-10-07"
+      "periods_on_board": 3,
+      "last_published": "2026-10-13"
     },
     "ifixai-ai/iFixAi": {
       "first_seen": "2026-10-01",
@@ -217,8 +217,8 @@
     },
     "LMCache/LMCache": {
       "first_seen": "2026-09-17",
-      "periods_on_board": 2,
-      "last_published": "2026-10-10"
+      "periods_on_board": 3,
+      "last_published": "2026-10-13"
     },
     "t8y2/dbx": {
       "first_seen": "2026-09-24",
@@ -227,13 +227,13 @@
     },
     "code-yeongyu/oh-my-openagent": {
       "first_seen": "2026-09-17",
-      "periods_on_board": 1,
-      "last_published": "2026-10-04"
+      "periods_on_board": 2,
+      "last_published": "2026-10-13"
     },
     "morluto/rea": {
       "first_seen": "2026-10-07",
-      "periods_on_board": 2,
-      "last_published": "2026-10-10"
+      "periods_on_board": 3,
+      "last_published": "2026-10-13"
     },
     "Joooook/12306-mcp": {
       "first_seen": "2026-09-17",
@@ -257,8 +257,8 @@
     },
     "cathrynlavery/diagram-design": {
       "first_seen": "2026-10-07",
-      "periods_on_board": 1,
-      "last_published": "2026-10-10"
+      "periods_on_board": 2,
+      "last_published": "2026-10-13"
     },
     "Autumn-27/ARTEX": {
       "first_seen": "2026-10-04",
@@ -272,8 +272,23 @@
     },
     "angel291592/Intent-Router": {
       "first_seen": "2026-10-02",
+      "periods_on_board": 2,
+      "last_published": "2026-10-13"
+    },
+    "amontlabs/lcu": {
+      "first_seen": "2026-10-08",
       "periods_on_board": 1,
-      "last_published": "2026-10-10"
+      "last_published": "2026-10-13"
+    },
+    "CopilotKit/OpenIntelligentUI": {
+      "first_seen": "2026-10-12",
+      "periods_on_board": 1,
+      "last_published": "2026-10-13"
+    },
+    "ggml-org/llama.cpp": {
+      "first_seen": "2026-09-17",
+      "periods_on_board": 1,
+      "last_published": "2026-10-13"
     }
   },
   "periods": [
@@ -285,6 +300,7 @@
     "2026-10-01",
     "2026-10-04",
     "2026-10-07",
-    "2026-10-10"
+    "2026-10-10",
+    "2026-10-13"
   ]
 }
