@@ -1,5 +1,9 @@
 # XERJ
 
+**Local-first search engine and MCP server for AI agents.** One Rust binary indexes code, docs,
+logs, JSONL/CSV and PDFs for BM25 full-text, vector and hybrid search, code search and agent
+memory, behind an Elasticsearch-compatible API. Works with Claude Code, Cursor and any MCP client.
+
 <a href="https://trendshift.io/repositories/116361?utm_source=repository-badge&amp;utm_medium=badge&amp;utm_campaign=badge-repository-116361" target="_blank" rel="noopener noreferrer"><img src="https://trendshift.io/api/badge/repositories/116361" alt="xerj-org%2Fxerj | Trendshift" width="250" height="55"/></a>
 
 [English](./README.md) | [简体中文](./README.zh-CN.md) | [日本語](./README.ja-JP.md) | [العربية](./README.ar.md) | [Español](./README.es.md)
@@ -46,13 +50,17 @@ Or run it yourself:
 
 ```sh
 curl -fsSL https://xerj.org/get | sh
-xerj --insecure --data-dir ./data &
+xerj --insecure --data-dir ~/xerj-data &
 xerj init                                        # wire XERJ into Claude Code/Cursor (MCP + skill), one command
 xerj autoindex ~/my-project
 xerj search "how do we rotate the WAL segment"   # ranked passages, file:line
 xerj def "euler_to_rotationmatrix"               # go-to-definition: file:line + signature
 xerj gain                                        # what it did for you — counted, not estimated
 ```
+
+Keep that data directory outside any folder you will autoindex. `data/` is not in the
+built-in ignore list, so `--data-dir ./data` inside a tree you then index makes the node
+index its own storage.
 
 Windows and a hand-verified install are under [Install by hand](#install-by-hand).
 
@@ -113,7 +121,7 @@ awkward CSVs into typed, queryable indices for search, RAG, security audits and 
 memory, with no schema to write and no pipeline to configure.
 
 ```sh
-xerj --insecure --data-dir ./data &      # start it
+xerj --insecure --data-dir ~/xerj-data &      # start it
 xerj autoindex ~/my-project              # point it at anything
 ```
 
@@ -193,7 +201,7 @@ and arm64. You can also [build from source](#build-from-source). It speaks the E
 API, so existing clients, dashboards and tooling work against it unchanged.
 
 First commands after install (the installer prints where `xerj` landed; add it to your PATH
-if needed): `xerj --insecure --data-dir ./data &`, wait until `http://localhost:9200`
+if needed): `xerj --insecure --data-dir ~/xerj-data &`, wait until `http://localhost:9200`
 responds, then `xerj autoindex ~/my-project`. See [Index a folder](#index-a-folder).
 
 For a host with no runtime internet access, follow the
@@ -206,7 +214,7 @@ semantic operation.
 Start the server, then point `autoindex` at anything:
 
 ```sh
-xerj --insecure --data-dir ./data &     # local dev: no TLS, no auth
+xerj --insecure --data-dir ~/xerj-data &     # local dev: no TLS, no auth
 xerj autoindex ~/my-project
 ```
 
@@ -220,8 +228,8 @@ key up from `xerj.toml`; pass `--api-key` or set `XERJ_API_KEY`, or every reques
 `401 Unauthorized`:
 
 ```sh
-xerj --data-dir ./data &                          # auth on: key minted on first boot
-export XERJ_API_KEY="$(cat ./data/admin.key)"     # <data_dir>/admin.key
+xerj --data-dir ~/xerj-data &                          # auth on: key minted on first boot
+export XERJ_API_KEY="$(cat ~/xerj-data/admin.key)" # <data_dir>/admin.key
 xerj autoindex ~/my-project
 ```
 
@@ -300,7 +308,7 @@ tools through the Model Context Protocol, and the binary you just installed is t
 server. There is nothing else to download and nothing to compile:
 
 ```sh
-xerj --insecure --data-dir ./data &     # 1. the node the tools query
+xerj --insecure --data-dir ~/xerj-data &     # 1. the node the tools query
 xerj mcp                                # 2. MCP stdio server (your client runs this)
 ```
 
@@ -327,7 +335,125 @@ Use an absolute path. The installer puts `xerj` in `~/.local/bin` by default
 shell's `PATH`. If the node is running with auth (anything but `--insecure`), add
 `"XERJ_AUTH": "ApiKey <key>"` alongside `XERJ_URL`; the key is in `<data-dir>/admin.key`.
 
-Thirteen tools are exposed. Eleven are thin proxies over an endpoint XERJ already serves:
+### Supported agents
+
+Twenty-six clients can register `xerj mcp` as a local stdio server. The entry is always the same
+two fields - the absolute path to the binary, and `mcp` as its only argument - but where that entry
+lives and which key wraps it differ per client. `tested` means the server was registered in that
+client and `xerj_search` appeared in its tool list; `untested` means the path and shape are
+transcribed from the client's own documentation and nobody has run it yet. Only the OpenCode row
+has been run: v2.1.2 on Windows against `xerj` v1.0.0-rc.97, which answered `initialize` and
+`tools/list` with its full tool list. Correcting an `untested` row is a welcome first PR.
+
+| Client | Config file | Key | Note | Tested |
+|---|---|---|---|---|
+| OpenCode | `opencode.json` in the project, or `~/.config/opencode/opencode.json` | `mcp.servers` | one command array, `environment` not `env`, needs a project root | tested |
+| Claude Code | `.mcp.json` (project) or `~/.claude.json` (user); `claude mcp add` writes either | `mcpServers` | `--` before the command is required | untested |
+| Cursor | `.cursor/mcp.json` in the project, or `~/.cursor/mcp.json` | `mcpServers` | no `type` for stdio | untested |
+| Codex | `~/.codex/config.toml`, or `.codex/config.toml` in trusted projects | `[mcp_servers.xerj]` | TOML, not JSON | untested |
+| Gemini CLI | `.gemini/settings.json` or `~/.gemini/settings.json` | `mcpServers` | `gemini trust` the folder or stdio shows Disconnected | untested |
+| GitHub Copilot in VS Code | `.vscode/mcp.json` | `servers` | needs `"type": "stdio"`; the portable `.mcp.json` uses `mcpServers` | untested |
+| Windsurf | `%APPDATA%\devin\mcp_config.json`, `~/.config/devin/mcp_config.json` | `mcpServers` | the path is Devin's now, not `~/.codeium/windsurf` | untested |
+| Claude Desktop | `%APPDATA%\Claude\claude_desktop_config.json`, `~/Library/Application Support/Claude/claude_desktop_config.json`, `~/.config/Claude/claude_desktop_config.json` | `mcpServers` | quit the app fully, not just the window | untested |
+| Cline | `~/.cline/data/settings/cline_mcp_settings.json` (CLI); the IDE opens it from MCP Servers > Configure | `mcpServers` | `disabled` and `autoApprove` are Cline-specific | untested |
+| Roo Code | `.roo/mcp.json` in the project, or `<VS Code User>/globalStorage/rooveterinaryinc.roo-cline/settings/mcp_settings.json` | `mcpServers` | the project entry wins on name clashes | untested |
+| Kilo Code | `kilo.jsonc` or `.kilo/kilo.jsonc` in the project, `~/.config/kilo/kilo.jsonc` global | `mcp` | one command array, like OpenCode | untested |
+| Continue | `~/.continue/config.yaml`, or any file in `.continue/mcpServers/` | `mcpServers` | a YAML list, not a map; Agent mode only | untested |
+| Zed | `~/.config/zed/settings.json` (on Windows, run `zed: open settings file`) | `context_servers` | the key is not `mcpServers` | untested |
+| JetBrains AI Assistant | settings UI only: Settings > Tools > AI Assistant > Model Context Protocol | `mcpServers` | a separate store from Junie | untested |
+| Junie | `.junie/mcp/mcp.json` in the project, `~/.junie/mcp/mcp.json` user | `mcpServers` | older posts omit the `mcp/` folder | untested |
+| Amp | `~/.config/amp/settings.json`, `.amp/settings.json` in the workspace, or `amp mcp add` | `amp.mcpServers` | the key keeps the `amp.` prefix | untested |
+| Goose | `~/.config/goose/config.yaml`, `%APPDATA%\Block\goose\config\config.yaml` | `extensions` | `cmd`, not `command`, and YAML | untested |
+| Kiro | `.kiro/settings/mcp.json` in the workspace, `~/.kiro/settings/mcp.json` user | `mcpServers` | `${VAR}` expansion needs approval | untested |
+| Antigravity | `~/.gemini/config/mcp_config.json`, or `.agents/mcp_config.json` in the workspace | `mcpServers` | remote servers use `serverUrl` | untested |
+| OpenClaw | `~/.openclaw/openclaw.json` (JSON5) | `mcp.servers` | `transport: "stdio"` | untested |
+| DeepSeek Harness (dsh) | `$DSH_HOME/cordis.patch.yml`, or a profile patch | `- insert:` with `@deepseek-ai/dsh-mcp-client` | one plugin instance per server | untested |
+| Warp | Settings > Agents > MCP servers, or `~/.warp/.mcp.json` and `.warp/.mcp.json` in the project | `mcpServers` | `working_directory`, not `cwd` | untested |
+| Augment Code | `~/.augment/settings.json` for the Auggie CLI; the IDE uses its own panel | `mcpServers` | that file does not drive the IDE | untested |
+| Qwen Code | `~/.qwen/settings.json`, or `.qwen/settings.json` in the project | `mcpServers` | `mcp.allowed` can silently hide it | untested |
+| Kimi CLI | `~/.kimi-code/mcp.json`, or `.kimi-code/mcp.json` in the project | `mcpServers` | the current Kimi Code CLI, not the archived `~/.kimi/mcp.json` | untested |
+| Grok CLI | `~/.grok/config.toml`, or `.grok/config.toml` in the project | `[mcp_servers.xerj]` | Grok Bot has no local stdio registration | untested |
+
+Codex and the Grok CLI read TOML, so the entry is a table:
+
+```toml
+[mcp_servers.xerj]
+command = "/abs/path/to/xerj"
+args = ["mcp"]
+```
+
+OpenCode and Kilo Code take one `command` array, and Kilo uses the same shape one level shallower:
+
+```json
+{"mcp": {"servers": {"xerj": {"type": "local", "command": ["/abs/path/to/xerj", "mcp"], "environment": {"XERJ_URL": "http://localhost:9200"}}}}
+```
+
+```json
+{"mcp": {"xerj": {"type": "local", "command": ["/abs/path/to/xerj", "mcp"]}}}
+```
+
+Continue and Goose read YAML:
+
+```yaml
+# ~/.continue/config.yaml
+mcpServers:
+  - name: xerj
+    command: /abs/path/to/xerj
+    args:
+      - mcp
+```
+
+```yaml
+# ~/.config/goose/config.yaml
+extensions:
+  xerj:
+    type: stdio
+    cmd: /abs/path/to/xerj
+    args:
+      - mcp
+    enabled: true
+```
+
+Amp keeps the key namespaced, VS Code and Copilot need `servers` plus a transport, Zed calls them
+context servers, and OpenClaw nests them under `mcp`:
+
+```json
+{"amp.mcpServers": {"xerj": {"command": "/abs/path/to/xerj", "args": ["mcp"]}}}
+```
+
+```json
+{"servers": {"xerj": {"type": "stdio", "command": "/abs/path/to/xerj", "args": ["mcp"]}}}
+```
+
+```json
+{"context_servers": {"xerj": {"command": "/abs/path/to/xerj", "args": ["mcp"], "env": {}}}}
+```
+
+```json5
+{mcp: {servers: {xerj: {command: "/abs/path/to/xerj", args: ["mcp"], transport: "stdio"}}}}
+```
+
+DeepSeek Harness loads MCP as a plugin in its Cordis patch file:
+
+```yaml
+- insert:
+    - id: mcp-xerj
+      name: "@deepseek-ai/dsh-mcp-client"
+      config:
+        serverName: xerj
+        transport: stdio
+        command: /abs/path/to/xerj
+        args:
+          - mcp
+```
+
+Three candidates from the original list are deliberately absent. Aider has no MCP client support at
+all ([Aider-AI/aider#3314](https://github.com/Aider-AI/aider/issues/3314) is still open). T3 Code is
+the other direction: it hosts an MCP endpoint other agents connect to, and its sessions inherit
+their servers from the harness underneath. Grok Bot has no documented local stdio registration; the
+Grok CLI does, which is the `grok` row above.
+
+Twenty tools are exposed. Eleven are thin proxies over an endpoint XERJ already serves:
 
 | Tool | What it does |
 |---|---|
@@ -339,9 +465,21 @@ Thirteen tools are exposed. Eleven are thin proxies over an endpoint XERJ alread
 | `xerj_brain_overview` / `xerj_brain_ego` / `xerj_brain_link` / `xerj_brain_unlink` | the second-brain link index: orient, expand one node's evidence-backed neighborhood, assert and retire links |
 | `xerj_plan` | a plain-words filter in, validated query DSL out (`POST /_ask`; deterministic and rule-based, not an LLM) |
 
+For `xerj_search`, pass `{"prefix":"project","query":"retry policy"}` to search
+`project-*`, matching `xerj search --prefix project`. Use `index` for an explicit
+index name or pattern instead; non-empty `index` and `prefix` cannot be combined.
+The prefix is trimmed and must be non-empty. With neither argument, the tool
+searches `ax-*`.
+
 Two more are not plain proxies: `xerj_map` returns the per-index field map from the autoindex
 catalog (trimmed to a byte cap, otherwise verbatim), and `xerj_code_search` runs the `xerj code`
 reference-coding pipeline ([`tools/xerj-code/`](tools/xerj-code/)) and returns its rendered text.
+`xerj_index_budget` counts a folder and estimates its index against the node's disk budget
+before `xerj autoindex` hashes anything (it does not index). `xerj_autoindex_remove` drops
+one autoindexed folder after listing it, and deletes nothing unless `confirm` is true.
+`xerj_corpus_feedback` rates a hub corpus.
+`xerj_field_report` files a field report, and `xerj_hub_find`, `xerj_hub_def` and `xerj_hub_ask`
+answer from Corpus Hub packs already on the machine (the `xerj ask` flow).
 
 `xerj mcp --help` prints the same config block and the full option list. The machine-readable
 tool schemas are published at
@@ -436,7 +574,7 @@ You need a stable Rust toolchain.
 git clone https://github.com/xerj-org/xerj
 cd xerj/engine
 cargo build --release -p xerj-server
-./target/release/xerj --insecure --data-dir ./data
+./target/release/xerj --insecure --data-dir ~/xerj-data
 ```
 
 To run the conformance suite against a running server:

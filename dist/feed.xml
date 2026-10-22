@@ -5,146 +5,146 @@
     <link>https://github.com/trending</link>
     <description>AI / Agent 领域的每日 GitHub 雷达</description>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 19 Oct 2026 05:16:03 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 22 Oct 2026 05:20:25 GMT</lastBuildDate>
     <item>
       <title>[TypeScript] paperclipai/paperclip</title>
       <link>https://github.com/paperclipai/paperclip</link>
-      <description>The open-source app everyone uses to manage agents at work | 总星 104244 | 无今日增量数据</description>
-      <guid isPermaLink="false">paperclipai/paperclip#2026-10-19</guid>
-      <pubDate>Mon, 19 Oct 2026 05:16:03 GMT</pubDate>
-    </item>
-    <item>
-      <title>[Python] blader/humanizer</title>
-      <link>https://github.com/blader/humanizer</link>
-      <description>Agent skill that removes signs of AI-generated writing from text | 总星 58175 | 无今日增量数据</description>
-      <guid isPermaLink="false">blader/humanizer#2026-10-19</guid>
-      <pubDate>Mon, 19 Oct 2026 05:16:03 GMT</pubDate>
-    </item>
-    <item>
-      <title>[JavaScript] tt-a1i/archify</title>
-      <link>https://github.com/tt-a1i/archify</link>
-      <description>Turn any idea, plan, or codebase into a beautiful interactive diagram. An agent skill for Claude Code, Codex, and more. | 总星 85486 | 无今日增量数据</description>
-      <guid isPermaLink="false">tt-a1i/archify#2026-10-19</guid>
-      <pubDate>Mon, 19 Oct 2026 05:16:03 GMT</pubDate>
-    </item>
-    <item>
-      <title>[Makefile] tradecatlabs/vibe-coding-cn</title>
-      <link>https://github.com/tradecatlabs/vibe-coding-cn</link>
-      <description>Vibe Coding 从入门到精通教程｜AI 结对编程工作流｜Prompt、Skill、Workflow、上下文管理、codex实战指南 | 总星 17679 | 无今日增量数据</description>
-      <guid isPermaLink="false">tradecatlabs/vibe-coding-cn#2026-10-19</guid>
-      <pubDate>Mon, 19 Oct 2026 05:16:03 GMT</pubDate>
-    </item>
-    <item>
-      <title>[Python] langgenius/dify</title>
-      <link>https://github.com/langgenius/dify</link>
-      <description>Build Agentic workflows, RAG pipelines, with rich AI model and tool support on one collaborative workspace. Deploy on cloud, VPC, or self-hosted, so teams move from prototype to production without rebuilding the stack. | 总星 158842 | 无今日增量数据</description>
-      <guid isPermaLink="false">langgenius/dify#2026-10-19</guid>
-      <pubDate>Mon, 19 Oct 2026 05:16:03 GMT</pubDate>
-    </item>
-    <item>
-      <title>[JavaScript] Leonxlnx/taste-skill</title>
-      <link>https://github.com/Leonxlnx/taste-skill</link>
-      <description>Agent skills that give coding agents taste: art direction, reference images and a browser check instead of generic AI pages | 总星 98948 | 无今日增量数据</description>
-      <guid isPermaLink="false">Leonxlnx/taste-skill#2026-10-19</guid>
-      <pubDate>Mon, 19 Oct 2026 05:16:03 GMT</pubDate>
-    </item>
-    <item>
-      <title>[Python] ComposioHQ/awesome-claude-skills</title>
-      <link>https://github.com/ComposioHQ/awesome-claude-skills</link>
-      <description>A curated list of awesome Claude Skills, resources, and tools for customizing Claude AI workflows | 总星 77258 | 无今日增量数据</description>
-      <guid isPermaLink="false">ComposioHQ/awesome-claude-skills#2026-10-19</guid>
-      <pubDate>Mon, 19 Oct 2026 05:16:03 GMT</pubDate>
-    </item>
-    <item>
-      <title>[JavaScript] amontlabs/lcu</title>
-      <link>https://github.com/amontlabs/lcu</link>
-      <description>Codex computer use, decoupled from the app, for usage inside any harness. | 总星 1179 | 无今日增量数据</description>
-      <guid isPermaLink="false">amontlabs/lcu#2026-10-19</guid>
-      <pubDate>Mon, 19 Oct 2026 05:16:03 GMT</pubDate>
+      <description>The open-source app everyone uses to manage agents at work | 总星 105769 | 无今日增量数据</description>
+      <guid isPermaLink="false">paperclipai/paperclip#2026-10-22</guid>
+      <pubDate>Thu, 22 Oct 2026 05:20:25 GMT</pubDate>
     </item>
     <item>
       <title>[TypeScript] morluto/rea</title>
       <link>https://github.com/morluto/rea</link>
-      <description>Reverse engineer anything with agents, from app behavior down to native binaries. | 总星 325354 | +23584 stars today</description>
-      <guid isPermaLink="false">morluto/rea#2026-10-19</guid>
-      <pubDate>Mon, 19 Oct 2026 05:16:03 GMT</pubDate>
+      <description>Reverse engineer anything with agents, from app behavior down to native binaries. | 总星 359445 | 无今日增量数据</description>
+      <guid isPermaLink="false">morluto/rea#2026-10-22</guid>
+      <pubDate>Thu, 22 Oct 2026 05:20:25 GMT</pubDate>
+    </item>
+    <item>
+      <title>[Python] blader/humanizer</title>
+      <link>https://github.com/blader/humanizer</link>
+      <description>Agent skill that removes signs of AI-generated writing from text | 总星 59372 | 无今日增量数据</description>
+      <guid isPermaLink="false">blader/humanizer#2026-10-22</guid>
+      <pubDate>Thu, 22 Oct 2026 05:20:25 GMT</pubDate>
+    </item>
+    <item>
+      <title>[Makefile] tradecatlabs/vibe-coding-cn</title>
+      <link>https://github.com/tradecatlabs/vibe-coding-cn</link>
+      <description>Vibe Coding 非严肃开发的从入门到门入的工具箱 | 总星 17712 | 无今日增量数据</description>
+      <guid isPermaLink="false">tradecatlabs/vibe-coding-cn#2026-10-22</guid>
+      <pubDate>Thu, 22 Oct 2026 05:20:25 GMT</pubDate>
+    </item>
+    <item>
+      <title>[JavaScript] affaan-m/ECC</title>
+      <link>https://github.com/affaan-m/ECC</link>
+      <description>The agent harness performance optimization system. Skills, instincts, memory, security, and research-first development for Claude Code, Codex, Opencode, Cursor and beyond. | 总星 285859 | 无今日增量数据</description>
+      <guid isPermaLink="false">affaan-m/ECC#2026-10-22</guid>
+      <pubDate>Thu, 22 Oct 2026 05:20:25 GMT</pubDate>
+    </item>
+    <item>
+      <title>[JavaScript] amontlabs/lcu</title>
+      <link>https://github.com/amontlabs/lcu</link>
+      <description>Codex computer use, decoupled from the app, for usage inside any harness. | 总星 1983 | 无今日增量数据</description>
+      <guid isPermaLink="false">amontlabs/lcu#2026-10-22</guid>
+      <pubDate>Thu, 22 Oct 2026 05:20:25 GMT</pubDate>
+    </item>
+    <item>
+      <title>[Python] zhuyansen/new-term-radar</title>
+      <link>https://github.com/zhuyansen/new-term-radar</link>
+      <description>Daily radar for new AI terms: names of new models, products and repos, caught on X, Hugging Face, GitHub and sitemaps before keyword tools list them. | 总星 1630 | 无今日增量数据</description>
+      <guid isPermaLink="false">zhuyansen/new-term-radar#2026-10-22</guid>
+      <pubDate>Thu, 22 Oct 2026 05:20:25 GMT</pubDate>
+    </item>
+    <item>
+      <title>[JavaScript] addyosmani/agent-skills</title>
+      <link>https://github.com/addyosmani/agent-skills</link>
+      <description>Production-grade engineering skills for AI coding agents. | 总星 109381 | 无今日增量数据</description>
+      <guid isPermaLink="false">addyosmani/agent-skills#2026-10-22</guid>
+      <pubDate>Thu, 22 Oct 2026 05:20:25 GMT</pubDate>
     </item>
     <item>
       <title>[Rust] xerj-org/xerj</title>
       <link>https://github.com/xerj-org/xerj</link>
-      <description>XERJ is the new way for AI to search data. Its autoindex capability activates agents to know your data without the token waste of grep and sed. One command indexes code, docs, logs and PDFs for search, RAG, security audits and agent memory, using 40x fewer tokens than grep. Elasticsearch compatible, so existing clients just work. | 总星 8615 | +1648 stars today</description>
-      <guid isPermaLink="false">xerj-org/xerj#2026-10-19</guid>
-      <pubDate>Mon, 19 Oct 2026 05:16:03 GMT</pubDate>
+      <description>Local-first search engine and MCP server for AI agents. One Rust binary indexes code, docs, logs, JSONL/CSV and PDFs for BM25 full-text, vector and hybrid search, code search without grep, agent memory and RAG. Elasticsearch-compatible API; Corpus Hub serves hundreds of reference memory corpora. | 总星 12861 | +2660 stars today</description>
+      <guid isPermaLink="false">xerj-org/xerj#2026-10-22</guid>
+      <pubDate>Thu, 22 Oct 2026 05:20:25 GMT</pubDate>
     </item>
     <item>
-      <title>[JavaScript] michael-denyer/pstack-claude</title>
-      <link>https://github.com/michael-denyer/pstack-claude</link>
-      <description>Claude Code, Codex, Copilot, Pi, OpenCode, Gemini, and Prime Agent versions of Poteto&#x27;s pstack. Rigorous agent workflows with Cursor primitives translated for other harnesses. | 总星 2817 | +420 stars today</description>
-      <guid isPermaLink="false">michael-denyer/pstack-claude#2026-10-19</guid>
-      <pubDate>Mon, 19 Oct 2026 05:16:03 GMT</pubDate>
+      <title>[JavaScript] cloudflare/security-audit-skill</title>
+      <link>https://github.com/cloudflare/security-audit-skill</link>
+      <description>A coding-agent skill for multi-phase security audits with independently verified, machine-readable findings | 总星 37112 | +2012 stars today</description>
+      <guid isPermaLink="false">cloudflare/security-audit-skill#2026-10-22</guid>
+      <pubDate>Thu, 22 Oct 2026 05:20:25 GMT</pubDate>
     </item>
     <item>
-      <title>[Python] anthropics/claude-plugins-official</title>
-      <link>https://github.com/anthropics/claude-plugins-official</link>
-      <description>Official, Anthropic-managed directory of high quality Claude Code Plugins. | 总星 42841 | +1552 stars today</description>
-      <guid isPermaLink="false">anthropics/claude-plugins-official#2026-10-19</guid>
-      <pubDate>Mon, 19 Oct 2026 05:16:03 GMT</pubDate>
+      <title>[Go] Asymptote-Labs/agent-beacon</title>
+      <link>https://github.com/Asymptote-Labs/agent-beacon</link>
+      <description>The cross-harness, self-improving memory layer for AI agents. Join our community: https://discord.com/invite/zdNChS2fBu | 总星 2486 | +443 stars today</description>
+      <guid isPermaLink="false">Asymptote-Labs/agent-beacon#2026-10-22</guid>
+      <pubDate>Thu, 22 Oct 2026 05:20:25 GMT</pubDate>
     </item>
     <item>
-      <title>[Python] vllm-project/vllm</title>
-      <link>https://github.com/vllm-project/vllm</link>
-      <description>A high-throughput and memory-efficient inference and serving engine for LLMs | 总星 94094 | 无今日增量数据</description>
-      <guid isPermaLink="false">vllm-project/vllm#2026-10-19</guid>
-      <pubDate>Mon, 19 Oct 2026 05:16:03 GMT</pubDate>
+      <title>[Rust] akitaonrails/ai-memory</title>
+      <link>https://github.com/akitaonrails/ai-memory</link>
+      <description>Solution for long term memory for agent coding CLIs and to facilitate handoff between different agent vendors | 总星 12473 | +810 stars today</description>
+      <guid isPermaLink="false">akitaonrails/ai-memory#2026-10-22</guid>
+      <pubDate>Thu, 22 Oct 2026 05:20:25 GMT</pubDate>
     </item>
     <item>
       <title>[C++] mw00/project-maya</title>
       <link>https://github.com/mw00/project-maya</link>
-      <description>Project Maya - run GLM-5.3-Flash (321B MoE) privately on your own GPU(s), from one card to 16, NVIDIA or AMD, Linux or Windows. Engine, server, dashboard, OpenAI- and Anthropic-compatible API, quant tools. | 总星 1042 | 无今日增量数据</description>
-      <guid isPermaLink="false">mw00/project-maya#2026-10-19</guid>
-      <pubDate>Mon, 19 Oct 2026 05:16:03 GMT</pubDate>
+      <description>Project Maya - run GLM-5.3-Flash (321B MoE) and DeepSeek-V4.1-Flash-1017 (748B MoE) privately on your own GPU(s), from one card to 16, NVIDIA or AMD, Linux or Windows. Engine, server, dashboard, OpenAI- and Anthropic-compatible API, quant tools. | 总星 1420 | 无今日增量数据</description>
+      <guid isPermaLink="false">mw00/project-maya#2026-10-22</guid>
+      <pubDate>Thu, 22 Oct 2026 05:20:25 GMT</pubDate>
     </item>
     <item>
       <title>[Python] sgl-project/sglang</title>
       <link>https://github.com/sgl-project/sglang</link>
-      <description>SGLang is a high-performance serving framework for large language models and multimodal models. | 总星 37293 | 无今日增量数据</description>
-      <guid isPermaLink="false">sgl-project/sglang#2026-10-19</guid>
-      <pubDate>Mon, 19 Oct 2026 05:16:03 GMT</pubDate>
+      <description>SGLang is a high-performance serving framework for large language models and multimodal models. | 总星 37585 | 无今日增量数据</description>
+      <guid isPermaLink="false">sgl-project/sglang#2026-10-22</guid>
+      <pubDate>Thu, 22 Oct 2026 05:20:25 GMT</pubDate>
     </item>
     <item>
       <title>[Python] kvcache-ai/ktransformers</title>
       <link>https://github.com/kvcache-ai/ktransformers</link>
-      <description>A Flexible Framework for Experiencing Heterogeneous LLM Inference/Fine-tune Optimizations | 总星 19617 | 无今日增量数据</description>
-      <guid isPermaLink="false">kvcache-ai/ktransformers#2026-10-19</guid>
-      <pubDate>Mon, 19 Oct 2026 05:16:03 GMT</pubDate>
+      <description>A Flexible Framework for Experiencing Heterogeneous LLM Inference/Fine-tune Optimizations | 总星 19622 | 无今日增量数据</description>
+      <guid isPermaLink="false">kvcache-ai/ktransformers#2026-10-22</guid>
+      <pubDate>Thu, 22 Oct 2026 05:20:25 GMT</pubDate>
     </item>
     <item>
-      <title>[TypeScript] thedotmack/claude-mem</title>
-      <link>https://github.com/thedotmack/claude-mem</link>
-      <description>Persistent Context Across Sessions for Every Agent –  Captures everything your agent does during sessions, compresses it with AI, and injects relevant context back into future sessions. Works with Claude Code, OpenClaw, Codex, Gemini, Hermes, Copilot, OpenCode + More | 总星 101659 | 无今日增量数据</description>
-      <guid isPermaLink="false">thedotmack/claude-mem#2026-10-19</guid>
-      <pubDate>Mon, 19 Oct 2026 05:16:03 GMT</pubDate>
+      <title>[Jupyter Notebook] lyogavin/airllm</title>
+      <link>https://github.com/lyogavin/airllm</link>
+      <description>AirLLM 2.8T LLM inference with single 4GB GPU | 总星 40187 | 无今日增量数据</description>
+      <guid isPermaLink="false">lyogavin/airllm#2026-10-22</guid>
+      <pubDate>Thu, 22 Oct 2026 05:20:25 GMT</pubDate>
+    </item>
+    <item>
+      <title>[Python] langgenius/dify</title>
+      <link>https://github.com/langgenius/dify</link>
+      <description>Build Agentic workflows, RAG pipelines, with rich AI model and tool support on one collaborative workspace. Deploy on cloud, VPC, or self-hosted, so teams move from prototype to production without rebuilding the stack. | 总星 159183 | 无今日增量数据</description>
+      <guid isPermaLink="false">langgenius/dify#2026-10-22</guid>
+      <pubDate>Thu, 22 Oct 2026 05:20:25 GMT</pubDate>
+    </item>
+    <item>
+      <title>[JavaScript] Leonxlnx/taste-skill</title>
+      <link>https://github.com/Leonxlnx/taste-skill</link>
+      <description>Agent skills that give coding agents taste: art direction, reference images and a browser check instead of generic AI pages | 总星 100685 | 无今日增量数据</description>
+      <guid isPermaLink="false">Leonxlnx/taste-skill#2026-10-22</guid>
+      <pubDate>Thu, 22 Oct 2026 05:20:25 GMT</pubDate>
+    </item>
+    <item>
+      <title>[JavaScript] DietrichGebert/ponytail</title>
+      <link>https://github.com/DietrichGebert/ponytail</link>
+      <description>Makes your AI agent think like the laziest senior dev in the room. The best code is the code you never wrote. | 总星 172009 | +2079 stars today</description>
+      <guid isPermaLink="false">DietrichGebert/ponytail#2026-10-22</guid>
+      <pubDate>Thu, 22 Oct 2026 05:20:25 GMT</pubDate>
     </item>
     <item>
       <title>[HTML] shanraisshan/claude-code-best-practice</title>
       <link>https://github.com/shanraisshan/claude-code-best-practice</link>
-      <description>from vibe coding to agentic engineering - practice makes claude perfect | 总星 67718 | 无今日增量数据</description>
-      <guid isPermaLink="false">shanraisshan/claude-code-best-practice#2026-10-19</guid>
-      <pubDate>Mon, 19 Oct 2026 05:16:03 GMT</pubDate>
-    </item>
-    <item>
-      <title>[Python] lightseekorg/tokenspeed</title>
-      <link>https://github.com/lightseekorg/tokenspeed</link>
-      <description>TokenSpeed is a speed-of-light LLM inference engine. | 总星 2695 | +308 stars today</description>
-      <guid isPermaLink="false">lightseekorg/tokenspeed#2026-10-19</guid>
-      <pubDate>Mon, 19 Oct 2026 05:16:03 GMT</pubDate>
-    </item>
-    <item>
-      <title>[TypeScript] CherryHQ/cherry-studio</title>
-      <link>https://github.com/CherryHQ/cherry-studio</link>
-      <description>AI productivity studio with smart chat, autonomous agents, and 300+ assistants. Unified access to frontier LLMs | 总星 52736 | 无今日增量数据</description>
-      <guid isPermaLink="false">CherryHQ/cherry-studio#2026-10-19</guid>
-      <pubDate>Mon, 19 Oct 2026 05:16:03 GMT</pubDate>
+      <description>from vibe coding to agentic engineering - practice makes claude perfect | 总星 67888 | 无今日增量数据</description>
+      <guid isPermaLink="false">shanraisshan/claude-code-best-practice#2026-10-22</guid>
+      <pubDate>Thu, 22 Oct 2026 05:20:25 GMT</pubDate>
     </item>
   </channel>
 </rss>
