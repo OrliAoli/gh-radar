@@ -9,7 +9,7 @@
 
 # vibe-coding-cn：非严肃开发的 Vibe Coding 工具箱
 
-**以 Pi Agent 与 OpenAI GPT 为实现基座，整合并编排可见层中既有的 Context、Skills 与 Extensions 组件，构建高可用系统。**
+**以 Pi Agent 为执行宿主、以 OpenAI GPT 为模型选项，提供按任务取用的知识、指令和工具，并用实际证据验收工作结果。**
 
 <!--
   徽章区域 (BADGES)
@@ -19,8 +19,8 @@
   <a href="LICENSE"><img src="https://img.shields.io/github/license/tukuaiai/vibe-coding-cn?label=%E8%AE%B8%E5%8F%AF%E8%AF%81&style=flat" alt="许可证"></a>
   <a href="https://t.me/glue_coding"><img src="https://img.shields.io/badge/交流-Telegram-blue?style=flat&logo=telegram" alt="交流群"></a>
   <a href=".github/context/gongfa/README.md#原文文集"><img src="https://img.shields.io/badge/功法-体系-slateblue?style=flat" alt="功法体系：思想、准则、方法与流程"></a>
-  <a href=".github/learning-map.md"><img src="https://img.shields.io/badge/入门-教程-red?style=flat" alt="召唤神降临：Pi CLI 安装配置提示词，供网页版 AI 单步引导"></a>
-  <a href=".github/skills/README.md#当前保留"><img src="https://img.shields.io/badge/Skills-技能-forestgreen?style=flat" alt="skills技能大全"></a>
+  <a href=".github/pi-cli-setup.md"><img src="https://img.shields.io/badge/入门-教程-red?style=flat" alt="Pi CLI 安装与配置指南，供网页版 AI 分步引导"></a>
+  <a href=".github/skills/README.md#当前保留"><img src="https://img.shields.io/badge/Skill-指令-forestgreen?style=flat" alt="当前保留的 Skill：制作与维护技能指南"></a>
   <a href=".github/prompts-README.md#在线提示词库"><img src="https://img.shields.io/badge/提示词-表格-blue?style=flat" alt="提示词在线表格"></a>
   <a href="https://github.com/tukuaiai/vibe-coding-cn/wiki"><img src="https://img.shields.io/badge/Wiki-导航-slateblue?style=flat" alt="Wiki 导航入口"></a>
   <a href=".github/context/gongfa/README.md#全部记录"><img src="https://img.shields.io/badge/功法-总表-purple?style=flat" alt="功法总表"></a>
@@ -42,14 +42,14 @@
 
 ## 📌 字多不看
 
-`vibe-coding-cn` 是以 Pi Agent 与已授权 OpenAI GPT 为基础的中文 Vibe Coding 工具箱；[Context](.github/context/README.md)、[Skills](.github/skills/README.md) 和 [Extensions](.github/extensions/README.md) 按任务取用。
+以 Pi Agent 为执行宿主、以 OpenAI GPT 为模型选项，提供按任务取用的知识、指令和工具，并用实际证据验收工作结果。
 
 <a id="getting-started"></a>
 
 ### 🚀 从零开始
 
-1. **安装并验证 Pi：** 将[召唤神降临：Pi CLI 安装配置提示词](.github/learning-map.md)全文复制给网页版 Chat AI，按步骤完成本机安装、模型配置和 Agent 能力验证。
-2. **第一次项目练习（可选）：** 跟着[第一个项目教程](.github/first-project.md)，完成一个本地待办清单。
+1. **从对话到工作：** 将[Pi CLI 安装与配置指南](.github/pi-cli-setup.md)全文复制给网页版 Chat AI；先确认系统/终端并复用已安装的 Pi，缺少 CLI 时再按所选安装路线核对网络、安装并验证，之后连接 OpenAI GPT，并通过本机 Pi 的真实工具调用验证基础执行通路；这不代表某项具体工作已完成。
+2. **如何完成工作：** 按需阅读[如何完成工作](.github/how-to-complete-work.md)，围绕自选目标编排必要方法并用证据验收；本指南独立可选，不预设具体任务或要求完成固定流程。
 
 </details>
 
@@ -84,7 +84,7 @@
 | 13 | 比较不同技术与方法。 | 应在同一问题和适用条件下比较具体条目；不同任务中的效果或品级不能直接互比。 |
 | 14 | 提炼共同规律。 | 当前可归纳的共同做法是先看问题，再选择方法；不把目录归类或已有初评当作统一效果证明。 |
 | 15 | 明确这些规律成立的前提与适用条件。 | 选择依赖具体任务和条目的适用条件、限制；文集归并不等于全部内容已经逐条登记，已有初评也不等于正式效果验证。 |
-| 16 | 结论 | 当前登记411项逐对象说明；每项结论仅在相应对象身份和第15项条件内成立，不合并为全集合的统一效果或正式评级主张。 |
+| 16 | 结论 | 当前登记413项逐对象说明；每项结论仅在相应对象身份和第15项条件内成立，不合并为全集合的统一效果或正式评级主张。 |
 | 17 | 连接规则 | 说明载荷按对象身份把第15项边界、第16项结论和第18项依据绑定在同一记录中；因此集合层只能汇总记录范围，不能跨条目拼接局部推理推出普遍效果。 |
 | 18 | 依据 | 逐项事实依据与边界由唯一[功法数据源](.github/context/gongfa/data.json)第18项维护，浏览见[生成总表](.github/context/gongfa/README.md#全部记录)；本集合摘要不复写或替代对象级依据。 |
 
