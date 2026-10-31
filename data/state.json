@@ -2,8 +2,8 @@
   "repos": {
     "ruvnet/ruflo": {
       "first_seen": "2026-09-17",
-      "periods_on_board": 10,
-      "last_published": "2026-10-28"
+      "periods_on_board": 11,
+      "last_published": "2026-10-31"
     },
     "nexu-io/open-design": {
       "first_seen": "2026-09-17",
@@ -12,13 +12,13 @@
     },
     "Graphify-Labs/graphify": {
       "first_seen": "2026-09-17",
-      "periods_on_board": 11,
-      "last_published": "2026-10-28"
+      "periods_on_board": 12,
+      "last_published": "2026-10-31"
     },
     "tt-a1i/archify": {
       "first_seen": "2026-09-17",
-      "periods_on_board": 9,
-      "last_published": "2026-10-19"
+      "periods_on_board": 10,
+      "last_published": "2026-10-31"
     },
     "tradecatlabs/vibe-coding-cn": {
       "first_seen": "2026-09-17",
@@ -32,8 +32,8 @@
     },
     "langgenius/dify": {
       "first_seen": "2026-09-17",
-      "periods_on_board": 14,
-      "last_published": "2026-10-28"
+      "periods_on_board": 15,
+      "last_published": "2026-10-31"
     },
     "shanraisshan/claude-code-best-practice": {
       "first_seen": "2026-09-17",
@@ -62,18 +62,18 @@
     },
     "sunface/rust-course": {
       "first_seen": "2026-09-17",
-      "periods_on_board": 3,
-      "last_published": "2026-09-22"
+      "periods_on_board": 4,
+      "last_published": "2026-10-31"
     },
     "vllm-project/vllm": {
       "first_seen": "2026-09-17",
-      "periods_on_board": 12,
-      "last_published": "2026-10-28"
+      "periods_on_board": 13,
+      "last_published": "2026-10-31"
     },
     "sgl-project/sglang": {
       "first_seen": "2026-09-17",
-      "periods_on_board": 12,
-      "last_published": "2026-10-28"
+      "periods_on_board": 13,
+      "last_published": "2026-10-31"
     },
     "kvcache-ai/ktransformers": {
       "first_seen": "2026-09-17",
@@ -112,8 +112,8 @@
     },
     "DietrichGebert/ponytail": {
       "first_seen": "2026-09-17",
-      "periods_on_board": 9,
-      "last_published": "2026-10-28"
+      "periods_on_board": 10,
+      "last_published": "2026-10-31"
     },
     "agent-substrate/substrate": {
       "first_seen": "2026-09-20",
@@ -172,8 +172,8 @@
     },
     "paperclipai/paperclip": {
       "first_seen": "2026-09-26",
-      "periods_on_board": 6,
-      "last_published": "2026-10-28"
+      "periods_on_board": 7,
+      "last_published": "2026-10-31"
     },
     "lyogavin/airllm": {
       "first_seen": "2026-09-17",
@@ -232,8 +232,8 @@
     },
     "morluto/rea": {
       "first_seen": "2026-10-07",
-      "periods_on_board": 8,
-      "last_published": "2026-10-28"
+      "periods_on_board": 9,
+      "last_published": "2026-10-31"
     },
     "Joooook/12306-mcp": {
       "first_seen": "2026-09-17",
@@ -292,8 +292,8 @@
     },
     "blader/humanizer": {
       "first_seen": "2026-10-16",
-      "periods_on_board": 5,
-      "last_published": "2026-10-28"
+      "periods_on_board": 6,
+      "last_published": "2026-10-31"
     },
     "Leonxlnx/taste-skill": {
       "first_seen": "2026-09-17",
@@ -327,8 +327,8 @@
     },
     "mw00/project-maya": {
       "first_seen": "2026-10-08",
-      "periods_on_board": 4,
-      "last_published": "2026-10-28"
+      "periods_on_board": 5,
+      "last_published": "2026-10-31"
     },
     "lightseekorg/tokenspeed": {
       "first_seen": "2026-10-16",
@@ -337,8 +337,8 @@
     },
     "zhuyansen/new-term-radar": {
       "first_seen": "2026-10-21",
-      "periods_on_board": 3,
-      "last_published": "2026-10-28"
+      "periods_on_board": 4,
+      "last_published": "2026-10-31"
     },
     "Asymptote-Labs/agent-beacon": {
       "first_seen": "2026-10-22",
@@ -367,23 +367,38 @@
     },
     "nightly-labs/openbot": {
       "first_seen": "2026-10-26",
-      "periods_on_board": 1,
-      "last_published": "2026-10-28"
+      "periods_on_board": 2,
+      "last_published": "2026-10-31"
     },
     "Nutlope/hallmark": {
       "first_seen": "2026-10-25",
-      "periods_on_board": 1,
-      "last_published": "2026-10-28"
+      "periods_on_board": 2,
+      "last_published": "2026-10-31"
     },
     "elayadesign/ai-design-skills": {
       "first_seen": "2026-10-28",
-      "periods_on_board": 1,
-      "last_published": "2026-10-28"
+      "periods_on_board": 2,
+      "last_published": "2026-10-31"
     },
     "morganlinton/BeautifulRust": {
       "first_seen": "2026-10-27",
+      "periods_on_board": 2,
+      "last_published": "2026-10-31"
+    },
+    "hanzohanzhe/Grandet": {
+      "first_seen": "2026-10-17",
       "periods_on_board": 1,
-      "last_published": "2026-10-28"
+      "last_published": "2026-10-31"
+    },
+    "Orkas-AI/Orkas": {
+      "first_seen": "2026-10-31",
+      "periods_on_board": 1,
+      "last_published": "2026-10-31"
+    },
+    "pbakaus/impeccable": {
+      "first_seen": "2026-09-24",
+      "periods_on_board": 1,
+      "last_published": "2026-10-31"
     }
   },
   "periods": [
@@ -401,6 +416,7 @@
     "2026-10-19",
     "2026-10-22",
     "2026-10-25",
-    "2026-10-28"
+    "2026-10-28",
+    "2026-10-31"
   ]
 }
