@@ -2,8 +2,8 @@
   "repos": {
     "ruvnet/ruflo": {
       "first_seen": "2026-09-17",
-      "periods_on_board": 12,
-      "last_published": "2026-11-01"
+      "periods_on_board": 13,
+      "last_published": "2026-11-04"
     },
     "nexu-io/open-design": {
       "first_seen": "2026-09-17",
@@ -12,13 +12,13 @@
     },
     "Graphify-Labs/graphify": {
       "first_seen": "2026-09-17",
-      "periods_on_board": 12,
-      "last_published": "2026-10-31"
+      "periods_on_board": 13,
+      "last_published": "2026-11-04"
     },
     "tt-a1i/archify": {
       "first_seen": "2026-09-17",
-      "periods_on_board": 11,
-      "last_published": "2026-11-01"
+      "periods_on_board": 12,
+      "last_published": "2026-11-04"
     },
     "tradecatlabs/vibe-coding-cn": {
       "first_seen": "2026-09-17",
@@ -32,8 +32,8 @@
     },
     "langgenius/dify": {
       "first_seen": "2026-09-17",
-      "periods_on_board": 16,
-      "last_published": "2026-11-01"
+      "periods_on_board": 17,
+      "last_published": "2026-11-04"
     },
     "shanraisshan/claude-code-best-practice": {
       "first_seen": "2026-09-17",
@@ -62,18 +62,18 @@
     },
     "sunface/rust-course": {
       "first_seen": "2026-09-17",
-      "periods_on_board": 5,
-      "last_published": "2026-11-01"
+      "periods_on_board": 6,
+      "last_published": "2026-11-04"
     },
     "vllm-project/vllm": {
       "first_seen": "2026-09-17",
-      "periods_on_board": 14,
-      "last_published": "2026-11-01"
+      "periods_on_board": 15,
+      "last_published": "2026-11-04"
     },
     "sgl-project/sglang": {
       "first_seen": "2026-09-17",
-      "periods_on_board": 14,
-      "last_published": "2026-11-01"
+      "periods_on_board": 15,
+      "last_published": "2026-11-04"
     },
     "kvcache-ai/ktransformers": {
       "first_seen": "2026-09-17",
@@ -112,8 +112,8 @@
     },
     "DietrichGebert/ponytail": {
       "first_seen": "2026-09-17",
-      "periods_on_board": 10,
-      "last_published": "2026-10-31"
+      "periods_on_board": 11,
+      "last_published": "2026-11-04"
     },
     "agent-substrate/substrate": {
       "first_seen": "2026-09-20",
@@ -202,13 +202,13 @@
     },
     "Egonex-AI/Understand-Anything": {
       "first_seen": "2026-09-17",
-      "periods_on_board": 3,
-      "last_published": "2026-10-13"
+      "periods_on_board": 4,
+      "last_published": "2026-11-04"
     },
     "ifixai-ai/iFixAi": {
       "first_seen": "2026-10-01",
-      "periods_on_board": 2,
-      "last_published": "2026-10-16"
+      "periods_on_board": 3,
+      "last_published": "2026-11-04"
     },
     "Panniantong/Agent-Reach": {
       "first_seen": "2026-09-17",
@@ -232,8 +232,8 @@
     },
     "morluto/rea": {
       "first_seen": "2026-10-07",
-      "periods_on_board": 10,
-      "last_published": "2026-11-01"
+      "periods_on_board": 11,
+      "last_published": "2026-11-04"
     },
     "Joooook/12306-mcp": {
       "first_seen": "2026-09-17",
@@ -327,8 +327,8 @@
     },
     "mw00/project-maya": {
       "first_seen": "2026-10-08",
-      "periods_on_board": 6,
-      "last_published": "2026-11-01"
+      "periods_on_board": 7,
+      "last_published": "2026-11-04"
     },
     "lightseekorg/tokenspeed": {
       "first_seen": "2026-10-16",
@@ -337,8 +337,8 @@
     },
     "zhuyansen/new-term-radar": {
       "first_seen": "2026-10-21",
-      "periods_on_board": 5,
-      "last_published": "2026-11-01"
+      "periods_on_board": 6,
+      "last_published": "2026-11-04"
     },
     "Asymptote-Labs/agent-beacon": {
       "first_seen": "2026-10-22",
@@ -382,18 +382,18 @@
     },
     "morganlinton/BeautifulRust": {
       "first_seen": "2026-10-27",
-      "periods_on_board": 3,
-      "last_published": "2026-11-01"
+      "periods_on_board": 4,
+      "last_published": "2026-11-04"
     },
     "hanzohanzhe/Grandet": {
       "first_seen": "2026-10-17",
-      "periods_on_board": 2,
-      "last_published": "2026-11-01"
+      "periods_on_board": 3,
+      "last_published": "2026-11-04"
     },
     "Orkas-AI/Orkas": {
       "first_seen": "2026-10-31",
-      "periods_on_board": 2,
-      "last_published": "2026-11-01"
+      "periods_on_board": 3,
+      "last_published": "2026-11-04"
     },
     "pbakaus/impeccable": {
       "first_seen": "2026-09-24",
@@ -409,6 +409,26 @@
       "first_seen": "2026-10-30",
       "periods_on_board": 1,
       "last_published": "2026-11-01"
+    },
+    "vercel-labs/agent-desktop": {
+      "first_seen": "2026-11-03",
+      "periods_on_board": 1,
+      "last_published": "2026-11-04"
+    },
+    "Donchitos/Claude-Code-Game-Studios": {
+      "first_seen": "2026-10-30",
+      "periods_on_board": 1,
+      "last_published": "2026-11-04"
+    },
+    "DenisSergeevitch/ex-ussr-kinship-research": {
+      "first_seen": "2026-10-26",
+      "periods_on_board": 1,
+      "last_published": "2026-11-04"
+    },
+    "leepokai/Codync": {
+      "first_seen": "2026-10-20",
+      "periods_on_board": 1,
+      "last_published": "2026-11-04"
     }
   },
   "periods": [
@@ -428,6 +448,7 @@
     "2026-10-25",
     "2026-10-28",
     "2026-10-31",
-    "2026-11-01"
+    "2026-11-01",
+    "2026-11-04"
   ]
 }
