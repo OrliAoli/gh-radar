@@ -9,15 +9,18 @@ Reverse-engineer any video.
 
 Shot by shot: was it filmed, AI-generated or coded, and how to remake it.
 
-[Website](https://www.reavideo.ai) | [中文](i18n/README_zh.md) | English | [Русский](i18n/README_ru.md) | [日本語](i18n/README_ja.md) | [한국어](i18n/README_ko.md) | [Español](i18n/README_es.md) | [Português](i18n/README_pt.md) | [Français](i18n/README_fr.md) | [Deutsch](i18n/README_de.md)
+Every breakdown is written in **[VIDEO.md](https://videomd.github.io/videomd/)**, an open format that agents read layer by layer.
+
+[Website](https://www.reavideo.ai) | [中文](i18n/README_zh.md) | English | [Русский](i18n/README_ru.md) | [日本語](i18n/README_ja.md) | [한국어](i18n/README_ko.md) | [Español](i18n/README_es.md) | [Português](i18n/README_pt.md) | [Français](i18n/README_fr.md) | [Deutsch](i18n/README_de.md) | [Tiếng Việt](i18n/README_vi.md)
 
 [![Stars](https://img.shields.io/github/stars/JuneYaooo/rea-video?style=flat)](https://github.com/JuneYaooo/rea-video/stargazers)
 ![Python](https://img.shields.io/badge/python-%E2%89%A53.10-blue)
 ![Agent](https://img.shields.io/badge/runs%20in-Claude%20Code%20%7C%20Codex-8A2BE2)
+[![Output: VIDEO.md](https://img.shields.io/badge/output-VIDEO.md-3d4fd6)](https://videomd.github.io/videomd/)
 
 <a href="https://trendshift.io/repositories/334878" target="_blank"><img src="https://trendshift.io/api/badge/trendshift/repositories/334878/daily" alt="JuneYaooo/rea-video | Trendshift" width="250" height="55"></a>
 
-[![Visit our website](https://img.shields.io/badge/Visit%20our%20website-6644D8?style=for-the-badge)](https://www.reavideo.ai) [![Join our Discord](https://img.shields.io/badge/Join%20our%20Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/dZj8D3GqWT) [![Follow on X](https://img.shields.io/badge/Follow%20%40yao__june12106-000000?style=for-the-badge&logo=x&logoColor=white)](https://x.com/yao_june12106)
+[![Visit our website](https://img.shields.io/badge/Visit%20our%20website-6644D8?style=for-the-badge)](https://www.reavideo.ai) [![Join our Discord](https://img.shields.io/badge/Join%20our%20Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/dZj8D3GqWT) [![WeChat group](https://img.shields.io/badge/WeChat%20group-07C160?style=for-the-badge&logo=wechat&logoColor=white)](i18n/README_zh.md#社区) [![Follow on X](https://img.shields.io/badge/Follow%20%40yao__june12106-000000?style=for-the-badge&logo=x&logoColor=white)](https://x.com/yao_june12106)
 
 ⭐ *Help more people find rea-video. Star this repo!*
 
@@ -37,22 +40,10 @@ Install https://github.com/JuneYaooo/rea-video, then break down this video: /pat
 
 The agent installs the CLI, learns the workflow and runs the whole thing. You need ffmpeg and Python 3.10+.
 
-<details><summary>Install by hand</summary>
+Breakdowns are fully upgraded. Each one gives you two outputs:
 
-```bash
-brew install ffmpeg            # or: sudo apt install ffmpeg
-git clone https://github.com/JuneYaooo/rea-video && cd rea-video
-bash scripts/install_skill.sh  # installs the CLI (pip, or pipx / a local .venv if pip is blocked) and links the skill into ~/.claude, ~/.codex, ~/.agents
-rea-video --help
-```
-
-</details>
-
-You get:
-
-- a one-line summary, e.g. "41% AI video + 59% code UI, 8 s of real screen recording, library music at 122 BPM"
-- a remake plan, split into what to film, what to generate and what to code
-- a full `report.html` with per-shot frames, evidence, prompts, camera and lighting notes, and the audio breakdown
+- **Report** (`report.html` / PDF), for you: more reader-friendly, with a clearer structure, easier to learn from and to understand how the video was made and how to remake it.
+- **[VIDEO.md](https://videomd.github.io/videomd/)**, for your AI: layered, so the AI reads only what a question needs and uses fewer tokens.
 
 You can also hook up a video-capable model (Gemini or Doubao both work) by giving the agent its endpoint and key. That makes the live/AI/3D calls more accurate and adds a reverse-engineered prompt for every shot. It works fine without one; if your agent can see images, it checks the uncertain shots itself.
 
@@ -118,12 +109,6 @@ Correctly flags the song as AI-generated (it was made with Suno). The vision mod
 All real footage: an overhead phone rig, one rug, one camera position, no voice-over, room sound plus library BGM. After platform transcoding, the offline tools called 35% of it AI; after agent review it came out 97% live-action.<br>
 <a href="docs/cases/videos/unboxing.mp4">Video</a> · <a href="docs/cases/unboxing/report_en.md">Report</a>
 </td>
-<td width="50%" valign="top">
-<a href="docs/cases.md#7-ai-与真人混合用自己的出镜视频生成带货片"><img src="docs/cases/ai_daihuo/thumb.jpg"></a><br>
-<b>AI + real person hybrid</b> · 58 s · 21 shots<br>
-75% real (talking head + filming a phone screen) and 25% AI: the creator fed her own on-camera clip and two product photos to Jimeng to generate a "real-person" product segment. The AI part gave itself away with the Jimeng watermark and garbled text on the gift box.<br>
-<a href="docs/cases/videos/ai_daihuo.mp4">Video</a> · <a href="docs/cases/ai_daihuo/report_en.md">Report</a>
-</td>
 </tr>
 </table>
 
@@ -157,6 +142,23 @@ Same swap: an original new product, English sticker → Chinese caption. Element
 
 The HD comparison videos use the original audio. The originals and OiiOii versions come from the articles and are shown for comparison only.
 
+You can also do the remake in [ChatCut](https://chatcut.io/r/github-e4rd), a hosted AI video editor: there is no model to set up, and the generated shots land on a timeline you can keep editing. <sub>Sponsor</sub>
+
+## Sponsors
+
+rea-video is free and open source. Sponsors help keep it maintained.
+
+<table><tr>
+<td align="center" width="200"><a href="https://chatcut.io/r/github-e4rd"><picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/brand/chatcut-logo-light.svg">
+  <img src="docs/brand/chatcut-logo-dark.svg" height="32" alt="ChatCut">
+</picture></a></td>
+<td><b><a href="https://chatcut.io/r/github-e4rd">ChatCut</a></b> is an AI video editor for Claude Code and Codex that generates the shots, cuts them on a timeline and exports the finished video.<br>
+<a href="https://chatcut.io/r/github-e4rd">Try ChatCut for free</a></td>
+</tr></table>
+
+<sub>Sponsored · <a href="https://reavideo.ai/en/contact/">Become a sponsor</a></sub>
+
 ## Accuracy
 
 Accuracy of the how-it-was-made call, weighted by shot duration:
@@ -171,7 +173,7 @@ The Holdout column shows two numbers: holdout (9 videos) and holdout2 (7 videos)
 
 On original files, the tools alone are usually enough. Videos downloaded from platforms have been recompressed, which wipes out the noise evidence, so you need a visual check to get back above 99%.
 
-Real-asset detection is 97–99%, and shot boundaries are all correct. Numbers and how to reproduce them: [eval/RESULTS.md](eval/RESULTS.md).
+Real-asset detection is 97–99%; on nine hand-labelled clips, shot boundaries reach 95% recall and 94% precision. Numbers and how to reproduce them: [eval/RESULTS.md](eval/RESULTS.md).
 
 ## How it works
 
@@ -214,6 +216,15 @@ Partly. With [capsule-cinema](https://github.com/JuneYaooo/capsule-cinema) insta
 </details>
 
 <details>
+<summary>What is VIDEO.md, and why does rea-video write one?</summary>
+
+Every skill has a `SKILL.md`; every video gets a `VIDEO.md`. It is an open format for video breakdowns, made so that models read only what a question needs. A full breakdown runs to hundreds of thousands of tokens; VIDEO.md lays it out in levels: a card of a few hundred tokens, an overview and map, a timeline with one line per shot, then one file per shot. Every file states its size, and what is seen on screen is kept apart from what the tools infer.
+
+rea-video writes one into every output folder (`out/ref/VIDEO.md`), and its agent skill reads it instead of the raw data. Other agents and tools can read it without knowing rea-video: `pip install videomd`, then `videomd check out/ref`. The spec and guides are at [videomd.github.io/videomd](https://videomd.github.io/videomd/).
+
+</details>
+
+<details>
 <summary>Can I just repost someone else's video?</summary>
 
 No. rea-video is for learning a video's structure, pacing and techniques, then remaking it with material you have the rights to. Don't reuse other people's footage, music, characters or likeness. Follow platform rules and local AI-content labeling requirements when you publish.
@@ -227,6 +238,7 @@ No. rea-video is for learning a video's structure, pacing and techniques, then r
 - [docs/cases.md](docs/cases.md): details on each example
 - [docs/decompose.md](docs/decompose.md): detection rules
 - [docs/cli.md](docs/cli.md): CLI usage and capsule-cinema integration
+- [docs/videomd.md](docs/videomd.md): VIDEO.md, the standard breakdown package that agents and downstream tools read (open format: [videomd/videomd](https://github.com/videomd/videomd))
 - [rea_video/capabilities/](rea_video/capabilities/README.md): capability tables for video / image / audio models, used to pick models for the remake plan
 - [eval/RESULTS.md](eval/RESULTS.md): eval results
 
@@ -241,3 +253,5 @@ Want a video broken down? Open a [request issue](https://github.com/JuneYaooo/re
 ## Credits
 
 Inspired by [REA (Reverse Engineer Anything)](https://github.com/morluto/rea): work back from what you see to how it was made, back every claim with evidence, and verify by measuring.
+
+Sound separation uses [UVR MDX-Net](https://github.com/TRvlvr/model_repo) for voice and music, and [BandIt v2](https://github.com/kwatcharasupat/bandit-v2) (Watcharasupat, Wu and Orife; weights CC BY-SA 4.0) for sound effects. Both models are downloaded on first use and are not part of this repo.

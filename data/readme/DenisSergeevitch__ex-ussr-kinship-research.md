@@ -123,7 +123,7 @@ assets/                          case intake, CSV registers, final report templa
                                  photos README template, research-state template, HTML report template (report.template.html)
 scripts/                         init_case.py, hash_artifact.py, audit_evidence.py, build_pdf.py
                                  familysearch.py, gwar.py, register_search.py, scan_montage.py (needs Pillow)
-                                 and shared local analysis modules
+                                 check_gedcom.py (optional GEDCOM lint), and shared local analysis modules
 evals/discovery-and-logic.yaml   trigger and reasoning test cases
 tests/                           unit tests (python3 -m unittest discover -s tests)
 ```
@@ -149,3 +149,5 @@ Source-search helpers use Python's standard library and the existing case regist
 ---
 
 Maintained by Denis Shiryaev ([@DenisSergeevitch](https://github.com/DenisSergeevitch)).
+
+Special thanks to [Viktor](https://tiulp.in/) for the conversations about using Claude for family-history research that helped inspire this skill.
