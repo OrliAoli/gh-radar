@@ -42,6 +42,20 @@ Install https://github.com/JuneYaooo/rea-video, then break down this video: /pat
 
 The agent installs the CLI, learns the workflow and runs the whole thing. You need ffmpeg and Python 3.10+.
 
+You can also install rea-video as an agent plugin, which adds its skill to your agent:
+
+```bash
+# Codex
+codex plugin marketplace add JuneYaooo/rea-video
+codex plugin add rea-video@rea-video
+
+# Claude Code
+claude plugin marketplace add JuneYaooo/rea-video
+claude plugin install rea-video@rea-video
+```
+
+`.agents/plugins/marketplace.json` is the agent-agnostic marketplace entry. The agent still installs the CLI the first time it runs a breakdown.
+
 Breakdowns are fully upgraded. Each one gives you two outputs:
 
 - **Report** (`report.html` / PDF), for you: more reader-friendly, with a clearer structure, easier to learn from and to understand how the video was made and how to remake it.
@@ -50,6 +64,14 @@ Breakdowns are fully upgraded. Each one gives you two outputs:
 You can also hook up a video-capable model (Gemini or Doubao both work) by giving the agent its endpoint and key. That makes the live/AI/3D calls more accurate and adds a reverse-engineered prompt for every shot. It works fine without one; if your agent can see images, it checks the uncertain shots itself.
 
 > Reports are written in whichever language you ask in (Chinese or English). The example reports below are in English.
+
+## Updates
+
+- **2026-11-21**: Clearer report layout. Remake plans default to the official MiniMax H3 and follow the model you name.
+- **2026-11-19**: Magic videos: finds the reveal of each trick, frame by frame with a slow-motion clip. Highlights (twists, climaxes, goofs) when you ask for them.
+- **2026-11-17**: Better timing of cuts and moves.
+- **2026-11-15**: Remake plans are made for the model you choose. The report is split into a breakdown part and a remake part.
+- **2026-11-11**: VIDEO.md breakdown package, rewritten report, sound effects separated on their own track.
 
 ## What it can break down
 
@@ -70,6 +92,8 @@ Besides how the visuals were made, every breakdown also covers:
 - Editing: where the cuts are, how fast, whether they hit the beat
 - Audio: human or AI voice, AI or library music and its BPM, where each sound effect lands
 - Material you'll need to supply yourself: screen recordings, screenshots, product photos
+
+For magic videos it also finds the reveal of each trick: when and how the object changes, laid out frame by frame and zoomed in, plus a slow-motion clip. Ask for highlights and it pulls out twists, climaxes and goofs too.
 
 ## Examples
 
@@ -118,6 +142,7 @@ All real footage: an overhead phone rig, one rug, one camera position, no voice-
 
 After rea-video breaks a video down, the remake recipe in [capsule-cinema](https://github.com/JuneYaooo/capsule-cinema) generates a new version that keeps the original's camera, motion, pacing and transitions and swaps only the elements you pick.
 These were made with a self-hosted MiniMax H3, using the original shot as the motion reference and keyframes with the swapped elements (gpt-image-2) for the look.
+Remake plans use the official MiniMax H3 specs by default. Name another model, or set the one you usually use, and the plan follows that model instead.
 Below are three remakes OiiOii showed in its WeChat articles. We made two versions of each: one with the same swap as OiiOii, and one that also swaps the subject, setting and props.
 Each GIF plays four versions in sync: the original, OiiOii's remake, our remake and the element-swap version.
 
@@ -242,16 +267,17 @@ No. rea-video is for learning a video's structure, pacing and techniques, then r
 
 ## Docs
 
-- [docs/what-it-detects.md](docs/what-it-detects.md): everything it detects (10 visual types, camera, lighting, grade, audio)
-- [docs/replicate.md](docs/replicate.md): how to remake from the report
-- [docs/cases.md](docs/cases.md): details on each example
-- [docs/decompose.md](docs/decompose.md): detection rules
-- [docs/cli.md](docs/cli.md): CLI usage and capsule-cinema integration
-- [docs/videomd.md](docs/videomd.md): VIDEO.md, the standard breakdown package that agents and downstream tools read (open format: [videomd/videomd](https://github.com/videomd/videomd))
+- [docs/en/workflow.md](docs/en/workflow.md): the full path in English, from install to remake plan
+- [docs/en/what-it-detects.md](docs/en/what-it-detects.md): everything it detects (10 visual types, camera, lighting, grade, audio)
+- [docs/en/replicate.md](docs/en/replicate.md): how to remake from the report
+- [docs/en/cases.md](docs/en/cases.md): details on each example
+- [docs/en/decompose.md](docs/en/decompose.md): detection rules
+- [docs/en/cli.md](docs/en/cli.md): CLI usage and capsule-cinema integration
+- [docs/en/videomd.md](docs/en/videomd.md): VIDEO.md, the standard breakdown package that agents and downstream tools read (open format: [videomd/videomd](https://github.com/videomd/videomd))
 - [rea_video/capabilities/](rea_video/capabilities/README.md): capability tables for video / image / audio models, used to pick models for the remake plan
 - [eval/RESULTS.md](eval/RESULTS.md): eval results
 
-The docs are in Chinese for now.
+Run `rea-video prefs lang en` for English reports, CLI help and messages. The capability tables, eval results and agent skill are in Chinese.
 
 ## Community
 

@@ -4,45 +4,42 @@
 
 <h1 align="center">rust-anything</h1>
 
-<p align="center">by <a href="https://github.com/erkamyaman">erKam Yaman</a></p>
+<p align="center"><sub>English · <a href="docs/README_TR.md">Türkçe</a> · <a href="docs/README_UK.md">Українська</a> · <a href="docs/README_ZH.md">简体中文</a> · <a href="docs/README_ZH-TW.md">繁體中文</a> · <a href="docs/README_DE.md">Deutsch</a> · <a href="docs/README_FR.md">Français</a> · <a href="docs/README_RU.md">Русский</a> · <a href="docs/README_JA.md">日本語</a> · <a href="docs/README_KO.md">한국어</a> · <a href="docs/README_AZ.md">Azərbaycanca</a> · <a href="docs/README_UZ.md">Oʻzbekcha</a> · <a href="docs/README_KK.md">Қазақша</a> · <a href="docs/README_KY.md">Кыргызча</a> · <a href="docs/README_TK.md">Türkmençe</a> · <a href="docs/README_TT.md">Татарча</a> · <a href="docs/README_UG.md">ئۇيغۇرچە</a> · <a href="docs/README_PT.md">Português</a> · <a href="docs/README_VI.md">Tiếng Việt</a> · <a href="docs/README_ES.md">Español</a> · <a href="docs/README_IT.md">Italiano</a></sub></p>
 
-<p align="center">English · <a href="docs/README_TR.md">Türkçe</a> · <a href="docs/README_UK.md">Українська</a> · <a href="docs/README_ZH.md">简体中文</a> · <a href="docs/README_ZH-TW.md">繁體中文</a> · <a href="docs/README_DE.md">Deutsch</a> · <a href="docs/README_FR.md">Français</a> · <a href="docs/README_RU.md">Русский</a> · <a href="docs/README_JA.md">日本語</a> · <a href="docs/README_KO.md">한국어</a> · <a href="docs/README_AZ.md">Azərbaycanca</a> · <a href="docs/README_UZ.md">Oʻzbekcha</a> · <a href="docs/README_KK.md">Қазақша</a> · <a href="docs/README_KY.md">Кыргызча</a> · <a href="docs/README_TK.md">Türkmençe</a> · <a href="docs/README_TT.md">Татарча</a> · <a href="docs/README_UG.md">ئۇيغۇرچە</a> · <a href="docs/README_PT.md">Português</a> · <a href="docs/README_VI.md">Tiếng Việt</a></p>
-
-<p align="center"><em>Rewrite your whole app in Rust. Keep it working the whole way.</em></p>
-
-<p align="center"><em>CLIs, servers and libraries, piece by piece, checked against the original at every step.</em></p>
-
-<p align="center">Node.js and TypeScript · Python · C · Go · Ruby · Java · PHP and C# in preview</p>
+<p align="center"><b>Rewrite your app in Rust, and prove it still behaves the same.</b><br>
+Point it at your app: it records what the original does, your coding agent writes the Rust one piece at a time,<br>
+and every piece is checked against that recording before it moves on. It doesn't translate code; it proves the rewrite.</p>
 
 <p align="center">
+  <img src="https://img.shields.io/github/languages/top/erkamyaman/rust-anything?logo=rust&label=Rust&color=CE422B" alt="Rust share of the code">
+  <img src="https://img.shields.io/badge/macOS%20·%20Linux%20·%20Windows-native-2563EB" alt="Native binaries for macOS, Linux and Windows">
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-555" alt="MIT license"></a>
   <a href="https://crates.io/crates/rust-anything"><img src="https://img.shields.io/crates/v/rust-anything?color=E2862A&label=crates.io" alt="crates.io version"></a>
   <a href="https://www.npmjs.com/package/rust-anything"><img src="https://img.shields.io/npm/v/rust-anything?color=E2862A&label=npm" alt="npm version"></a>
-  <img src="https://img.shields.io/badge/languages-6%20%2B%202%20preview-E2862A" alt="6 languages, plus 2 in preview">
-  <a href="#works-with"><img src="https://img.shields.io/badge/works%20with-5%20agents-E2862A" alt="Works with 5 agents"></a>
-  <a href="https://github.com/erkamyaman/rust-anything/actions/workflows/ci.yml"><img src="https://img.shields.io/github/actions/workflow/status/erkamyaman/rust-anything/ci.yml?branch=main&label=tests" alt="Tests"></a>
-  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-E2862A" alt="MIT license"></a>
+  <br>
+  <a href="https://coderabbit.link/erkamyaman"><img src="https://img.shields.io/coderabbit/prs/github/erkamyaman/rust-anything?labelColor=171717&color=FF570A&label=Reviewed+by+CodeRabbit" alt="Pull requests reviewed by CodeRabbit"></a>
+  <a href="https://github.com/rust-unofficial/awesome-rust#development-tools"><img src="https://awesome.re/mentioned-badge.svg" alt="Mentioned in Awesome Rust"></a>
+  <a href="https://github.com/AIshihzong/awesome-reverse-engineer-anything"><img src="https://img.shields.io/badge/Featured%20in-Awesome%20REA-f0b429" alt="Featured in Awesome REA"></a>
   <a href="https://github.com/erkamyaman/rust-anything"><img src="https://img.shields.io/github/stars/erkamyaman/rust-anything?style=social" alt="GitHub stars"></a>
 </p>
 
-<p align="center">
-  <a href="#quick-start">Quick start</a> ·
-  <a href="#languages">Languages</a> ·
-  <a href="docs/how-it-works.md#how-it-works">How it works</a> ·
-  <a href="docs/how-it-works.md#the-loop">The loop</a> ·
-  <a href="docs/whole-apps.md#port-a-whole-app">Port a whole app</a> ·
-  <a href="docs/how-it-works.md#hot-paths-keep-the-data-in-rust">Hot paths</a> ·
-  <a href="docs/install.md#install">Install</a> ·
-  <a href="docs/how-it-works.md#what-it-cant-catch">What it can't catch</a> ·
-  <a href="docs/faq.md#faq">FAQ</a>
-</p>
+<p align="center"><a href="https://github.com/erkamyaman/rust-anything/discussions/127"><img src="https://img.shields.io/badge/Join%20the%20discussion-6E40C9?style=for-the-badge&logo=github&logoColor=white" alt="Join the discussion"></a></p>
 
-<p align="center">up to 20x faster · 38,251 recorded cases replayed · 0 mismatches · one command</p>
+<p align="center"><a href="https://trendshift.io/repositories/363468" target="_blank" rel="noopener noreferrer"><img src="https://trendshift.io/api/badge/trendshift/repositories/363468/daily?language=Rust" alt="erkamyaman/rust-anything: #1 Rust repository of the day on Trendshift" width="250" height="55"/></a></p>
+
+<p align="center"><b><a href="#quick-start">Install</a></b> · <a href="https://github.com/erkamyaman/rust-anything/releases">Releases</a> · <a href="#quick-start">Claude Code plugin</a> · <a href="https://registry.modelcontextprotocol.io/v0.1/servers?search=rust-anything">MCP Registry</a> · <a href="docs/real-world.md">Real-world ports</a> · <a href="docs/faq.md#faq">FAQ</a><br>
+<sub><a href="#languages">Languages</a> · <a href="docs/how-it-works.md#how-it-works">How it works</a> · <a href="docs/whole-apps.md#port-a-whole-app">Whole apps</a> · <a href="#sponsors">Sponsors</a> · <a href="LICENSE">MIT</a></sub><br>
+Made in Türkiye 🇹🇷 by <a href="https://github.com/erkamyaman">erKam Yaman</a> · <a href="https://github.com/sponsors/erkamyaman">❤️ Sponsor me</a> · Sponsored by <a href="https://coderabbit.link/erkamyaman"><img src="docs/assets/brands/coderabbit.png" width="22" height="22" align="absmiddle" alt=""> <b>CodeRabbit</b></a></p>
+
+<p align="center">New in 2.0: <a href="docs/real-world.md#prettier">Prettier, ported to Rust</a>. 19x faster · 15,861 of 17,224 recorded runs fully in Rust · every run byte-identical</p>
 
 <p align="center">
-  <img src="docs/assets/race.gif" alt="Typing user.profile into x18n's search over 50,000 keys: TypeScript spends 143 ms, the rust-anything batch 6.9 ms, with the same results at every keystroke." width="820">
+  <img src="docs/assets/prettier.gif" alt="Prettier and its Rust port format the same 59 real files, one process per file: Prettier takes 3.63 s, the Rust port 0.20 s, with the same output byte for byte." width="820">
   <br>
-  <sub>Typing a query into x18n's search over 50,000 keys: the TypeScript original against the rust-anything batch, same results at every keystroke.</sub>
+  <sub>Prettier against its Rust port on 59 real files from ms, Fuse.js and json-server (Apple M4). Same output, byte for byte. <a href="docs/real-world.md#prettier">How it was measured</a>.</sub>
 </p>
+
+<p align="center"><sub>PHP and C#: record, replay and the front door today; unit ports come next.</sub></p>
 
 <table>
   <tr>
@@ -66,24 +63,64 @@
 </table>
 
 **Rewrite your whole app in Rust, one piece at a time.** rust-anything records what your
-Node.js (TypeScript/JavaScript), Python, C, Go, Ruby or Java app does today, then checks every piece of the
+Node.js (TypeScript/JavaScript), Python, C, Go, Ruby, Java or Kotlin app does today, then checks every piece of the
 Rust rewrite against that recording before it moves on, until the app is pure Rust. CLIs, HTTP
-servers and libraries; your coding agent (or you) writes the Rust. It can only catch what the
-recording covers: see [What it can't catch](docs/how-it-works.md#what-it-cant-catch). Only need the slow part fast?
-Port just that, one hot path at a time:
+servers and libraries; your coding agent (or you) writes the Rust. It is built on
+[napi-rs](https://github.com/napi-rs/napi-rs), [PyO3](https://github.com/PyO3/pyo3) and
+[wasm-bindgen](https://github.com/wasm-bindgen/wasm-bindgen), which carry the calls between your
+language and Rust; rust-anything decides what to move and proves it matches. It can only catch what the
+recording covers: see [What it can't catch](docs/how-it-works.md#what-it-cant-catch). Whole tools
+and servers, or only the slow part, one hot path at a time:
 
-| Real workload, same results as the original | Original | With rust-anything |
+| Real project, same output as the original | Original | With rust-anything |
 | --- | ---: | ---: |
-| x18n's sidebar search, 50,000 keys (TypeScript, Node) | 10 ms per query | **0.5 ms: 20x faster** |
-| The same search in the browser (wasm, one thread) | 10 ms | **0.95 ms: 11.5x** |
-| `slugify` over 20,000 strings (Python) | 98 ms | **17x faster** |
-| `Shellwords.shellescape` from Ruby's standard library, 50,000 values | 88 ms | **11.8x faster** |
-| `Slugify` over 50,000 strings (Go) | 49 ms | **4x faster** |
-| `slugify` over 50,000 strings (Java) | 43 ms | **3x faster** |
+| [Prettier](docs/real-world.md#prettier) 3.6.2, 2,360 JS/TS files from the command line | 128.6 s | **6.9 s: 19x faster** |
+| Prettier, 6,305 Markdown files from the command line | 352 s | **22.5 s: 15.6x faster** |
+| [json-server](docs/real-world.md#json-server), a whole Node server: memory at idle | 74 MB | **3.5 MB**, one 5.3 MB binary |
+| json-server, from start to first response | 79 to 85 ms | **8 to 10 ms** |
+| [Fuse.js](docs/real-world.md#fusejs) search over 50,000 strings, per query | 91.2 ms | **2.8 ms: 32x faster** |
 
-Measured on 4 cores; every number has a benchmark in [`demo/`](./demo) that first checks the
-results are identical. Calling Rust once per small function is usually *slower* than a JIT;
-rust-anything finds the loop worth moving, and moves it.
+Prettier: 15,861 of 17,224 recorded runs format fully in Rust across 10 languages (JavaScript,
+TypeScript, JSX, JSON, GraphQL, YAML, Markdown, CSS, SCSS, Less), and all 17,224 match Prettier
+byte for byte, since anything not ported yet falls back to Prettier. json-server: 514/514
+recorded HTTP cases match on a pure Rust binary. Measured on an Apple M4, two runs each, every
+output compared before timing ([details](docs/real-world.md)). Calling Rust once per small
+function is usually *slower* than a JIT; rust-anything finds the loop worth moving, and moves it. Against
+C the win is safety, not speed: [ffmpeg's libavutil](docs/real-world.md#ffmpeg) ported to Rust
+matches all 226,447 recorded calls and runs at about C's speed (18 of 42 benchmarks even, 8
+faster, 16 slower by 3 to 40%).
+
+## Only the slow part
+
+You don't have to port the whole app. Point `go` at a command that is too slow, and it ports
+the one function that takes the time:
+
+```sh
+rust-anything go --agent claude -- python3 app.py
+```
+
+It profiles the run, picks the outermost function worth moving (the loop, not the small call
+inside it, batched where the profile says so), records it on generated inputs plus the calls your
+run makes, and hands `src/port.rs` to your agent (`claude`, `codex`, or any command that reads a
+prompt on stdin; without `--agent` it writes `TASK.md` for you and stops). It switches the
+function on only when every recorded case matches and `gate` passes. Then:
+
+```sh
+rust-anything report rust/dedupe-rs     # REPORT.md and card.svg for the pull request
+rust-anything disable rust/dedupe-rs    # back to the original, byte for byte
+```
+
+The [Fuse.js](docs/real-world.md#fusejs) row above is this shape: Fuse's score for one string,
+batched over the list, moved to Rust while object keys, extended search and the rest stay in
+JavaScript, for 91.2 ms to 2.8 ms per query over 50,000 strings. Try `go` on
+[`tests/fixtures/go-fuzzy`](tests/fixtures/go-fuzzy), a 20-line Python dedupe. Every way to switch
+a port on and off: [Switch a port on and off](docs/how-it-works.md#switch-a-port-on-and-off).
+
+<p align="center">
+  <img src="docs/assets/json-server.gif" alt="json-server as a Node server and as one Rust binary: memory at idle 74 MB and 3.5 MB, start to first response 79 to 85 ms and 8 to 10 ms, and 514 of 514 recorded HTTP cases match." width="820">
+  <br>
+  <sub>json-server, a whole Node server, lifted to a pure Rust binary (Apple M4). <a href="docs/real-world.md#json-server">How it was measured</a>.</sub>
+</p>
 
 > rust-anything is an independent project, not affiliated with or endorsed by the Rust Project
 > or the Rust Foundation. "Rust" is a trademark of the Rust Foundation.
@@ -94,6 +131,28 @@ rust-anything finds the loop worth moving, and moves it.
 > run the same cases again, on the port or the original. Code that writes files, talks to a
 > database or calls the network does that once per case. Run them on a copy of the project, with a
 > test database and no production credentials in the environment.
+
+## Install the ports
+
+The ESLint port is an npm command. It runs the Rust port for what it covers and ESLint 10.15.0,
+pinned as a dependency, for everything else, so the output is ESLint's either way:
+
+```sh
+npm install -g eslint-rs     # ESLint 10.15.0
+```
+
+| Command | Answered in Rust | Handed to ESLint 10.15.0 |
+| --- | --- | --- |
+| `eslint-rs` | `--no-config-lookup --rule ... --stdin` with the 90 ported rules (`stylish` and `json` output, fixes, suggestions) | `eslint.config.*` lookups (`eslint .`), files and folders, the other 202 core rules, plugins, parsers, the other formatters, parse errors |
+
+The binary comes for macOS (arm64, x64) and Linux (x64, arm64, glibc). On Windows and elsewhere,
+or with `RUST_ANYTHING_MODE=old`, `eslint-rs` runs ESLint itself: same output, no speedup.
+Installed from its tarballs on macOS arm64, `eslint-rs` matches ESLint 10.15.0 installed beside it
+on all 10,585 recorded runs ([how](docs/packaging.md#a-whole-cli-front-door)).
+
+The Prettier port is packaged the same way (`prettier-rs`, Prettier 3.6.2) and replays
+17,224/17,224 recorded runs from its tarballs, 7.9% handed to Prettier, but it is not on npm.
+`rust-anything package` makes this kind of package from any CLI front door.
 
 ## Quick start
 
@@ -122,6 +181,14 @@ must be on your `PATH`):
 /plugin install rust-anything --marketplace erkamyaman/rust-anything
 ```
 
+In Codex, from the agents marketplace in this repo (`.agents/plugins/marketplace.json`, the same
+plugin under `plugin/`, with the skill and MCP server):
+
+```sh
+codex plugin marketplace add erkamyaman/rust-anything
+codex plugin add rust-anything@rust-anything
+```
+
 `setup` adds the MCP server to each agent it finds and installs the workflow skill where the agent
 reads skills. It keeps your other settings, is safe to run again, and `--remove` undoes it.
 Then ask your agent, for example:
@@ -142,7 +209,7 @@ Then ask your agent, for example:
 | OpenCode | MCP server in `~/.config/opencode/opencode.json` (`mcp.servers`), skill in `~/.config/opencode/skills/` |
 | Any other MCP client | add `rust-anything mcp` as a stdio server by hand (see [Install](docs/install.md#install)) |
 
-Before changing a file that exists, `setup` saves a copy beside it (`<file>.rust-anything.bak`).
+Before changing a file that exists, `setup` saves a copy beside it (`<file>.rust-anything.bak`); `--no-backup` skips the copy.
 
 To wire OpenCode up by hand, put the server in `~/.config/opencode/opencode.json` (`command` is
 the whole argv) and copy [`skills/rust-anything/`](./skills/rust-anything) to
@@ -160,18 +227,13 @@ the whole argv) and copy [`skills/rust-anything/`](./skills/rust-anything) to
 
 Or run the steps yourself:
 
-<p align="center">
-  <img src="docs/assets/terminal.gif" alt="rust-anything profile finds fuzzyScore in a loop, bridge --batch generates the Rust crate, gate passes with 2000/2000 recorded cases, and the benchmark shows 20.7x faster than TS." width="820">
-  <br>
-  <sub>The steps on x18n's <code>fuzzyScore</code>: <code>profile</code> finds the hot loop, <code>bridge --batch</code> generates the crate, <code>gate</code> passes, and the benchmark compares it with the TypeScript.</sub>
-</p>
-
 ```sh
 rust-anything profile . -- node bench.mjs              # what is hot, and who calls it
 rust-anything bridge . src/fuzzy.ts --batch fuzzyScore:text
 # write src/port.rs (or let your agent), then:
 rust-anything record rust/fuzzy-rs && rust-anything build rust/fuzzy-rs
 rust-anything diff rust/fuzzy-rs                       # every recorded case must match
+rust-anything fuzz rust/fuzzy-rs --time 60 --keep      # fresh inputs: what the recording missed
 rust-anything bench rust/fuzzy-rs                      # faster? the verdict says
 rust-anything gate rust/fuzzy-rs                       # done means this passes
 ```
@@ -181,6 +243,14 @@ the Rust. rust-anything supplies what an agent cannot guess reliably: where the 
 first and in which order, a bridge so the rest of the code calls the Rust with its API unchanged,
 the exact behavior the port must match, a safe way to ship it, and a gate that says when a port is
 done.
+
+Same output is not enough. Record what the app sends too, and a rewrite that mails twice fails:
+
+<p align="center">
+  <img src="docs/assets/effects.gif" alt="app record with --effects smtp records one welcome email per signup; app replay of a rewrite that prints the same output but mails twice reports 0/2 cases passed, failing on effects, and the report shows the extra email." width="820">
+  <br>
+  <sub>A real run of <code>app record --effects</code> and <code>app replay</code>. See <a href="docs/whole-apps.md#side-effects-email-webhooks-and-databases">Side effects</a>.</sub>
+</p>
 
 ## Languages
 
@@ -192,24 +262,43 @@ done.
 | Go | package | typed cgo calls and a generated binary wire, in a package with the original API | a generated Go driver, built as its own module |
 | Ruby | file or folder of module functions | a magnus extension under the original modules | a generated Ruby driver |
 | Java | package of `public static` methods | typed JNI and a generated binary wire, in wrapper classes with the original methods | a generated reflection driver |
-| PHP (preview) | folder of functions and `public static` methods | coming next: PHP FFI over a C ABI | whole apps today: `app record`, `app replay` and the front door, for CLIs and servers (`php -S`) |
-| C# (preview) | folder of `public static` methods | coming next: P/Invoke over a C ABI | whole apps today: `app record`, `app replay` and the front door, for CLIs and ASP.NET servers (`dotnet <app>.dll`) |
+| Kotlin | Gradle module of top-level functions and `@JvmStatic` methods | the Java bridge: typed JNI in Java wrapper classes calling the compiled Kotlin statics | a generated reflection driver, with the Kotlin sources compiled by `kotlinc` |
+| PHP | folder of functions and `public static` methods | coming next: PHP FFI over a C ABI | whole apps today: `app record`, `app replay` and the front door, for CLIs and servers (`php -S`) |
+| C# | folder of `public static` methods | coming next: P/Invoke over a C ABI | whole apps today: `app record`, `app replay` and the front door, for CLIs and ASP.NET servers (`dotnet <app>.dll`) |
 
 Every language except C also gets batch classes (`--batch`): the items cross once and stay in
 Rust, and each call runs over all of them on all cores.
 
-The language is detected from the repository (`go.mod`, `pom.xml`, a `.csproj` or `.sln`,
-`pyproject.toml`, `Gemfile`, `composer.json`, `package.json`, else the most common source files);
-`--lang` overrides it. Types come from the source: TS types, Python hints, C, Go, Java and C#
-signatures, Ruby YARD tags, PHP types and phpdoc; untyped parameters used as numbers are inferred
-as numbers.
+The language is detected from the repository (`go.mod`, `pom.xml`, `build.gradle`/`build.gradle.kts`,
+a `.csproj` or `.sln`, `pyproject.toml`, `Gemfile`, `composer.json`, `package.json`, else the most
+common source files); a Gradle module with `.kt` sources and no `.java` sources is Kotlin, mixed
+modules stay Java. `--lang` overrides it. Types come from the source: TS types, Python hints, C, Go,
+Java, Kotlin and C# signatures, Ruby YARD tags, PHP types and phpdoc; untyped parameters used as
+numbers are inferred as numbers.
 
-PHP is in preview: `analyze` plans a PHP app (Composer packages and PSR-4 autoloading, risks
+For Android, `rust-anything build <crate> --profile android` builds the same JNI library with the
+NDK for `arm64-v8a`, `armeabi-v7a` and `x86_64` (or the `--abi` values you pass) and installs it
+into `<crate>/jniLibs/<abi>/`; `--api` sets the API level (minimum 26, which the generated Java
+runtime needs). It finds the NDK from `ANDROID_NDK_HOME`/`ANDROID_NDK_ROOT` or the SDK, needs the
+Rust targets (`rustup target add aarch64-linux-android armv7-linux-androideabi
+x86_64-linux-android`), links 64-bit libraries with 16 KB page alignment, and checks that every
+JNI entry point is exported. Gradle looks in `src/main/jniLibs` by default, so pass
+`--jni-libs app/src/main/jniLibs` or add `<crate>/jniLibs` to `sourceSets.main.jniLibs.srcDirs`.
+`rust-anything record <crate> --profile android` runs the original Kotlin unit under ART on a
+connected device (adb), dexes the generated driver with `d8` from the SDK's build-tools, and pulls
+the results back as the same `cases.jsonl`; `diff <crate> --profile android` replays them against
+the `.so` built for the device's ABI. Both need `adb`, a device, `kotlinc`, an SDK with build-tools
+and a platform, and `--device <serial>` when more than one device is connected. The profile covers
+logic units: Activity/Compose/XML UI, lifecycle and SDK-only classes stay in Kotlin, and each call
+crosses JNI, so prefer the generated batch wrappers for hot loops. On a host, `record` and `diff`
+keep using the desktop JVM.
+
+For PHP, `analyze` plans a PHP app (Composer packages and PSR-4 autoloading, risks
 such as loose comparison and integer overflow into floats, Composer packages mapped to crates),
 and a PHP CLI or server can be recorded, replayed and put behind a Rust front door. Porting its
 units into Rust through PHP's FFI is the next step ([issue #2](https://github.com/erkamyaman/rust-anything/issues/2)).
 
-C# is in preview the same way: `analyze` reads `.csproj` projects and their NuGet packages
+C# works the same way: `analyze` reads `.csproj` projects and their NuGet packages
 (mapped to crates), resolves `using` directives to folders, and flags what C# does differently
 (`decimal`, `dynamic`, LINQ's deferred queries, `Task`, `lock`, reflection). A C# CLI or ASP.NET
 server can be recorded, replayed and put behind a Rust front door; porting units through P/Invoke
@@ -217,7 +306,8 @@ comes next.
 
 ## Learn more
 
-- [How it works](docs/how-it-works.md): the loop, what `bridge` and `analyze` decide, hot paths, and what it can't catch
+- [How it works](docs/how-it-works.md): the loop, what `bridge` and `analyze` decide, hot paths, what it can't catch, what a real port takes, and keeping up with the original (`map`)
+- [Ship a port as a package](docs/packaging.md): maturin wheels and napi-rs per-platform npm packages, with the CI that builds them
 - [Port a whole app](docs/whole-apps.md): servers, CLIs and libraries, from the front door to `app lift`
 - [Examples and case studies](docs/examples.md): x18n, and real code in six languages
 - [Real-world ports](docs/real-world.md): json-server, Fuse.js, vercel/ms, with benchmarks
@@ -232,7 +322,7 @@ comes next.
 </p>
 
 <p align="center">
-  <a href="https://coderabbit.ai">
+  <a href="https://coderabbit.link/erkamyaman">
     <picture>
       <source media="(prefers-color-scheme: dark)" srcset="docs/assets/sponsors/company-dark.svg">
       <img src="docs/assets/sponsors/company-light.svg" width="800" alt="Company sponsor: CodeRabbit">
@@ -244,13 +334,14 @@ comes next.
   <a href="https://github.com/sponsors/erkamyaman">
     <picture>
       <source media="(prefers-color-scheme: dark)" srcset="docs/assets/sponsors/sponsors-dark.svg">
-      <img src="docs/assets/sponsors/sponsors-light.svg" width="800" alt="Sponsors: Ali Yilmaz, Ashley Hunter, Fatih Uzuntaş">
+      <img src="docs/assets/sponsors/sponsors-light.svg" width="800" alt="Sponsors: Santosh Yadav, Hakan Soytürk, Ali Yilmaz, Ashley Hunter, Fatih Uzuntaş">
     </picture>
   </a>
 </p>
 
 <p align="center">
   <a href="https://github.com/sponsors/erkamyaman"><img src="https://img.shields.io/badge/Become_a_sponsor-%E2%9D%A4-db61a2?style=for-the-badge&logo=githubsponsors&logoColor=white" alt="Become a sponsor"></a>
+  <a href="https://buymeacoffee.com/erkamyaman"><img src="https://img.shields.io/badge/Buy_me_a_coffee-%E2%98%95-FFDD00?style=for-the-badge&logo=buymeacoffee&logoColor=black" alt="Buy me a coffee"></a>
 </p>
 
 ## Contributing
