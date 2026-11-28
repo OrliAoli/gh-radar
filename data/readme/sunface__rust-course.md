@@ -25,6 +25,7 @@
 
 - 在线阅读: https://course.rs
 - 在线练习：https://practice.course.rs
+- 电子书下载：[PDF](https://github.com/sunface/rust-course/releases/latest/download/rust-course.pdf) / [EPUB](https://github.com/sunface/rust-course/releases/latest/download/rust-course.epub)（随正文自动更新）
 - AI 前沿学习：https://beatai.org 每日精选全球好文，实时、高质、有用
 
 
@@ -102,6 +103,24 @@ Rust 语言圣经已写 170 余章、110 余万字、历经 800 多个小时，�
                 <img src="https://avatars.githubusercontent.com/u/10138791?v=4?s=100" width="100px" alt=""/>
                 <br />
                 <sub><b>1132719438</b></sub>
+            </a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+### 电子书
+
+本书的 EPUB / PDF 电子书版本由以下贡献者负责制作和维护：
+
+<table>
+    <tbody>
+    <tr>
+        <td align="center">
+            <a href="https://github.com/SnowballXueQiu">
+                <img src="https://avatars.githubusercontent.com/u/97330394?v=4" width="100px" alt=""/>
+                <br />
+                <sub><b>SnowballXueQiu</b></sub>
             </a>
         </td>
     </tr>

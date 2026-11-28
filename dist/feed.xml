@@ -5,146 +5,146 @@
     <link>https://github.com/trending</link>
     <description>AI / Agent 领域的每日 GitHub 雷达</description>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 22 Nov 2026 07:25:17 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 28 Nov 2026 08:24:36 GMT</lastBuildDate>
     <item>
       <title>[TypeScript] paperclipai/paperclip</title>
       <link>https://github.com/paperclipai/paperclip</link>
-      <description>The open-source app everyone uses to manage agents at work | 总星 115743 | 无今日增量数据</description>
-      <guid isPermaLink="false">paperclipai/paperclip#2026-11-22</guid>
-      <pubDate>Sun, 22 Nov 2026 07:25:17 GMT</pubDate>
+      <description>The open-source app everyone uses to manage agents at work | 总星 117671 | 无今日增量数据</description>
+      <guid isPermaLink="false">paperclipai/paperclip#2026-11-28</guid>
+      <pubDate>Sat, 28 Nov 2026 08:24:36 GMT</pubDate>
     </item>
     <item>
       <title>[TypeScript] morluto/rea</title>
       <link>https://github.com/morluto/rea</link>
-      <description>Reverse engineer anything with agents, from app behavior down to native binaries. | 总星 473109 | 无今日增量数据</description>
-      <guid isPermaLink="false">morluto/rea#2026-11-22</guid>
-      <pubDate>Sun, 22 Nov 2026 07:25:17 GMT</pubDate>
+      <description>Reverse engineer anything with agents, from app behavior down to native binaries. | 总星 481462 | 无今日增量数据</description>
+      <guid isPermaLink="false">morluto/rea#2026-11-28</guid>
+      <pubDate>Sat, 28 Nov 2026 08:24:36 GMT</pubDate>
     </item>
     <item>
       <title>[Python] JuneYaooo/rea-video</title>
       <link>https://github.com/JuneYaooo/rea-video</link>
-      <description>Reverse-engineer any video, shot by shot: filmed, AI-generated or coded, and how to remake it. Breakdowns in the open VIDEO.md format. 逆向一切视频，逐个镜头看是拍的、AI 生成的还是代码做的，再告诉你怎么复刻；拆解结果按 VIDEO.md 格式输出。 | 总星 11939 | 无今日增量数据</description>
-      <guid isPermaLink="false">JuneYaooo/rea-video#2026-11-22</guid>
-      <pubDate>Sun, 22 Nov 2026 07:25:17 GMT</pubDate>
+      <description>Reverse-engineer any video, shot by shot: filmed, AI-generated or coded, and how to remake it. Breakdowns in the open VIDEO.md format. 逆向一切视频，逐个镜头看是拍的、AI 生成的还是代码做的，再告诉你怎么复刻；拆解结果按 VIDEO.md 格式输出。 | 总星 13800 | 无今日增量数据</description>
+      <guid isPermaLink="false">JuneYaooo/rea-video#2026-11-28</guid>
+      <pubDate>Sat, 28 Nov 2026 08:24:36 GMT</pubDate>
     </item>
     <item>
       <title>[Python] blader/humanizer</title>
       <link>https://github.com/blader/humanizer</link>
-      <description>Agent skill that removes signs of AI-generated writing from text | 总星 72076 | 无今日增量数据</description>
-      <guid isPermaLink="false">blader/humanizer#2026-11-22</guid>
-      <pubDate>Sun, 22 Nov 2026 07:25:17 GMT</pubDate>
+      <description>Agent skill that removes signs of AI-generated writing from text | 总星 74429 | 无今日增量数据</description>
+      <guid isPermaLink="false">blader/humanizer#2026-11-28</guid>
+      <pubDate>Sat, 28 Nov 2026 08:24:36 GMT</pubDate>
     </item>
     <item>
       <title>[JavaScript] tt-a1i/archify</title>
       <link>https://github.com/tt-a1i/archify</link>
-      <description>Turn any idea, plan, or codebase into a beautiful interactive diagram. An agent skill for Claude Code, Codex, and more. | 总星 98638 | 无今日增量数据</description>
-      <guid isPermaLink="false">tt-a1i/archify#2026-11-22</guid>
-      <pubDate>Sun, 22 Nov 2026 07:25:17 GMT</pubDate>
+      <description>Turn any idea, plan, or codebase into an interactive diagram or one-page answer: 10 diagram types, Architecture Diagnosis, Story video and PR walkthroughs. An Agent Skill for Claude Code, Codex, Cursor and more. | 总星 101076 | 无今日增量数据</description>
+      <guid isPermaLink="false">tt-a1i/archify#2026-11-28</guid>
+      <pubDate>Sat, 28 Nov 2026 08:24:36 GMT</pubDate>
     </item>
     <item>
       <title>[Python] Graphify-Labs/graphify</title>
       <link>https://github.com/Graphify-Labs/graphify</link>
-      <description>Turn any codebase, with its docs, SQL schemas, configs, and PDFs, into a queryable knowledge graph. A /graphify skill for Claude Code, Cursor, Codex, and Gemini CLI: local deterministic AST parsing, every edge explained, no vector store. | 总星 151698 | 无今日增量数据</description>
-      <guid isPermaLink="false">Graphify-Labs/graphify#2026-11-22</guid>
-      <pubDate>Sun, 22 Nov 2026 07:25:17 GMT</pubDate>
+      <description>Turn any codebase, with its docs, SQL schemas, configs, and PDFs, into a queryable knowledge graph. A /graphify skill for Claude Code, Cursor, Codex, and Gemini CLI: local deterministic AST parsing, every edge explained, no vector store. | 总星 154359 | 无今日增量数据</description>
+      <guid isPermaLink="false">Graphify-Labs/graphify#2026-11-28</guid>
+      <pubDate>Sat, 28 Nov 2026 08:24:36 GMT</pubDate>
+    </item>
+    <item>
+      <title>[TypeScript] heygen-com/hyperframes</title>
+      <link>https://github.com/heygen-com/hyperframes</link>
+      <description>Open-source AI video editor: edit your own footage, or create and remake any video with Claude Code, Codex or the free Studio app. Write HTML, render MP4. By HeyGen. | 总星 91695 | 无今日增量数据</description>
+      <guid isPermaLink="false">heygen-com/hyperframes#2026-11-28</guid>
+      <pubDate>Sat, 28 Nov 2026 08:24:36 GMT</pubDate>
     </item>
     <item>
       <title>[Rust] erkamyaman/rust-anything</title>
       <link>https://github.com/erkamyaman/rust-anything</link>
-      <description>Rewrite your whole app in Rust, one piece at a time, checked against the original&#x27;s recorded behavior at every step. CLIs, HTTP servers and libraries in TypeScript, Python, C, Go, Ruby and Java. | 总星 7576 | 无今日增量数据</description>
-      <guid isPermaLink="false">erkamyaman/rust-anything#2026-11-22</guid>
-      <pubDate>Sun, 22 Nov 2026 07:25:17 GMT</pubDate>
-    </item>
-    <item>
-      <title>[Python] morganlinton/BeautifulRust</title>
-      <link>https://github.com/morganlinton/BeautifulRust</link>
-      <description>Agent Skills that teach coding agents to write, review, and port idiomatic Rust, plus a tested clippy config. Works with Claude Code, Codex, Copilot, Cursor, and Gemini CLI. | 总星 2079 | 无今日增量数据</description>
-      <guid isPermaLink="false">morganlinton/BeautifulRust#2026-11-22</guid>
-      <pubDate>Sun, 22 Nov 2026 07:25:17 GMT</pubDate>
-    </item>
-    <item>
-      <title>[Go] Tencent/LoopForge</title>
-      <link>https://github.com/Tencent/LoopForge</link>
-      <description>Self-hosted workflows for coding-agent delivery. Orchestrate CodeBuddy, Codex and Claude Code with scripts and human approval gates. Includes Local workflows for coding assistants. | 总星 5559 | +1216 stars today</description>
-      <guid isPermaLink="false">Tencent/LoopForge#2026-11-22</guid>
-      <pubDate>Sun, 22 Nov 2026 07:25:17 GMT</pubDate>
-    </item>
-    <item>
-      <title>[Python] google-research/paper-orchestra</title>
-      <link>https://github.com/google-research/paper-orchestra</link>
-      <description>PaperOrchestra is a multi-agent framework for automated AI research paper writing. | 总星 5793 | +1196 stars today</description>
-      <guid isPermaLink="false">google-research/paper-orchestra#2026-11-22</guid>
-      <pubDate>Sun, 22 Nov 2026 07:25:17 GMT</pubDate>
-    </item>
-    <item>
-      <title>[Shell] mjmirza/app-store-compliance</title>
-      <link>https://github.com/mjmirza/app-store-compliance</link>
-      <description>Avoid common App Store and Google Play rejections. Open playbook and pre-submission guard with 117 documented rejection patterns and fixes, privacy manifest and Data safety checks, 95 tracked deadlines (EU AI Act, DSA, COPPA, age laws), and a skill for AI coding agents. | 总星 3553 | +869 stars today</description>
-      <guid isPermaLink="false">mjmirza/app-store-compliance#2026-11-22</guid>
-      <pubDate>Sun, 22 Nov 2026 07:25:17 GMT</pubDate>
+      <description>Rewrite your whole app in Rust, one piece at a time, checked against the original&#x27;s recorded behavior at every step. CLIs, HTTP servers and libraries in TypeScript, Python, C, Go, Ruby and Java. | 总星 10912 | 无今日增量数据</description>
+      <guid isPermaLink="false">erkamyaman/rust-anything#2026-11-28</guid>
+      <pubDate>Sat, 28 Nov 2026 08:24:36 GMT</pubDate>
     </item>
     <item>
       <title>[Python] elementalsouls/Claude-BugHunter</title>
       <link>https://github.com/elementalsouls/Claude-BugHunter</link>
-      <description>A Claude Code skill bundle for bug hunting and external red-team work - 82 skills, 15 slash commands, 681 disclosed-report patterns curated across 24 core vulnerability classes, plus enterprise identity + infrastructure attack matrices. | 总星 16453 | +1803 stars today</description>
-      <guid isPermaLink="false">elementalsouls/Claude-BugHunter#2026-11-22</guid>
-      <pubDate>Sun, 22 Nov 2026 07:25:17 GMT</pubDate>
+      <description>A Claude Code skill bundle for bug hunting and external red-team work - 85 skills, 16 slash commands, 681 disclosed-report patterns curated across 24 core vulnerability classes, plus enterprise identity + infrastructure attack matrices. | 总星 26497 | +1652 stars today</description>
+      <guid isPermaLink="false">elementalsouls/Claude-BugHunter#2026-11-28</guid>
+      <pubDate>Sat, 28 Nov 2026 08:24:36 GMT</pubDate>
     </item>
     <item>
-      <title>[C++] wici-ai/inferssd</title>
-      <link>https://github.com/wici-ai/inferssd</link>
-      <description>Run models larger than your RAM or VRAM by streaming MoE experts from SSD. Built on llama.cpp. | 总星 1262 | 无今日增量数据</description>
-      <guid isPermaLink="false">wici-ai/inferssd#2026-11-22</guid>
-      <pubDate>Sun, 22 Nov 2026 07:25:17 GMT</pubDate>
+      <title>[Shell] mjmirza/app-store-compliance</title>
+      <link>https://github.com/mjmirza/app-store-compliance</link>
+      <description>Avoid common App Store and Google Play rejections. Open playbook and pre-submission guard with 125 documented rejection patterns and fixes, privacy manifest and Data safety checks, 117 tracked deadlines (EU AI Act, DSA, COPPA, age laws), and a skill for AI coding agents. | 总星 8100 | +858 stars today</description>
+      <guid isPermaLink="false">mjmirza/app-store-compliance#2026-11-28</guid>
+      <pubDate>Sat, 28 Nov 2026 08:24:36 GMT</pubDate>
+    </item>
+    <item>
+      <title>[Python] zhouxiaoka/autoclip</title>
+      <link>https://github.com/zhouxiaoka/autoclip</link>
+      <description>AutoClip｜一个链接，一键出片。开源 AI 视频剪辑桌面工具，将播客、访谈、课程等长视频自动剪成短视频，生成字幕、封面和发布文案，适配抖音、小红书、TikTok、Reels 与 YouTube Shorts。Open-source AI video clipping &amp; content repurposing. | 总星 17761 | +880 stars today</description>
+      <guid isPermaLink="false">zhouxiaoka/autoclip#2026-11-28</guid>
+      <pubDate>Sat, 28 Nov 2026 08:24:36 GMT</pubDate>
+    </item>
+    <item>
+      <title>[Python] HKUDS/CLI-Anything</title>
+      <link>https://github.com/HKUDS/CLI-Anything</link>
+      <description>&quot;CLI-Anything: Making ALL Software Agent-Native&quot; -- CLI-Hub: https://clianything.cc/ | 总星 67150 | +1106 stars today</description>
+      <guid isPermaLink="false">HKUDS/CLI-Anything#2026-11-28</guid>
+      <pubDate>Sat, 28 Nov 2026 08:24:36 GMT</pubDate>
     </item>
     <item>
       <title>[Rust] sunface/rust-course</title>
       <link>https://github.com/sunface/rust-course</link>
-      <description>什么？你敢放心的把后背交给 AI? 我赌你不敢，那就来学学 AI 时代最酷、最安全、最快的语言吧。本书拥有全面且深入的讲解、生动贴切的示例、德芙般丝滑的内容，这可能是目前最用心的 Rust 中文学习教程 / Book | 总星 31142 | 无今日增量数据</description>
-      <guid isPermaLink="false">sunface/rust-course#2026-11-22</guid>
-      <pubDate>Sun, 22 Nov 2026 07:25:17 GMT</pubDate>
+      <description>什么？你敢放心的把后背交给 AI? 我赌你不敢，那就来学学 AI 时代最酷、最安全、最快的语言吧。本书拥有全面且深入的讲解、生动贴切的示例、德芙般丝滑的内容，这可能是目前最用心的 Rust 中文学习教程 / Book | 总星 31154 | 无今日增量数据</description>
+      <guid isPermaLink="false">sunface/rust-course#2026-11-28</guid>
+      <pubDate>Sat, 28 Nov 2026 08:24:36 GMT</pubDate>
     </item>
     <item>
       <title>[Python] vllm-project/vllm</title>
       <link>https://github.com/vllm-project/vllm</link>
-      <description>A high-throughput and memory-efficient inference and serving engine for LLMs | 总星 97326 | 无今日增量数据</description>
-      <guid isPermaLink="false">vllm-project/vllm#2026-11-22</guid>
-      <pubDate>Sun, 22 Nov 2026 07:25:17 GMT</pubDate>
+      <description>A high-throughput and memory-efficient inference and serving engine for LLMs | 总星 97736 | 无今日增量数据</description>
+      <guid isPermaLink="false">vllm-project/vllm#2026-11-28</guid>
+      <pubDate>Sat, 28 Nov 2026 08:24:36 GMT</pubDate>
     </item>
     <item>
       <title>[Python] sgl-project/sglang</title>
       <link>https://github.com/sgl-project/sglang</link>
-      <description>SGLang is a high-performance serving framework for large language models and multimodal models. | 总星 38921 | 无今日增量数据</description>
-      <guid isPermaLink="false">sgl-project/sglang#2026-11-22</guid>
-      <pubDate>Sun, 22 Nov 2026 07:25:17 GMT</pubDate>
+      <description>SGLang is a high-performance serving framework for large language models and multimodal models. | 总星 39145 | 无今日增量数据</description>
+      <guid isPermaLink="false">sgl-project/sglang#2026-11-28</guid>
+      <pubDate>Sat, 28 Nov 2026 08:24:36 GMT</pubDate>
+    </item>
+    <item>
+      <title>[Python] kvcache-ai/ktransformers</title>
+      <link>https://github.com/kvcache-ai/ktransformers</link>
+      <description>A Flexible Framework for Experiencing Heterogeneous LLM Inference/Fine-tune Optimizations | 总星 19709 | 无今日增量数据</description>
+      <guid isPermaLink="false">kvcache-ai/ktransformers#2026-11-28</guid>
+      <pubDate>Sat, 28 Nov 2026 08:24:36 GMT</pubDate>
     </item>
     <item>
       <title>[JavaScript] Leonxlnx/taste-skill</title>
       <link>https://github.com/Leonxlnx/taste-skill</link>
-      <description>Agent skills that give coding agents taste: art direction, reference images and a browser check instead of generic AI pages | 总星 119825 | 无今日增量数据</description>
-      <guid isPermaLink="false">Leonxlnx/taste-skill#2026-11-22</guid>
-      <pubDate>Sun, 22 Nov 2026 07:25:17 GMT</pubDate>
+      <description>Agent skills that give coding agents taste: art direction, reference images and a browser check instead of generic AI pages | 总星 122434 | 无今日增量数据</description>
+      <guid isPermaLink="false">Leonxlnx/taste-skill#2026-11-28</guid>
+      <pubDate>Sat, 28 Nov 2026 08:24:36 GMT</pubDate>
+    </item>
+    <item>
+      <title>[Rust] EL4CTEO/fast-anything</title>
+      <link>https://github.com/EL4CTEO/fast-anything</link>
+      <description>Don&#x27;t rewrite it in Rust. Rewrite the 5% that&#x27;s slow: profile Python, Node or Ruby apps, port the hot functions with your coding agent, prove they behave the same. | 总星 4546 | 无今日增量数据</description>
+      <guid isPermaLink="false">EL4CTEO/fast-anything#2026-11-28</guid>
+      <pubDate>Sat, 28 Nov 2026 08:24:36 GMT</pubDate>
     </item>
     <item>
       <title>[JavaScript] addyosmani/agent-skills</title>
       <link>https://github.com/addyosmani/agent-skills</link>
-      <description>Production-grade engineering skills for AI coding agents. | 总星 119633 | 无今日增量数据</description>
-      <guid isPermaLink="false">addyosmani/agent-skills#2026-11-22</guid>
-      <pubDate>Sun, 22 Nov 2026 07:25:17 GMT</pubDate>
-    </item>
-    <item>
-      <title>[Python] DenisSergeevitch/ex-ussr-kinship-research</title>
-      <link>https://github.com/DenisSergeevitch/ex-ussr-kinship-research</link>
-      <description>Evidence-first genealogy skill for AI agents (Codex, Claude Code): church books, civil, military, deportation and repression records across the former USSR. Replies in your language. | 总星 2723 | 无今日增量数据</description>
-      <guid isPermaLink="false">DenisSergeevitch/ex-ussr-kinship-research#2026-11-22</guid>
-      <pubDate>Sun, 22 Nov 2026 07:25:17 GMT</pubDate>
+      <description>Production-grade engineering skills for AI coding agents. | 总星 120843 | 无今日增量数据</description>
+      <guid isPermaLink="false">addyosmani/agent-skills#2026-11-28</guid>
+      <pubDate>Sat, 28 Nov 2026 08:24:36 GMT</pubDate>
     </item>
     <item>
       <title>[Python] langgenius/dify</title>
       <link>https://github.com/langgenius/dify</link>
-      <description>Build Agentic workflows, RAG pipelines, with rich AI model and tool support on one collaborative workspace. Deploy on cloud, VPC, or self-hosted, so teams move from prototype to production without rebuilding the stack. | 总星 161645 | 无今日增量数据</description>
-      <guid isPermaLink="false">langgenius/dify#2026-11-22</guid>
-      <pubDate>Sun, 22 Nov 2026 07:25:17 GMT</pubDate>
+      <description>Build Agentic workflows, RAG pipelines, with rich AI model and tool support on one collaborative workspace. Deploy on cloud, VPC, or self-hosted, so teams move from prototype to production without rebuilding the stack. | 总星 162037 | 无今日增量数据</description>
+      <guid isPermaLink="false">langgenius/dify#2026-11-28</guid>
+      <pubDate>Sat, 28 Nov 2026 08:24:36 GMT</pubDate>
     </item>
   </channel>
 </rss>
